@@ -1,9 +1,3 @@
-const admin = require("firebase-admin");
-const serviceAccount = require("./firebasekey.json");
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://ics-vote.firebaseio.com"
-});
 
 window.onload = function (e) {
     let myLiffId = "1553436015-j8ZbJ6rn";
@@ -68,17 +62,12 @@ function initializeApp() {
     });
 
     // get access token
-    document.getElementById('submit').addEventListener('click', function () {
+    document.getElementById('getaccesstoken').addEventListener('click', function () {
         const accessToken = liff.getAccessToken();
         document.getElementById('accesstokenfield').textContent = accessToken;
         toggleAccessToken();
     }); 
 }
-
-function submit() {
-    toggleElement('accesstokendata');
-}
-
 
 function toggleAccessToken() {
     toggleElement('accesstokendata');
