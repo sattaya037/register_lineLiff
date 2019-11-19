@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 app.get('/vote', function(req, res) {
     app.use(express.static(__dirname));
-    res.sendFile(__dirname+'/component/html/liff.html')
+    res.sendFile(__dirname+'/liff.html')
 });
 
   const port = process.env.PORT || 3000;
