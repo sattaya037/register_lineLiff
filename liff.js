@@ -1,8 +1,10 @@
-
 window.onload = function (e) {
     let myLiffId = "1553436015-g2jwRx3G";
-
-    liff.init({
+    initializeLiff(myLiffId);
+};
+function initializeLiff(myLiffId) {
+    liff
+    .init({
         liffId: myLiffId
     })
     .then(() => {
@@ -13,7 +15,7 @@ window.onload = function (e) {
         document.getElementById("liffAppContent").classList.add('hidden');
         document.getElementById("liffInitErrorMessage").classList.remove('hidden');
     });
-};
+}
 
 function initializeApp() {
     liff.getProfile()
@@ -67,7 +69,14 @@ function initializeApp() {
         document.getElementById('accesstokenfield').textContent = accessToken;
         toggleAccessToken();
     }); 
+
+    document.getElementById('submit').addEventListener('click', function () {
+        var fullname = document.getElementById("fullName").value;
+
+    }); 
 }
+
+
 
 function toggleAccessToken() {
     toggleElement('accesstokendata');
