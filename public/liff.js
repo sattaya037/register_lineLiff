@@ -230,12 +230,22 @@ function pushFirebase(profile){
       var lineName =profile.displayName;
 
       const dbRef = firebase.database().ref('HPY');
-      const usersRef = dbRef.child(lineID);
-      usersRef.set({
-        lineID:lineID,
-        lineName:lineName,
-        Fullname : "imageUrl"
-      });
+    //   const usersRef = dbRef.child(lineID);
+    dbRef.orderByKey().equalTo(lineID).on("value", function (snapshot) {
+        if(snapshot.val()==null){
+            console.log("null");
+        }else{
+            console.log("not null");
+
+        }
+
+      })
+
+
+    //   usersRef.set({
+    //     lineName:lineName,
+    //     Fullname : "imageUrl"
+    //   });
 }   
 
 /**
