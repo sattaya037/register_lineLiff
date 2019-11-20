@@ -1,9 +1,3 @@
-const admin = require("firebase-admin");
-const serviceAccount = require("../firebasekey.json");
-admin.initializeApp({
-credential: admin.credential.cert(serviceAccount),
-databaseURL: "https://ics-vote.firebaseio.com"
-});
 window.onload = function() {
     const useNodeJS = true;   // if you are not using a node server, set this value to false
     const defaultLiffId = "1553436015-g2jwRx3G";   // change the default LIFF value if you are not using a node server
@@ -216,30 +210,21 @@ function sendAlertIfNotInClient() {
 }
 
 function pushFirebase(){
-    // var firebaseConfig = {
-    //     apiKey: "AIzaSyCHQ4DM7_CqftwNk8hwM6AHTzXoT543n4g",
-    //     authDomain: "match-699cf.firebaseapp.com",
-    //     databaseURL: "https://match-699cf.firebaseio.com",
-    //     projectId: "match-699cf",
-    //     storageBucket: "match-699cf.appspot.com",
-    //     messagingSenderId: "496105033351",
-    //     appId: "1:496105033351:web:94dcbd48a047c4d910f222",
-    //     measurementId: "G-70DEJBB4SL"
-    //   };
-    //   // Initialize Firebase
-    //   firebase.initializeApp(firebaseConfig);
+    var firebaseConfig = {
+        apiKey: "AIzaSyCHQ4DM7_CqftwNk8hwM6AHTzXoT543n4g",
+        authDomain: "match-699cf.firebaseapp.com",
+        databaseURL: "https://match-699cf.firebaseio.com",
+        projectId: "match-699cf",
+        storageBucket: "match-699cf.appspot.com",
+        messagingSenderId: "496105033351",
+        appId: "1:496105033351:web:94dcbd48a047c4d910f222",
+        measurementId: "G-70DEJBB4SL"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
     //   var database = firebase.database();
     //     alert(database);
     //     console.log(database);
-
-    var db = admin.database();
-    var ref = db.ref("votetest/result/");
-    var usersRef = ref.child("lineID");
-    usersRef.set({
-       value: "value",
-       lineID:"lineID"
-    });
-
 }
 
 /**
