@@ -4,6 +4,7 @@ const port = process.env.PORT || 5000;
 const myLiffId = process.env.MY_LIFF_ID;
 
 app.use(express.static('public'));
+app.use(express.static('gift'));
 
 app.get('/send-id', function(req, res) {
     res.json({id: myLiffId});
