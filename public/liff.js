@@ -226,11 +226,14 @@ function pushFirebase(profile){
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
       console.log(profile.userId)
+      var lineID =profile.userId;
+      var lineName =profile.displayName;
+
       const dbRef = firebase.database().ref('HPY');
-      const usersRef = dbRef.child(profile.userId);
+      const usersRef = dbRef.child(lineID);
       usersRef.set({
-        lineID:profile.userI,
-        lineName: profile.displayName,
+        lineID:lineID,
+        lineName:lineName,
         Fullname : "imageUrl"
       });
 }   
