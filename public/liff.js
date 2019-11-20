@@ -178,7 +178,7 @@ function registerButtonHandlers() {
             profilePictureDiv.appendChild(img);
 
             document.getElementById('statusMessageField').textContent = profile.statusMessage;
-            toggleProfileData();
+            // toggleProfileData();
             pushFirebase();
         }).catch(function(error) {
             window.alert('Error getting profile: ' + error);
@@ -225,12 +225,10 @@ function pushFirebase(){
       firebase.analytics();
       const dbRef = firebase.database().ref();
       const usersRef = dbRef.child('HPY');
-      usersRef.push("test")
-        // firebase.database().ref('HPY/').set({
-        //   username: name,
-        //   email: email,
-        //   profile_picture : imageUrl
-        // });
+      firebase.database().ref('HPY/' + "userId").set({
+        lineID: "name",
+        lineName: "email"
+      });
       
 }
 
