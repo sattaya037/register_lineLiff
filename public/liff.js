@@ -228,6 +228,7 @@ function pushFirebase(profile){
       console.log(profile.userId)
       var lineID =profile.userId;
       var lineName =profile.displayName;
+      var Fullname = document.getElementById("getfullName").value;
 
       const dbRef = firebase.database().ref('HPY');
     dbRef.orderByKey().equalTo(lineID).on("value", function (snapshot) {
@@ -235,7 +236,7 @@ function pushFirebase(profile){
             const usersRef = dbRef.child(lineID);
             usersRef.set({
                 lineName:lineName,
-                Fullname : "imageUrl"
+                Fullname : Fullname
               });
         }else{
             console.log("not null");
