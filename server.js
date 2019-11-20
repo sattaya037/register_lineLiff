@@ -1,8 +1,10 @@
 const express = require("express");
 const app = express();
-app.get('/vote', function(req, res) {
-    app.use(express.static(__dirname));
-    res.sendFile(__dirname+'/liff.html')
+app.use(express.static('public'));
+
+app.get('/send-id', function(req, res) {
+    res.json({id: myLiffId});
+
 });
 
   const port = process.env.PORT || 3000;
