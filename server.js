@@ -3,7 +3,7 @@ const app = express();
 const myLiffId = "1553436015-g2jwRx3G";
 
 app.get('/send-id', function(req, res) {
-    res.json({id: myLiffId});
+    // res.json({id: myLiffId});
     app.use(express.static('public'));
 
 });
