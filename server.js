@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
 const myLiffId = "1553436015-g2jwRx3G";
-app.use(express.static('public'));
 
 app.get('/send-id', function(req, res) {
     res.json({id: myLiffId});
+    app.use(express.static('public'));
 
 });
 
