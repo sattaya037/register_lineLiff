@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>LIFF Starter</title>
+        <title>Register</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -10,7 +10,29 @@
     <body>
         <div id="liffAppContent">
             <!-- ACTION BUTTONS -->
-            <div class="buttonGroup">
+            <div class="container">
+                    <div class="text-center">
+                            <img id="image" src="" class="rounded-circle" alt="Profile"  width="100" height="100">
+                            <p id=displaynamefield></p>
+        
+                    </div>
+                     
+                </div>
+                <form>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">FullName</span>
+                          </div>
+                          <input id="getfullName" type="text" class="form-control" placeholder="FullName">
+                        </div>
+                        <div class="col text-center">
+                                <button id="getProfileButton" type="button" class="btn btn-primary">Register</button>
+                        </div>
+                </form>
+
+
+
+            <!-- <div class="buttonGroup"> -->
                 <!-- <div class="buttonRow">
                     <button id="openWindowButton">Open External Window</button>
                     <button id="closeWindowButton">Close LIFF App</button>
@@ -19,13 +41,12 @@
                     <button id="scanQrCodeButton">Open QR Code Reader</button>
                     <button id="sendMessageButton">Send Message</button>
                 </div> -->
-                <input id="getfullName" type="text" class="form-control" placeholder="FullName">
 
-                <div class="buttonRow">
+                <!-- <div class="buttonRow"> -->
                     <!-- <button id="getAccessToken">Get Access Token</button> -->
-                    <button id="getProfileButton">Get Profile</button>
-                </div>
-            </div>
+                    <!-- <button id="getProfileButton">Get Profile</button> -->
+                <!-- </div> -->
+            <!-- </div> -->
             <!-- ACCESS TOKEN DATA -->
             <!-- <div id="accessTokenData" class="hidden textLeft">
                 <h2>Access Token</h2>
