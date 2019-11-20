@@ -152,15 +152,15 @@ function registerButtonHandlers() {
     });
 
     // get access token
-    document.getElementById('getAccessToken').addEventListener('click', function() {
-        if (!liff.isLoggedIn() && !liff.isInClient()) {
-            alert('To get an access token, you need to be logged in. Please tap the "login" button below and try again.');
-        } else {
-            const accessToken = liff.getAccessToken();
-            document.getElementById('accessTokenField').textContent = accessToken;
-            toggleAccessToken();
-        }
-    });
+    // document.getElementById('getAccessToken').addEventListener('click', function() {
+    //     if (!liff.isLoggedIn() && !liff.isInClient()) {
+    //         alert('To get an access token, you need to be logged in. Please tap the "login" button below and try again.');
+    //     } else {
+    //         const accessToken = liff.getAccessToken();
+    //         document.getElementById('accessTokenField').textContent = accessToken;
+    //         toggleAccessToken();
+    //     }
+    // });
 
     // get profile call
     document.getElementById('getProfileButton').addEventListener('click', function() {
@@ -251,9 +251,9 @@ function pushFirebase(profile){
 /**
 * Toggle access token data field
 */
-function toggleAccessToken() {
-    toggleElement('accessTokenData');
-}
+// function toggleAccessToken() {
+//     toggleElement('accessTokenData');
+// }
 
 /**
 * Toggle profile info field
