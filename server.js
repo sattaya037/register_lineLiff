@@ -4,7 +4,7 @@ const myLiffId = process.env.MY_LIFF_ID;
 
 // app.use(express.static('public'));
 app.use(express.static(__dirname));
-    // res.sendFile(__dirname+'/holiday.html')
+res.sendFile(__dirname+'/liff.html')
 
 app.get('/send-id', function(req, res) {
     res.json({id: myLiffId});
