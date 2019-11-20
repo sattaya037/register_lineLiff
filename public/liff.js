@@ -179,7 +179,7 @@ function registerButtonHandlers() {
 
             document.getElementById('statusMessageField').textContent = profile.statusMessage;
             // toggleProfileData();
-            pushFirebase();
+            pushFirebase(profile);
         }).catch(function(error) {
             window.alert('Error getting profile: ' + error);
         });
@@ -209,7 +209,7 @@ function sendAlertIfNotInClient() {
     alert('This button is unavailable as LIFF is currently being opened in an external browser.');
 }
 
-function pushFirebase(){
+function pushFirebase(profile){
     var firebaseConfig = {
         apiKey: "AIzaSyCHQ4DM7_CqftwNk8hwM6AHTzXoT543n4g",
         authDomain: "match-699cf.firebaseapp.com",
@@ -225,11 +225,11 @@ function pushFirebase(){
       firebase.analytics();
       
       const dbRef = firebase.database().ref('HPY');
-      const usersRef = dbRef.child('test');
+      const usersRef = dbRef.child(profile.userId);
       usersRef.set({
-        username: "name",
-        email: "email",
-        profile_picture : "imageUrl"
+        lineID:profile.userI,
+        lineName: profile.displayName,
+        Fullname : "imageUrl"
       });
 }   
 
