@@ -1,6 +1,6 @@
 window.onload = function() {
     const useNodeJS = true;   // if you are not using a node server, set this value to false
-    const defaultLiffId = "1553436015-g2jwRx3G";   // change the default LIFF value if you are not using a node server
+    const defaultLiffId = "1553436015-04nm9w1G";   // change the default LIFF value if you are not using a node server
 
     // DO NOT CHANGE THIS
     let myLiffId = "";
@@ -8,7 +8,7 @@ window.onload = function() {
     // if node is used, fetch the environment variable and pass it to the LIFF method
     // otherwise, pass defaultLiffId
     if (useNodeJS) {
-        fetch('/send-id')
+        fetch('/gift-id')
             .then(function(reqResponse) {
                 return reqResponse.json();
             })
