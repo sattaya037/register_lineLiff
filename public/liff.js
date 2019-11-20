@@ -136,31 +136,31 @@ function registerButtonHandlers() {
     });
 
     // scanCode call
-    // document.getElementById('scanQrCodeButton').addEventListener('click', function() {
-    //     if (!liff.isInClient()) {
-    //         sendAlertIfNotInClient();
-    //     } else {
-    //         liff.scanCode().then(result => {
-    //             // e.g. result = { value: "Hello LIFF app!" }
-    //             const stringifiedResult = JSON.stringify(result);
-    //             document.getElementById('scanQrField').textContent = stringifiedResult;
-    //             toggleQrCodeReader();
-    //         }).catch(err => {
-    //             document.getElementById('scanQrField').textContent = "scanCode failed!";
-    //         });
-    //     }
-    // });
+    document.getElementById('scanQrCodeButton').addEventListener('click', function() {
+        if (!liff.isInClient()) {
+            sendAlertIfNotInClient();
+        } else {
+            liff.scanCode().then(result => {
+                // e.g. result = { value: "Hello LIFF app!" }
+                const stringifiedResult = JSON.stringify(result);
+                document.getElementById('scanQrField').textContent = stringifiedResult;
+                toggleQrCodeReader();
+            }).catch(err => {
+                document.getElementById('scanQrField').textContent = "scanCode failed!";
+            });
+        }
+    });
 
     // get access token
-    // document.getElementById('getAccessToken').addEventListener('click', function() {
-    //     if (!liff.isLoggedIn() && !liff.isInClient()) {
-    //         alert('To get an access token, you need to be logged in. Please tap the "login" button below and try again.');
-    //     } else {
-    //         const accessToken = liff.getAccessToken();
-    //         document.getElementById('accessTokenField').textContent = accessToken;
-    //         toggleAccessToken();
-    //     }
-    // });
+    document.getElementById('getAccessToken').addEventListener('click', function() {
+        if (!liff.isLoggedIn() && !liff.isInClient()) {
+            alert('To get an access token, you need to be logged in. Please tap the "login" button below and try again.');
+        } else {
+            const accessToken = liff.getAccessToken();
+            document.getElementById('accessTokenField').textContent = accessToken;
+            toggleAccessToken();
+        }
+    });
 
     // get profile call
     document.getElementById('getProfileButton').addEventListener('click', function() {
