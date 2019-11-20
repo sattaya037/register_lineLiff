@@ -222,14 +222,9 @@ function pushFirebase(){
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-      const dbRef = firebase.database().ref();
-      const usersRef = dbRef.child('HPY');
-      firebase.database().ref('HPY/' + "userId").set({
-        lineID: "name",
-        lineName: "email"
-      });
-      
+      var database = firebase.database();
+        alert(database);
+        console.log(database);
 }
 
 /**
