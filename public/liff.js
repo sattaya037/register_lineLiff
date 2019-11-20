@@ -245,8 +245,10 @@ function pushFirebase(profile){
         if(snapshot.val()==null){
             const usersRef = dbRef.child(lineID);
             usersRef.set({
-                lineName:lineName,
-                Fullname : Fullname
+                lineName : lineName,
+                Fullname : Fullname,
+                match : null
+
               });
         }else{
             console.log("not null");
