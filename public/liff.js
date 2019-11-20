@@ -223,8 +223,8 @@ function pushFirebase(){
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
-      const dbRef = firebase.database().ref();
-      const usersRef = dbRef.child('HPY/test');
+      const dbRef = firebase.database().ref('HPY');
+      const usersRef = dbRef.child('test');
       usersRef.set({
         username: "name",
         email: "email",
