@@ -179,6 +179,8 @@ function registerButtonHandlers() {
 
             document.getElementById('statusMessageField').textContent = profile.statusMessage;
             // toggleProfileData();
+            console.log(profile.userId)
+
             pushFirebase(profile);
         }).catch(function(error) {
             window.alert('Error getting profile: ' + error);
@@ -223,7 +225,7 @@ function pushFirebase(profile){
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
-      
+      console.log(profile.userId)
       const dbRef = firebase.database().ref('HPY');
       const usersRef = dbRef.child(profile.userId);
       usersRef.set({
