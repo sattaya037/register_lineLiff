@@ -247,7 +247,7 @@ function pushFirebase(profile){
             usersRef.set({
                 lineName : lineName,
                 Fullname : Fullname,
-                match : null
+                match : 0
 
               });
         }else{
