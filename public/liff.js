@@ -217,15 +217,20 @@ function pushFirebase(){
         projectId: "match-699cf",
         storageBucket: "match-699cf.appspot.com",
         messagingSenderId: "496105033351",
-        appId: "1:496105033351:web:94dcbd48a047c4d910f222",
-        measurementId: "G-70DEJBB4SL"
+        appId: "1:496105033351:web:ddc576483480e68e10f222",
+        measurementId: "G-XX1B260S6W"
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
-    //   var database = firebase.database();
-    //     alert(database);
-    //     console.log(database);
-}
+      firebase.analytics();
+      const dbRef = firebase.database().ref();
+      const usersRef = dbRef.child('HPY');
+      usersRef.set({
+        username: "name",
+        email: "email",
+        profile_picture : "imageUrl"
+      });
+}   
 
 /**
 * Toggle access token data field
