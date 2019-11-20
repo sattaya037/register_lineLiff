@@ -90,8 +90,18 @@ function initializeApp() {
 */
 function displayIsInClientInfo() {
     if (liff.isInClient()) {
-        document.getElementById('liffLoginButton').classList.toggle('hidden');
-        document.getElementById('liffLogoutButton').classList.toggle('hidden');
+        liff.getProfile()
+        .then(profile => {
+            document.getElementById('liffLoginButton').classList.toggle('hidden');
+            document.getElementById('liffLogoutButton').classList.toggle('hidden');
+            document.getElementById('displaynamefield').innerHTML=profile.displayName;
+            document.getElementById("image").src=profile.pictureUrl; 
+          
+        })
+        .catch((err) => {
+          console.log('error', err);
+        });
+       
         // document.getElementById('isInClientMessage').textContent = 'You are opening the app in the in-app browser of LINE.';
     } else {
         // document.getElementById('isInClientMessage').textContent = 'You are opening the app in an external browser.';
