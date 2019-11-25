@@ -103,7 +103,7 @@ function firebaseHandlers() {
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
       const dbRef = firebase.database().ref('HPY');
-      dbRef.on("value", function(snapshot) {
+      dbRef.on("child_added", function(snapshot) {
         console.log(snapshot.key);
         document.getElementById("demo").innerHTML = snapshot.key;
 
