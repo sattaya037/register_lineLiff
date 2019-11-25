@@ -121,13 +121,13 @@ function registerButtonHandlers() {
     // });
 
     // closeWindow call
-    document.getElementById('closeWindowButton').addEventListener('click', function() {
-        if (!liff.isInClient()) {
-            sendAlertIfNotInClient();
-        } else {
-            liff.closeWindow();
-        }
-    });
+    // document.getElementById('closeWindowButton').addEventListener('click', function() {
+    //     if (!liff.isInClient()) {
+    //         sendAlertIfNotInClient();
+    //     } else {
+    //         liff.closeWindow();
+    //     }
+    // });
 
     // sendMessages call
     // document.getElementById('sendMessageButton').addEventListener('click', function() {
@@ -217,9 +217,9 @@ function registerButtonHandlers() {
 /**
 * Alert the user if LIFF is opened in an external browser and unavailable buttons are tapped
 */
-// function sendAlertIfNotInClient() {
-//     alert('This button is unavailable as LIFF is currently being opened in an external browser.');
-// }
+function sendAlertIfNotInClient() {
+    alert('This button is unavailable as LIFF is currently being opened in an external browser.');
+}
 
 function pushFirebase(profile){
     var firebaseConfig = {
@@ -251,8 +251,10 @@ function pushFirebase(profile){
                 gift : 0
 
               });
+              sendAlertIfNotInClient();
+
         }else{
-            console.log("not null");
+            sendAlertIfNotInClient();
 
         }
 
