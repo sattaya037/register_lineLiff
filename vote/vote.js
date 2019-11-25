@@ -106,7 +106,7 @@ function firebaseHandlers() {
       dbRef.on("child_added", function(snapshot) {
         console.log(snapshot.val());
         console.log(snapshot.key);
-
+        $("p").append(snapshot.key);
         document.getElementById("demo").innerHTML = snapshot.key;
 
       }, function (errorObject) {
