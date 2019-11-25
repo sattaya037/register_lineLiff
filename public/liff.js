@@ -251,10 +251,12 @@ function pushFirebase(profile){
                 gift : 0
 
               });
-              sendAlertIfNotInClient();
+              alert('  You have successfully registered.');
+              liff.closeWindow();
 
         }else{
-            sendAlertIfNotInClient();
+            alert('You are already registered.');
+            liff.closeWindow();
 
         }
 
