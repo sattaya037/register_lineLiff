@@ -255,7 +255,7 @@ function pushFirebase(profile){
               liff.closeWindow();
 
         }else{
-            alert('You are already registered.');
+            alert(window.location.href);
             liff.closeWindow();
 
         }
