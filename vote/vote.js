@@ -18,7 +18,7 @@ window.onload = function() {
             })
             .catch(function(error) {
                 document.getElementById("liffAppContent").classList.add('hidden');
-                // document.getElementById("nodeLiffIdErrorMessage").classList.remove('hidden');
+                document.getElementById("nodeLiffIdErrorMessage").classList.remove('hidden');
             });
     } else {
         myLiffId = defaultLiffId;
@@ -54,7 +54,7 @@ function initializeLiff(myLiffId) {
         })
         .catch((err) => {
             document.getElementById("liffAppContent").classList.add('hidden');
-            // document.getElementById("liffInitErrorMessage").classList.remove('hidden');
+            document.getElementById("liffInitErrorMessage").classList.remove('hidden');
         });
 }
 

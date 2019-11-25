@@ -5,7 +5,7 @@ const myLiffId = process.env.MY_LIFF_ID;
 const gifTId = process.env.GIFT_LIFF_ID;
 
 app.use(express.static('public'));
-app.use(express.static('gift'));
+app.use(express.static('vote'));
 
 app.get('/send-id', function(req, res) {
     res.json({id: myLiffId});
