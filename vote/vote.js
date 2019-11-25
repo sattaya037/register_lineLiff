@@ -65,7 +65,7 @@ function initializeApp() {
     // displayLiffData();
     displayIsInClientInfo();
     registerButtonHandlers();
-
+    firebaseHandlers();
     // check if the user is logged in/out, and disable inappropriate button
     if (liff.isLoggedIn()) {
         document.getElementById('liffLoginButton').disabled = true;
@@ -88,6 +88,28 @@ function initializeApp() {
 /**
 * Toggle the login/logout buttons based on the isInClient status, and display a message accordingly
 */
+function firebaseHandlers() {
+    var firebaseConfig = {
+        apiKey: "AIzaSyAH1pTXZy4XxpS0DfRVLwC93aZhWRnYiPQ",
+        authDomain: "ics-vote.firebaseapp.com",
+        databaseURL: "https://ics-vote.firebaseio.com",
+        projectId: "ics-vote",
+        storageBucket: "ics-vote.appspot.com",
+        messagingSenderId: "88696350608",
+        appId: "1:88696350608:web:780899d63f1cebc33cb515",
+        measurementId: "G-PLXJ6VBZ8D"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      const dbRef = firebase.database().ref('HPY');
+      dbRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+      }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+      });
+}
+
 function displayIsInClientInfo() {
     if (liff.isInClient()) {
         liff.getProfile()
