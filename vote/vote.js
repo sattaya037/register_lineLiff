@@ -104,7 +104,9 @@ function firebaseHandlers() {
       firebase.analytics();
       const dbRef = firebase.database().ref('HPY');
       dbRef.on("value", function(snapshot) {
-        console.log(snapshot.val());
+        console.log(snapshot.key);
+        document.getElementById("demo").innerHTML = snapshot.key;
+
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
       });
