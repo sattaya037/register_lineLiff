@@ -8,7 +8,7 @@ window.onload = function() {
     // if node is used, fetch the environment variable and pass it to the LIFF method
     // otherwise, pass defaultLiffId
     if (useNodeJS) {
-        fetch('/send-id')
+        fetch('/vote-id')
             .then(function(reqResponse) {
                 return reqResponse.json();
             })
@@ -221,46 +221,7 @@ function sendAlertIfNotInClient() {
     alert('This button is unavailable as LIFF is currently being opened in an external browser.');
 }
 
-function pushFirebase(profile){
-    var firebaseConfig = {
-        apiKey: "AIzaSyCHQ4DM7_CqftwNk8hwM6AHTzXoT543n4g",
-        authDomain: "match-699cf.firebaseapp.com",
-        databaseURL: "https://match-699cf.firebaseio.com",
-        projectId: "match-699cf",
-        storageBucket: "match-699cf.appspot.com",
-        messagingSenderId: "496105033351",
-        appId: "1:496105033351:web:ddc576483480e68e10f222",
-        measurementId: "G-XX1B260S6W"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-      console.log(profile.userId)
-      var lineID =profile.userId;
-      var lineName =profile.displayName;
-      var Fullname = document.getElementById("getfullName").value;
-
-      const dbRef = firebase.database().ref('HPY');
-    dbRef.orderByKey().equalTo(lineID).on("value", function (snapshot) {
-        if(snapshot.val()==null){
-            const usersRef = dbRef.child(lineID);
-            usersRef.set({
-                lineName : lineName,
-                Fullname : Fullname,
-                match : 0,
-                gift : 0
-
-              });
-              alert('  You have successfully registered.');
-              liff.closeWindow();
-
-        }else{
-            alert('You are already registered.');
-            liff.closeWindow();
-
-        }
-
-      })
+function pushFirebase(){
 
 
 
