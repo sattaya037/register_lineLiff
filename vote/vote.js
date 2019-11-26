@@ -104,7 +104,7 @@ function firebaseHandlers() {
       firebase.analytics();
     //   var fireHeading =  document.getElementById("fireHeading");
       const dbRef = firebase.database().ref('HPY');
-      dbRef.once("child_added", function(snapshot) {
+      dbRef.on("child_added", function(snapshot) {
         if(snapshot.exists()){
             var content = '';
             console.log(snapshot.val())
