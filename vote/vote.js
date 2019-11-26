@@ -107,8 +107,7 @@ function firebaseHandlers() {
       dbRef.on("child_added", function(snapshot) {
         if(snapshot.exists()){
             var content = '';
-            console.log(snapshot.val())
-        ;
+            console.log(snapshot.val());
            
                                     
             content +='<div class="card" style="width:400px">';
