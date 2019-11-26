@@ -142,7 +142,7 @@ function displayIsInClientInfo() {
             document.getElementById('liffLogoutButton').classList.toggle('hidden');
             document.getElementById('displaynamefield').innerHTML=profile.displayName;
             document.getElementById("image").src=profile.pictureUrl; 
-          
+            console.log('profile');
         })
         .catch((err) => {
           console.log('error', err);
