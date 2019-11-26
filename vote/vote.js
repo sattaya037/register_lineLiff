@@ -102,7 +102,7 @@ function firebaseHandlers() {
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
-      var fireHeading =  document.getElementById("fireHeading");
+    //   var fireHeading =  document.getElementById("fireHeading");
       const dbRef = firebase.database().ref('HPY');
       dbRef.once("child_added", function(snapshot) {
         if(snapshot.exists()){
@@ -125,9 +125,9 @@ function firebaseHandlers() {
             // theDiv.innerHTML += content; 
         }
         
-        console.log(snapshot.val());
-        console.log(snapshot.key);
-        fireHeading.innerText =snapshot.key;
+        // console.log(snapshot.val());
+        // console.log(snapshot.key);
+        // fireHeading.innerText =snapshot.key;
 
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
