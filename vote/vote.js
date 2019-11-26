@@ -107,20 +107,7 @@ function firebaseHandlers() {
       dbRef.once("child_added", function(snapshot) {
         if(snapshot.exists()){
             var content = '';
-            snapshot.forEach(function(data){
-                // var val = data.val();
-                console.log("row",data.val());
-                console.log("title",data.key);
-              
-                // content +='<tr>';
-                // content += '<td>' + data.getKey() + '</td>';
-                // content += '<td>' + val.title + '</td>';
-                // content += '<td>' + val.content + '</td>';
-                // content += '<td><a href="'+val.thumbnail+'" target="_blank"> Click for Preview</a></td>';
-                // content += '<td><a href="edit.html?id='+data.getKey()+'" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Edit</a></td>';
-                // content += '</tr>';
-                
-            });
+            console.log(snapshot.val())
             // var theDiv = document.getElementById("ex-table");
             // theDiv.innerHTML += content; 
         }
