@@ -109,7 +109,7 @@ function firebaseHandlers() {
         if(snapshot.exists()){
             var content = '';
             console.log(snapshot.val());
-           
+           var key = snapshot.key;
                           
             
             content +='<div class="card">';
@@ -122,9 +122,7 @@ function firebaseHandlers() {
             content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
             content +='</div>';
             content +='<div class="card-footer">';
-            content +='<button onclick="AlertFn(';
-            content +=snapshot;
-            content += ')>Primary</button>';
+            content +='<button onclick="AlertFn('+key+') type="button" class="btn btn-primary">Primary</button>'
             content +='</div>';
             content +='</div>';
             // var theDiv = document.getElementById("ex-table");
