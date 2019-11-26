@@ -135,7 +135,7 @@ function firebaseHandlers() {
       });
 }
 
-function AlertFn(snapshot);{
+function AlertFn(snapshot){
     console.log(snapshot)
 }
  
