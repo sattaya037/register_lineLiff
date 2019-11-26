@@ -111,11 +111,7 @@ function firebaseHandlers() {
             console.log(snapshot.val());
            var key = snapshot.key;
                           
-           var button = document.createElement('button');
-            button.innerHTML = 'click me';
-            button.onclick = function(key){
-                alert('here be dragons');
-            };
+           
             
             content +='<div class="card">';
             content +='<img class="card-img-top"'; 
@@ -135,8 +131,8 @@ function firebaseHandlers() {
             // theDiv.innerHTML += content; 
         }
         var theDiv = document.getElementById("ex-table");
-        theDiv.innerHTML += button; 
-
+        theDiv.innerHTML += content; 
+    
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
       });
