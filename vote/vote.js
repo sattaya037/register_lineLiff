@@ -122,7 +122,7 @@ function firebaseHandlers() {
             content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
             content +='</div>';
             content +='<div class="card-footer">';
-            content +='<button onclick="AlertFn()"  type="button" class="btn btn-primary">Primary</button>'
+            content +='<button onclick="AlertFn("'+snapshot+')"  type="button" class="btn btn-primary">Primary</button>'
             content +='</div>';
             content +='</div>';
             // var theDiv = document.getElementById("ex-table");
@@ -138,8 +138,8 @@ function firebaseHandlers() {
 
 
 
-function AlertFn(){
-    console.log("snapshot")
+function AlertFn(snapshot){
+    console.log(snapshot)
 }
  
 function displayIsInClientInfo() {
