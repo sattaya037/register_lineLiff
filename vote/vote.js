@@ -102,12 +102,32 @@ function firebaseHandlers() {
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
-      var fireHeading =  document.getElementById("headline");
+      var fireHeading =  document.getElementById("fireHeading");
       const dbRef = firebase.database().ref('HPY');
-      dbRef.on("child_added", function(snapshot) {
-        // var data="Name:<input type='text' name='name'><br>"+snapshot.val().image+":<br><textarea rows='5' cols='80'></textarea><br><input type='submit' value='Post Comment'>";  
-        // fireHeading.innerHTML=data;  
-        fireHeading.innerHTML = snapshot.key;
+      dbRef.once("child_added", function(snapshot) {
+        if(snapshot.exists()){
+            var content = '';
+            snapshot.forEach(function(data){
+                // var val = data.val();
+                console.log("row",data.val());
+                console.log("title",data.key);
+              
+                // content +='<tr>';
+                // content += '<td>' + data.getKey() + '</td>';
+                // content += '<td>' + val.title + '</td>';
+                // content += '<td>' + val.content + '</td>';
+                // content += '<td><a href="'+val.thumbnail+'" target="_blank"> Click for Preview</a></td>';
+                // content += '<td><a href="edit.html?id='+data.getKey()+'" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Edit</a></td>';
+                // content += '</tr>';
+                
+            });
+            // var theDiv = document.getElementById("ex-table");
+            // theDiv.innerHTML += content; 
+        }
+        
+        console.log(snapshot.val());
+        console.log(snapshot.key);
+        fireHeading.innerText =snapshot.key;
 
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
