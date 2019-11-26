@@ -111,6 +111,11 @@ function firebaseHandlers() {
             console.log(snapshot.val());
            var key = snapshot.key;
                           
+           var button = document.createElement('button');
+            button.innerHTML = 'click me';
+            button.onclick = function(key){
+                alert('here be dragons');
+            };
             
             content +='<div class="card">';
             content +='<img class="card-img-top"'; 
@@ -122,11 +127,7 @@ function firebaseHandlers() {
             content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
             content +='</div>';
             content +='<div class="card-footer">';
-            content +='<button onclick="AlertFn(';
-            content +=key;
-            content +=') ';
-            content +='type="button" class="btn btn-primary">Primary</button>';
-            // '+'type="button" class="btn btn-primary">Primary</button> '
+            content +='<button onclick="AlertFn('+key+')" type="button" class="btn btn-primary">Primary</button>';
             content +='</div>';
             content +='</div>';
 
@@ -134,8 +135,8 @@ function firebaseHandlers() {
             // theDiv.innerHTML += content; 
         }
         var theDiv = document.getElementById("ex-table");
-        theDiv.innerHTML += content; 
-    
+        theDiv.innerHTML += button; 
+
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
       });
