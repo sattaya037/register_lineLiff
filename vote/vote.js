@@ -106,7 +106,8 @@ function firebaseHandlers() {
       dbRef.on("child_added", function(snapshot) {
         console.log(snapshot.val());
         console.log(snapshot.key);
-        $('#contacts').append(contactHtmlFromObject(snapshot.val()));
+        document.getElementById("demo").innerHTML = snapshot.key;
+
 
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
