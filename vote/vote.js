@@ -106,10 +106,11 @@ function firebaseHandlers() {
     //   var fireHeading =  document.getElementById("fireHeading");
       const dbRef = firebase.database().ref('HPY');
       dbRef.on("child_added", function(snapshot) {
-        var key = snapshot.key;
 
         if(snapshot.exists()){
             var content = '';
+            var key = snapshot.key;
+
             console.log(snapshot.val());
             content +='<div class="card">';
             content +='<img class="card-img-top"'; 
@@ -124,6 +125,8 @@ function firebaseHandlers() {
             content +='<button id="'+snapshot.key+'" type="button" class="btn btn-primary">Primary</button>';
             content +='</div>';
             content +='</div>';
+            
+            document.getElementById(key).onclick = function() {myFunction(key)};
 
             // var theDiv = document.getElementById("ex-table");
             // theDiv.innerHTML += content; 
@@ -131,7 +134,6 @@ function firebaseHandlers() {
         var theDiv = document.getElementById("ex-table");
         theDiv.innerHTML += content; 
 
-        document.getElementById(key).onclick = function() {myFunction(key)};
 
     
       }, function (errorObject) {
