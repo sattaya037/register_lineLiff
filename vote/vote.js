@@ -133,7 +133,7 @@ function firebaseHandlers() {
         var theDiv = document.getElementById("ex-table");
         theDiv.innerHTML += content; 
 
-        document.getElementById("demo").onclick = function() {myFunction(snapshot.key)};
+        document.getElementById(snapshot.key).onclick = function() {myFunction(snapshot.key)};
 
     
       }, function (errorObject) {
