@@ -110,31 +110,26 @@ function firebaseHandlers() {
             var content = '';
             console.log(snapshot.val());
            
-            const li = document.createElement('li');
-            li.innerText = snapshot.val().book;
-            li.id = snapshot.key;
-            ulList.appendChild(li);
                           
             
-            // content +='<div class="card">';
-            // content +='<img class="card-img-top"'; 
-            // content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
-            // content +='<div class="card-body">';
-            // content +='<h5 class="card-title">';
-            // content +=snapshot.key;
-            // content +='</h5>';
-            // content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
-            // content +='</div>';
-            // content +='<div class="card-footer">';
-            // content +='<button id="AlertFn"  type="button" class="btn btn-primary">Primary</button>'
-            // content +='</div>';
-            // content +='</div>';
-
+            content +='<div class="card">';
+            content +='<img class="card-img-top"'; 
+            content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
+            content +='<div class="card-body">';
+            content +='<h5 class="card-title">';
+            content +=snapshot.key;
+            content +='</h5>';
+            content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
+            content +='</div>';
+            content +='<div class="card-footer">';
+            content +='<button onclick="AlertFn()"  type="button" class="btn btn-primary">Primary</button>'
+            content +='</div>';
+            content +='</div>';
             // var theDiv = document.getElementById("ex-table");
             // theDiv.innerHTML += content; 
         }
-        // var theDiv = document.getElementById("ex-table");
-        // theDiv.innerHTML += content; 
+        var theDiv = document.getElementById("ex-table");
+        theDiv.innerHTML += content; 
     
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
@@ -143,8 +138,8 @@ function firebaseHandlers() {
 
 
 
-function AlertFn(snapshot){
-    console.log(snapshot)
+function AlertFn(){
+    console.log("snapshot")
 }
  
 function displayIsInClientInfo() {
