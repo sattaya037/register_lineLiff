@@ -63,6 +63,7 @@ function initializeLiff(myLiffId) {
  */
 function initializeApp() {
     // displayLiffData();
+    displayIsInClientInfo();
     registerButtonHandlers();
     firebaseHandlers();
     // check if the user is logged in/out, and disable inappropriate button
@@ -133,6 +134,26 @@ function firebaseHandlers() {
       });
 }
  
+function displayIsInClientInfo() {
+    if (liff.isInClient()) {
+        liff.getProfile()
+        .then(profile => {
+            document.getElementById('liffLoginButton').classList.toggle('hidden');
+            document.getElementById('liffLogoutButton').classList.toggle('hidden');
+            document.getElementById('displaynamefield').innerHTML=profile.displayName;
+            document.getElementById("image").src=profile.pictureUrl; 
+          
+        })
+        .catch((err) => {
+          console.log('error', err);
+        });
+       
+        // document.getElementById('isInClientMessage').textContent = 'You are opening the app in the in-app browser of LINE.';
+    } else {
+        // document.getElementById('isInClientMessage').textContent = 'You are opening the app in an external browser.';
+    }
+}
+
 /**
 * Register event handlers for the buttons displayed in the app
 */
@@ -198,7 +219,29 @@ function registerButtonHandlers() {
     // });
 
     // get profile call
+    document.getElementById('getProfileButton').addEventListener('click', function() {
+        liff.getProfile().then(function(profile) {
+            document.getElementById('userIdProfileField').textContent = profile.userId;
+            document.getElementById('displayNameField').textContent = profile.displayName;
 
+            const profilePictureDiv = document.getElementById('profilePictureDiv');
+            if (profilePictureDiv.firstElementChild) {
+                profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
+            }
+            const img = document.createElement('img');
+            img.src = profile.pictureUrl;
+            img.alt = 'Profile Picture';
+            profilePictureDiv.appendChild(img);
+
+            document.getElementById('statusMessageField').textContent = profile.statusMessage;
+            // toggleProfileData();
+            console.log(profile.userId)
+
+            pushFirebase(profile);
+        }).catch(function(error) {
+            window.alert('Error getting profile: ' + error);
+        });
+    });
 
     // login call, only when external browser is used
     document.getElementById('liffLoginButton').addEventListener('click', function() {
