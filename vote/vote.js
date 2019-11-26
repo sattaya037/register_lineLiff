@@ -106,13 +106,11 @@ function firebaseHandlers() {
     //   var fireHeading =  document.getElementById("fireHeading");
       const dbRef = firebase.database().ref('HPY');
       dbRef.on("child_added", function(snapshot) {
+        var key = snapshot.key;
+
         if(snapshot.exists()){
             var content = '';
             console.log(snapshot.val());
-           var key = snapshot.key;
-                          
-           
-            
             content +='<div class="card">';
             content +='<img class="card-img-top"'; 
             content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
@@ -133,7 +131,7 @@ function firebaseHandlers() {
         var theDiv = document.getElementById("ex-table");
         theDiv.innerHTML += content; 
 
-        document.getElementById(snapshot.key).onclick = function() {myFunction(snapshot.key)};
+        document.getElementById(key).onclick = function() {myFunction(key)};
 
     
       }, function (errorObject) {
@@ -141,8 +139,8 @@ function firebaseHandlers() {
       });
 }
 
-function myFunction() {
-    console.log(snapshot.key)
+function myFunction(key) {
+    console.log(key)
   }
 
 function AlertFn(snapshot){
