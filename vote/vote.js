@@ -102,12 +102,12 @@ function firebaseHandlers() {
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
-    //   var fireHeading =  document.getElementById("fireHeading");
+      var fireHeading =  document.getElementById("headline");
       const dbRef = firebase.database().ref('HPY');
       dbRef.on("child_added", function(snapshot) {
         // var data="Name:<input type='text' name='name'><br>"+snapshot.val().image+":<br><textarea rows='5' cols='80'></textarea><br><input type='submit' value='Post Comment'>";  
         // fireHeading.innerHTML=data;  
-        document.getElementById("headline").innerHTML = snapshot.key;
+        fireHeading.innerHTML = snapshot.key;
 
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
