@@ -128,10 +128,7 @@ function firebaseHandlers() {
         }
         var theDiv = document.getElementById("ex-table");
         theDiv.innerHTML += content; 
-        // console.log(snapshot.val());
-        // console.log(snapshot.key);
-        // fireHeading.innerText =snapshot.key;
-
+    
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
       });
