@@ -122,7 +122,7 @@ function firebaseHandlers() {
             content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
             content +='</div>';
             content +='<div class="card-footer">';
-            content +='<button id="'+snapshot.key+'" onClick="AlertFn()" type="button" class="btn btn-primary">Primary</button>';
+            content +='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Primary</button>';
             content +='</div>';
             content +='</div>';
 
@@ -141,8 +141,8 @@ function firebaseHandlers() {
 }
 
 
-function AlertFn(){
-    console.log(this.id)
+function AlertFn(clicked_id){
+    console.log(clicked_id)
 }
  
 function displayIsInClientInfo() {
