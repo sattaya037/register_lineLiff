@@ -102,12 +102,12 @@ function firebaseHandlers() {
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
+      var fireHeading =  document.getElementById("fireHeading");
       const dbRef = firebase.database().ref('HPY');
       dbRef.on("child_added", function(snapshot) {
         console.log(snapshot.val());
         console.log(snapshot.key);
-        document.getElementById("demo").innerHTML = snapshot.key;
-
+        fireHeading.innerText =snapshot;
 
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
