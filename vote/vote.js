@@ -122,11 +122,10 @@ function firebaseHandlers() {
             content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
             content +='</div>';
             content +='<div class="card-footer">';
-            content +='<button id="'+snapshot.key+'" type="button" class="btn btn-primary">Primary</button>';
+            content +='<button id="'+snapshot.key+'" onClick="AlertFn()" type="button" class="btn btn-primary">Primary</button>';
             content +='</div>';
             content +='</div>';
-            
-            document.getElementById(key).onclick = function() {myFunction(key)};
+
 
             // var theDiv = document.getElementById("ex-table");
             // theDiv.innerHTML += content; 
@@ -141,12 +140,9 @@ function firebaseHandlers() {
       });
 }
 
-function myFunction(key) {
-    console.log(key)
-  }
 
-function AlertFn(snapshot){
-    console.log(snapshot)
+function AlertFn(){
+    console.log(this.id)
 }
  
 function displayIsInClientInfo() {
