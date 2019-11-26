@@ -1,0 +1,9 @@
+
+#statusMessage {
+    position: relative;
+    top: 40px;
+}
+
+.invisible  {
+    visibility: hidden;
+}
