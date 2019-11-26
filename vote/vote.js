@@ -142,7 +142,7 @@ function firebaseHandlers() {
 }
 
 function myFunction() {
-    console.log("hello")
+    console.log(snapshot.key)
   }
 
 function AlertFn(snapshot){
