@@ -106,12 +106,13 @@ function firebaseHandlers() {
       dbRef.on("child_added", function(snapshot) {
         console.log(snapshot.val());
         console.log(snapshot.key);
+        $('#contacts').append(contactHtmlFromObject(snapshot.val()));
 
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
       });
 }
-
+ 
 function displayIsInClientInfo() {
     if (liff.isInClient()) {
         liff.getProfile()
