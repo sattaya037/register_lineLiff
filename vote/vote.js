@@ -110,7 +110,7 @@ function firebaseHandlers() {
             console.log(snapshot.val())
             content +='<div style="background-color:lightblue">';
             content +='<h3>';
-            content +=data.key;
+            content +=snapshot.key;
             content +='<h3>';
             content +='</div>';
             // var theDiv = document.getElementById("ex-table");
