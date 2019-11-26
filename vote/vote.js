@@ -108,21 +108,16 @@ function firebaseHandlers() {
         if(snapshot.exists()){
             var content = '';
             console.log(snapshot.val())
-            snapshot.forEach(function(data){
-                content +='<div style="background-color:lightblue">';
-                content +='<h3>';
-                content +=data.key;
-                content +='<h3>';
-                content +='</div>';
-                console.log(data.key)
-
-            });
-        
-
+            content +='<div style="background-color:lightblue">';
+            content +='<h3>';
+            content +=data.key;
+            content +='<h3>';
+            content +='</div>';
             // var theDiv = document.getElementById("ex-table");
             // theDiv.innerHTML += content; 
         }
-        
+        var theDiv = document.getElementById("ex-table");
+        theDiv.innerHTML += content; 
         // console.log(snapshot.val());
         // console.log(snapshot.key);
         // fireHeading.innerText =snapshot.key;
