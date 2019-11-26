@@ -124,7 +124,7 @@ function firebaseHandlers() {
             content +='<div class="card-footer">';
             content +='<button onclick="AlertFn(';
             content +=snapshot;
-            content += ') type="button" class="btn btn-primary">Primary</button>';
+            content += ')>Primary</button>';
             content +='</div>';
             content +='</div>';
             // var theDiv = document.getElementById("ex-table");
