@@ -114,15 +114,17 @@ function firebaseHandlers() {
             // content +='<h3>';
             // content +='</div>';
            
-                                        
-            content +='<div class="col-sm-6">';
-            content +='<div class="card" style="width: 18rem;">';
-            content +='<img src="..." class="card-img-top" alt="...">';
+                                    
+            content +='<div class="card">';
+            content +='<img class="card-img-top" src="..." alt="Card image cap">';
             content +='<div class="card-body">';
             content +='<h5 class="card-title">';
             content +=snapshot.key;
             content +='</h5>';
+            content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
             content +='</div>';
+            content +='<div class="card-footer">';
+            content +='<small class="text-muted">Last updated 3 mins ago</small>';
             content +='</div>';
             content +='</div>';
             // var theDiv = document.getElementById("ex-table");
