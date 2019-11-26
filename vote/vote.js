@@ -113,12 +113,16 @@ function firebaseHandlers() {
             // content +=snapshot.key;
             // content +='<h3>';
             // content +='</div>';
+           
+                                        
+            content +='<div class="col-sm-6">';
             content +='<div class="card" style="width: 18rem;">';
             content +='<img src="..." class="card-img-top" alt="...">';
             content +='<div class="card-body">';
             content +='<h5 class="card-title">';
             content +=snapshot.key;
             content +='</h5>';
+            content +='</div>';
             content +='</div>';
             content +='</div>';
             // var theDiv = document.getElementById("ex-table");
