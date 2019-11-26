@@ -108,11 +108,7 @@ function firebaseHandlers() {
         if(snapshot.exists()){
             var content = '';
             console.log(snapshot.val())
-            // content +='<div style="background-color:lightblue">';
-            // content +='<h3>';
-            // content +=snapshot.key;
-            // content +='<h3>';
-            // content +='</div>';
+        ;
            
                                     
             content +='<div class="card" style="width:400px">';
