@@ -105,10 +105,9 @@ function firebaseHandlers() {
       var fireHeading =  document.getElementById("fireHeading");
       const dbRef = firebase.database().ref('HPY');
       dbRef.on("child_added", function(snapshot) {
-        console.log(snapshot.val());
-        console.log(snapshot.key);
         var data="Name:<input type='text' name='name'><br>"+snapshot.val().image+":<br><textarea rows='5' cols='80'></textarea><br><input type='submit' value='Post Comment'>";  
         fireHeading.innerHTML=data;  
+        document.getElementById("headline").innerHTML = snapshot.key;
 
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
