@@ -107,7 +107,7 @@ function firebaseHandlers() {
       dbRef.on("child_added", function(snapshot) {
         console.log(snapshot.val());
         console.log(snapshot.key);
-        fireHeading.innerText =snapshot;
+        fireHeading.innerText =snapshot.val().image;
 
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
