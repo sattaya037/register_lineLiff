@@ -124,8 +124,8 @@ function firebaseHandlers() {
             content +='<div class="card-footer">';
             content +='<button onclick="AlertFn(';
             content +=key;
-            content +=')';
-            content +='type="button" class="btn btn-primary">Primary</button>'
+            content +=') ';
+            content +='type="button" class="btn btn-primary">Primary</button>';
             // '+'type="button" class="btn btn-primary">Primary</button> '
             content +='</div>';
             content +='</div>';
