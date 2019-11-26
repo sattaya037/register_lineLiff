@@ -66,6 +66,7 @@ function initializeApp() {
     displayIsInClientInfo();
     registerButtonHandlers();
     firebaseHandlers();
+    AlertFn();
     // check if the user is logged in/out, and disable inappropriate button
     if (liff.isLoggedIn()) {
         document.getElementById('liffLoginButton').disabled = true;
@@ -120,7 +121,7 @@ function firebaseHandlers() {
             content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
             content +='</div>';
             content +='<div class="card-footer">';
-            content +='<small class="text-muted">Last updated 3 mins ago</small>';
+            content +='<button'+'onclick=myFunction('+snapshot+')type="button" class="btn btn-primary">Vote</button>'
             content +='</div>';
             content +='</div>';
             // var theDiv = document.getElementById("ex-table");
@@ -132,6 +133,10 @@ function firebaseHandlers() {
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
       });
+}
+
+function AlertFn(snapshot);{
+    console.log(snapshot)
 }
  
 function displayIsInClientInfo() {
