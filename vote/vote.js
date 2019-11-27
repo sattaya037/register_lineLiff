@@ -115,7 +115,7 @@ function initializeApp() {
 function firebaseHandlers(dbRef,lineID) {
       dbRef.on("child_added", function(snapshot) {
           var voteValue = snapshot.key;
-          key = dbRef.child(voteValue).child("result").child(lineID).key;
+          key = dbRef.child(voteValue).child("result").child("lineID").key;
           console.log(key);
         // dbRef.on(function(childSnapshot) {
             
