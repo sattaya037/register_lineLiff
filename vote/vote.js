@@ -135,7 +135,10 @@ function AlertFn(clicked_id){
     console.log(clicked_id)
         liff.getProfile().then(function(profile) {
             var profile =profile.userId;
-            pushFirebase(clicked_id,profile)
+            const dbRef = firebase.database().ref('HPY');
+            dbRef.orderByKey().equalTo(clicked_id).on("value", function (snapshot) {
+                console.log(snapshot);
+            })
 
         }).catch(function(error) {
             window.alert('Error getting profile: ' + error);
@@ -144,9 +147,7 @@ function AlertFn(clicked_id){
     
 }
 
-function pushFirebase(clicked_id,profile){
-        console.log(clicked_id+" "+profile)
-}   
+
  
 function displayIsInClientInfo() {
     if (liff.isInClient()) {
