@@ -115,7 +115,7 @@ function initializeApp() {
 function firebaseHandlers(dbRef,lineID) {
       dbRef.on("child_added", function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
-            console.log(childSnapshot)
+            console.log(childSnapshot.key)
         })
         // if(snapshot.exists()){
         //     var content = '';
