@@ -148,8 +148,8 @@ function AlertFn(clicked_id){
               firebase.initializeApp(firebaseConfig);
               firebase.analytics();
             //   var fireHeading =  document.getElementById("fireHeading");
-              const dbRef = firebase.database().ref('HPY');
-              dbRef.on("child_added", function(snapshot) {
+              const voteRef = firebase.database().ref('HPY');
+              voteRef.on("child_added", function(snapshot) {
                 console.log(snapshot)
                 
               })
