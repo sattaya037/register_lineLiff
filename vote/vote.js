@@ -112,7 +112,7 @@ function initializeApp() {
 /**
 * Toggle the login/logout buttons based on the isInClient status, and display a message accordingly
 */
-function firebaseHandlers(dbRef,lineID) {
+function firebaseHandlers(dbRef,lineID,callback) {
       dbRef.on("child_added", function(snapshot) {
           var voteValue = snapshot.key;
           var content = '';
@@ -136,6 +136,7 @@ function firebaseHandlers(dbRef,lineID) {
             snapshot.forEach(childSnapshot => {
                 var truth = childSnapshot.exists();
                 console.log(truth)
+                callback(truth); 
                 // if(childSnapshot.exists()){
                 //     console.log("true")
                 //     button = '<button type="button" class="btn btn-primary">Voted</button>'
@@ -148,6 +149,7 @@ function firebaseHandlers(dbRef,lineID) {
             //     console.log("exit")
             // }
         })
+        console.log(callback)
         var theDiv = document.getElementById("ex-table");
         theDiv.innerHTML += content;  
         //   key.once("value",function(snapshot){
