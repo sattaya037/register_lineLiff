@@ -113,27 +113,28 @@ function initializeApp() {
 * Toggle the login/logout buttons based on the isInClient status, and display a message accordingly
 */
 function firebaseHandlers(dbRef,lineID) {
-  console.log(lineID)
       dbRef.on("child_added", function(snapshot) {
-
-        if(snapshot.exists()){
-            var content = '';
-            content +='<div class="card">';
-            content +='<img class="card-img-top"'; 
-            content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
-            content +='<div class="card-body">';
-            content +='<h5 class="card-title">';
-            content +=snapshot.key;
-            content +='</h5>';
-            content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
-            content +='</div>';
-            content +='<div class="card-footer">';
-            content +='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
-            content +='</div>';
-            content +='</div>';
-        }
-        var theDiv = document.getElementById("ex-table");
-        theDiv.innerHTML += content;     
+        dbRef.child(snapshot.key).child("result",function(snapshot){
+            console.log(snapshot.val())
+        })
+        // if(snapshot.exists()){
+        //     var content = '';
+        //     content +='<div class="card">';
+        //     content +='<img class="card-img-top"'; 
+        //     content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
+        //     content +='<div class="card-body">';
+        //     content +='<h5 class="card-title">';
+        //     content +=snapshot.key;
+        //     content +='</h5>';
+        //     content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
+        //     content +='</div>';
+        //     content +='<div class="card-footer">';
+        //     content +='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
+        //     content +='</div>';
+        //     content +='</div>';
+        // }
+        // var theDiv = document.getElementById("ex-table");
+        // theDiv.innerHTML += content;     
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
       });
@@ -180,7 +181,6 @@ function displayIsInClientInfo() {
        
         // document.getElementById('isInClientMessage').textContent = 'You are opening the app in the in-app browser of LINE.';
     } else {
-        console.log("external")
         
         // document.getElementById('isInClientMessage').textContent = 'You are opening the app in an external browser.';
     }
