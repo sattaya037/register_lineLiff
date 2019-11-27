@@ -133,8 +133,7 @@ function firebaseHandlers(dbRef,lineID) {
           key = dbRef.child(voteValue).child("result");
           key.orderByKey().equalTo("lineID").once("value",  snapshot => {
             snapshot.forEach(childSnapshot => {
-        var theDiv = document.getElementById("ex-table");
-        theDiv.innerHTML += content;  
+ 
                 if(childSnapshot.exists()){
 
                 }
@@ -145,6 +144,8 @@ function firebaseHandlers(dbRef,lineID) {
             //     console.log("exit")
             // }
         })
+        var theDiv = document.getElementById("ex-table");
+        theDiv.innerHTML += content;  
         //   key.once("value",function(snapshot){
         //     if(snapshot.exists()){
         //         console.log("in loop")
