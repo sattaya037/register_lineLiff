@@ -132,12 +132,13 @@ function firebaseHandlers(dbRef,lineID) {
           content +='</div>';
 
           key = dbRef.child(voteValue).child("result");
+    
           
           key.orderByKey().equalTo("lineID").once("value",  snapshot => {
+              
             snapshot.forEach(childSnapshot => {
                 var truth = childSnapshot.exists();
                 console.log(truth)
-                callback(truth); 
                 // if(childSnapshot.exists()){
                 //     console.log("true")
                 //     button = '<button type="button" class="btn btn-primary">Voted</button>'
