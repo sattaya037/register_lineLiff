@@ -117,7 +117,7 @@ function firebaseHandlers(dbRef,lineID) {
           var voteValue = snapshot.key;
           key = dbRef.child(voteValue).child("result").child("lineID");
           key.on("value",function(snapshot){
-            // console.log(snapshot.val());
+            console.log(snapshot.key);
             if(snapshot.exists()){
                 if(snapshot.val() == null){
                     console.log("null")
@@ -125,6 +125,8 @@ function firebaseHandlers(dbRef,lineID) {
                     console.log("not null")
     
                 }
+            }else{
+                console.log("exit")
             }
       
           })
