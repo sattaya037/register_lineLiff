@@ -65,6 +65,7 @@ function initializeApp() {
     liff.getProfile()
     .then(profile => {
         const lineID = profile.userId
+
         var firebaseConfig = {
             apiKey: "AIzaSyAH1pTXZy4XxpS0DfRVLwC93aZhWRnYiPQ",
             authDomain: "ics-vote.firebaseapp.com",
@@ -84,7 +85,7 @@ function initializeApp() {
           // displayLiffData();
         displayIsInClientInfo();
         registerButtonHandlers();
-        firebaseHandlers(dbRef,lineID);
+        getArticlePromise(dbRef,lineID);
     })
     .catch((err) => {
       console.log('error', err);
@@ -112,7 +113,14 @@ function initializeApp() {
 /**
 * Toggle the login/logout buttons based on the isInClient status, and display a message accordingly
 */
+function getArticlePromise(dbRef,lineID) {
+    return  dbRef.on("child_added", function(snapshot)  {
+      return snapshot.val();
+    });
+  }
+
 function firebaseHandlers(dbRef,lineID) {
+
 
       dbRef.on("child_added", function(snapshot) {
           var voteValue = snapshot.key;
