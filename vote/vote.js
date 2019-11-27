@@ -137,14 +137,13 @@ function AlertFn(clicked_id){
             var lineID =profile.userId;
             var lineName =profile.displayName;
             const dbRef = firebase.database().ref('HPY');
-            dbRef.orderByKey().equalTo(clicked_id).on("value", function (snapshot) {
+            dbRef.orderByKey().equalTo(clicked_id).once("value", function (snapshot) {
                 console.log(snapshot.val());
-                const usersRef = dbRef.child(clicked_id).child("result");
+                const usersRef = dbRef.child(clicked_id).child("result").child(lineID);
                 usersRef.set({
-                        lineID: {
-                          "lineName":lineName
-                        }
-                      });
+                    lineName : lineName
+                  });
+      
             })
 
         }).catch(function(error) {
