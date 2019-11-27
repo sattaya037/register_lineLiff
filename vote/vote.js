@@ -118,6 +118,8 @@ function firebaseHandlers(dbRef,lineID) {
           key = dbRef.child(voteValue).child("result").child("lineID");
           key.on("value",function(snapshot){
             console.log(snapshot.val());
+            console.log(snapshot.key);
+
             if(snapshot.val() == null){
                 console.log("null")
             }else{
