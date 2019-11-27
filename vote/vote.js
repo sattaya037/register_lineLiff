@@ -125,14 +125,14 @@ function firebaseHandlers(dbRef,lineID) {
                 if (!snapshot.exists()) {
                     console.log("null");
                 }else{
-                    console.log("not null");
+                    snapshot.forEach(childSnapshot => {
+                        var truth = childSnapshot.exists();
+                        console.log(truth)
+                        resolve(truth)
+                    })
 
                 }
-              snapshot.forEach(childSnapshot => {
-                  var truth = childSnapshot.exists();
-                //   console.log(truth)
-                  resolve(truth)
-              })
+            
           }) 
         });        
       });
