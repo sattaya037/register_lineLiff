@@ -135,7 +135,8 @@ function firebaseHandlers(dbRef,lineID) {
           key.orderByKey().equalTo("lineID").once("value",  snapshot => {
             snapshot.forEach(childSnapshot => {
                 if(childSnapshot.exists()){
-                    button == '<button type="button" class="btn btn-primary">Voted</button>'
+                    button = '<button type="button" class="btn btn-primary">Voted</button>'
+                    return button
                 }
             })
             // if(snapshot.exists()){
