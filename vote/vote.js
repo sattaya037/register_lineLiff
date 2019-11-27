@@ -137,7 +137,7 @@ function AlertFn(clicked_id){
             var profile =profile.userId;
             const dbRef = firebase.database().ref('HPY');
             dbRef.orderByKey().equalTo(clicked_id).on("value", function (snapshot) {
-                console.log(snapshot);
+                console.log(snapshot.val());
             })
 
         }).catch(function(error) {
