@@ -123,14 +123,14 @@ function PromiseHandlers(dbRef,lineID) {
             var key = dbRef.child(voteValue).child("result");
             key.orderByKey().equalTo("test").once("value", snapshot => { 
                 // console.log(snapshot.exists())
-                if (!snapshot.exists()) {
-                    resolve(false)
-
-                }else{
+                if (snapshot.exists()) {
                     snapshot.forEach(childSnapshot => {
                         var truth = childSnapshot.exists();
                         resolve(truth)
                     })
+                }else{
+                  
+                    resolve(false)
 
                 }
             
