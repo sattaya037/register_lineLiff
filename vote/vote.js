@@ -128,7 +128,7 @@ function firebaseHandlers(dbRef,lineId) {
             content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
             content +='</div>';
             content +='<div class="card-footer">';
-            content +='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
+            content +='<button id="'+snapshot.key+'" onClick="AlertFn(this.id,lineId)" type="button" class="btn btn-primary">Vote</button>';
             content +='</div>';
             content +='</div>';
         }
