@@ -122,7 +122,7 @@ function firebaseHandlers(dbRef,lineID) {
             var key = dbRef.child(voteValue).child("result");
             key.child("uid").once("value", snapshot => { 
               snapshot.forEach(childSnapshot => {
-                  var truth = childSnapshot.exists();
+                  var truth = childSnapshot.val();
                   console.log(truth)
                   resolve(truth)
               })
