@@ -117,7 +117,7 @@ function firebaseHandlers(dbRef,lineID) {
           var voteValue = snapshot.key;
           key = dbRef.child(voteValue).child("result").child(lineID);
           key.on("value",function(snapshot){
-            console.log(snapshot.key);
+            console.log(snapshot.val());
 
           })
     
