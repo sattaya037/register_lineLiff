@@ -123,11 +123,11 @@ function firebaseHandlers(dbRef,lineID) {
             key.orderByKey().equalTo("test").once("value", snapshot => { 
                 // console.log(snapshot.exists())
                 if (!snapshot.exists()) {
-                    console.log("null");
+                    resolve(false)
+
                 }else{
                     snapshot.forEach(childSnapshot => {
                         var truth = childSnapshot.exists();
-                        console.log(truth)
                         resolve(truth)
                     })
 
@@ -138,7 +138,7 @@ function firebaseHandlers(dbRef,lineID) {
       });
 
       promise1.then(function(value) {
-        // console.log(value);
+        console.log(value);
       });
 
     //   dbRef.on("child_added", function(snapshot) {
