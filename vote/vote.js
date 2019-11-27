@@ -143,6 +143,27 @@ function firebaseHandlers() {
 
 function AlertFn(clicked_id){
     console.log(clicked_id)
+    liff.getProfile().then(function(profile) {
+        document.getElementById('userIdProfileField').textContent = profile.userId;
+        document.getElementById('displayNameField').textContent = profile.displayName;
+        console.log(profile.userId)
+        const profilePictureDiv = document.getElementById('profilePictureDiv');
+        if (profilePictureDiv.firstElementChild) {
+            profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
+        }
+        const img = document.createElement('img');
+        img.src = profile.pictureUrl;
+        img.alt = 'Profile Picture';
+        profilePictureDiv.appendChild(img);
+
+        document.getElementById('statusMessageField').textContent = profile.statusMessage;
+        // toggleProfileData();
+        console.log(profile.userId)
+
+        pushFirebase(profile);
+    }).catch(function(error) {
+        window.alert('Error getting profile: ' + error);
+    });
 }
  
 function displayIsInClientInfo() {
