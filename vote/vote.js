@@ -134,10 +134,17 @@ function firebaseHandlers(dbRef) {
 function AlertFn(clicked_id){
     console.log(clicked_id)
         liff.getProfile().then(function(profile) {
-            var profile =profile.userId;
+            var lineID =profile.userId;
+            var lineName =profile.displayName;
             const dbRef = firebase.database().ref('HPY');
             dbRef.orderByKey().equalTo(clicked_id).on("value", function (snapshot) {
                 console.log(snapshot.val());
+                const usersRef = dbRef.child(clicked_id).child("result");
+                usersRef.set({
+                        lineID: {
+                          "lineName":lineName
+                        }
+                      });
             })
 
         }).catch(function(error) {
