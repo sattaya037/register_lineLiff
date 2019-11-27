@@ -131,7 +131,6 @@ function firebaseHandlers(dbRef,lineID) {
 
       promise1.then(function(value) {
         console.log(value);
-        // expected output: "foo"
       });
 
     //   dbRef.on("child_added", function(snapshot) {
