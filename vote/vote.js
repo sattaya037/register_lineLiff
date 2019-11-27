@@ -62,7 +62,14 @@ function initializeLiff(myLiffId) {
  * Initialize the app by calling functions handling individual app components
  */
 function initializeApp() {
-    var firebaseConfig = {
+    liff.getProfile()
+    .then(profile => {
+       
+
+    })
+    .catch((err) => {
+      console.log('error', err);
+      var firebaseConfig = {
         apiKey: "AIzaSyAH1pTXZy4XxpS0DfRVLwC93aZhWRnYiPQ",
         authDomain: "ics-vote.firebaseapp.com",
         databaseURL: "https://ics-vote.firebaseio.com",
@@ -73,6 +80,7 @@ function initializeApp() {
         measurementId: "G-PLXJ6VBZ8D"
       };
       // Initialize Firebase
+      console.log(profile.userId)
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
     //   var fireHeading =  document.getElementById("fireHeading");
@@ -81,6 +89,7 @@ function initializeApp() {
     displayIsInClientInfo();
     registerButtonHandlers();
     firebaseHandlers(dbRef);
+    });
     // check if the user is logged in/out, and disable inappropriate button
     if (liff.isLoggedIn()) {
         document.getElementById('liffLoginButton').disabled = true;
@@ -119,7 +128,7 @@ function firebaseHandlers(dbRef) {
             content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
             content +='</div>';
             content +='<div class="card-footer">';
-            content +='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Primary</button>';
+            content +='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
             content +='</div>';
             content +='</div>';
         }
