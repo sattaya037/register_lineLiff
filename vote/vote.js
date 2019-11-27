@@ -82,8 +82,7 @@ function initializeApp() {
         // displayLiffData();
         displayIsInClientInfo();
         registerButtonHandlers();
-        firebaseHandlers(dbRef);
-        console.log(profile.displayName)
+        firebaseHandlers(dbRef,profile);
     })
     .catch((err) => {
       console.log('error', err);
@@ -141,22 +140,23 @@ function firebaseHandlers(dbRef) {
 
 function AlertFn(clicked_id){
     console.log(clicked_id)
-        liff.getProfile().then(function(profile) {
-            var lineID =profile.userId;
-            var lineName =profile.displayName;
-            const dbRef = firebase.database().ref('HPY');
-            dbRef.orderByKey().equalTo(clicked_id).once("value", function (snapshot) {
-                console.log(snapshot.val());
-                const usersRef = dbRef.child(clicked_id).child("result").child(lineID);
-                usersRef.set({
-                    lineName : lineName
-                  });
+    console.log(profile.userId)
+        // liff.getProfile().then(function(profile) {
+        //     var lineID =profile.userId;
+        //     var lineName =profile.displayName;
+        //     const dbRef = firebase.database().ref('HPY');
+        //     dbRef.orderByKey().equalTo(clicked_id).once("value", function (snapshot) {
+        //         console.log(snapshot.val());
+        //         const usersRef = dbRef.child(clicked_id).child("result").child(lineID);
+        //         usersRef.set({
+        //             lineName : lineName
+        //           });
       
-            })
+        //     })
 
-        }).catch(function(error) {
-            window.alert('Error getting profile: ' + error);
-        });
+        // }).catch(function(error) {
+        //     window.alert('Error getting profile: ' + error);
+        // });
    
     
 }
