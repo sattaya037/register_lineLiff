@@ -117,7 +117,6 @@ function firebaseHandlers(dbRef,lineID) {
         snapshot.forEach(function(childSnapshot) {
             console.log(childSnapshot)
         })
-        })
         // if(snapshot.exists()){
         //     var content = '';
         //     content +='<div class="card">';
