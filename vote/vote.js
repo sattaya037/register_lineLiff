@@ -64,12 +64,12 @@ function initializeLiff(myLiffId) {
 function initializeApp() {
     liff.getProfile()
     .then(profile => {
-       
-
+        console.log(profile.displayName)
     })
     .catch((err) => {
       console.log('error', err);
-      var firebaseConfig = {
+    });
+    var firebaseConfig = {
         apiKey: "AIzaSyAH1pTXZy4XxpS0DfRVLwC93aZhWRnYiPQ",
         authDomain: "ics-vote.firebaseapp.com",
         databaseURL: "https://ics-vote.firebaseio.com",
@@ -80,7 +80,6 @@ function initializeApp() {
         measurementId: "G-PLXJ6VBZ8D"
       };
       // Initialize Firebase
-      console.log(profile.userId)
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
     //   var fireHeading =  document.getElementById("fireHeading");
@@ -89,7 +88,6 @@ function initializeApp() {
     displayIsInClientInfo();
     registerButtonHandlers();
     firebaseHandlers(dbRef);
-    });
     // check if the user is logged in/out, and disable inappropriate button
     if (liff.isLoggedIn()) {
         document.getElementById('liffLoginButton').disabled = true;
