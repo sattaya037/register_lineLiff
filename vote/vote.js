@@ -65,7 +65,7 @@ function initializeApp() {
     liff.getProfile()
     .then(profile => {
         const lineID = profile.userId
-
+        
         var firebaseConfig = {
             apiKey: "AIzaSyAH1pTXZy4XxpS0DfRVLwC93aZhWRnYiPQ",
             authDomain: "ics-vote.firebaseapp.com",
@@ -85,7 +85,7 @@ function initializeApp() {
           // displayLiffData();
         displayIsInClientInfo();
         registerButtonHandlers();
-        getArticlePromise(dbRef,lineID);
+        firebaseHandlers(dbRef,lineID);
     })
     .catch((err) => {
       console.log('error', err);
@@ -113,48 +113,61 @@ function initializeApp() {
 /**
 * Toggle the login/logout buttons based on the isInClient status, and display a message accordingly
 */
-function getArticlePromise(dbRef,lineID) {
-    return  dbRef.on("child_added", function(snapshot)  {
-      return snapshot.val();
-    });
-  }
+
 
 function firebaseHandlers(dbRef,lineID) {
+    let getKey = function(dbRef,lineID) {
+        return new Promise((resolve, reject) => {
+            dbRef.on("child_added", function(snapshot) {
+                var key = dbRef.child(voteValue).child("result");
+                key.orderByKey().equalTo("lineID").once("value",  snapshot => {       
+                  snapshot.forEach(childSnapshot => {
+                      var truth = childSnapshot.exists();
+                      resolve(truth)
+                  })
+              }) 
+            });
+        });
+    }
+    
+    getKey.then(truth => {
+        console.log(truth)
+        // do something withkey
+    })
 
-
-      dbRef.on("child_added", function(snapshot) {
-          var voteValue = snapshot.key;
-          var content = '';
-          var button ='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
-          content +='<div class="card">';
-          content +='<img class="card-img-top"'; 
-          content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
-          content +='<div class="card-body">';
-          content +='<h5 class="card-title">';
-          content +=snapshot.key;
-          content +='</h5>';
-          content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
-          content +='</div>';
-          content +='<div class="card-footer">';
-          content +=button;
-          content +='</div>';
-          content +='</div>';
-          var key = dbRef.child(voteValue).child("result");
-          key.orderByKey().equalTo("lineID").once("value",  snapshot => {
+    //   dbRef.on("child_added", function(snapshot) {
+    //       var voteValue = snapshot.key;
+    //       var content = '';
+    //       var button ='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
+    //       content +='<div class="card">';
+    //       content +='<img class="card-img-top"'; 
+    //       content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
+    //       content +='<div class="card-body">';
+    //       content +='<h5 class="card-title">';
+    //       content +=snapshot.key;
+    //       content +='</h5>';
+    //       content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
+    //       content +='</div>';
+    //       content +='<div class="card-footer">';
+    //       content +=button;
+    //       content +='</div>';
+    //       content +='</div>';
+    //       var key = dbRef.child(voteValue).child("result");
+    //       key.orderByKey().equalTo("lineID").once("value",  snapshot => {
               
-            snapshot.forEach(childSnapshot => {
-                var truth = childSnapshot.exists();
-                console.log(truth)
-            })
-        })
-        var theDiv = document.getElementById("ex-table");
-        theDiv.innerHTML += content;  
+    //         snapshot.forEach(childSnapshot => {
+    //             var truth = childSnapshot.exists();
+    //             console.log(truth)
+    //         })
+    //     })
+    //     var theDiv = document.getElementById("ex-table");
+    //     theDiv.innerHTML += content;  
 
  
        
-      }, function (errorObject) {
-        console.log("The read failed: " + errorObject.code);
-      });
+    //   }, function (errorObject) {
+    //     console.log("The read failed: " + errorObject.code);
+    //   });
 }
 
 
