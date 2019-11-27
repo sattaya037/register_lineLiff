@@ -79,10 +79,11 @@ function initializeApp() {
           firebase.analytics();
         //   var fireHeading =  document.getElementById("fireHeading");
           const dbRef = firebase.database().ref('HPY');
+          const lineData = profilel
         // displayLiffData();
         displayIsInClientInfo();
         registerButtonHandlers();
-        firebaseHandlers(dbRef,profile);
+        firebaseHandlers(dbRef,lineData);
     })
     .catch((err) => {
       console.log('error', err);
@@ -110,7 +111,7 @@ function initializeApp() {
 /**
 * Toggle the login/logout buttons based on the isInClient status, and display a message accordingly
 */
-function firebaseHandlers(dbRef) {
+function firebaseHandlers(dbRef,lineData) {
   
       dbRef.on("child_added", function(snapshot) {
 
@@ -140,7 +141,7 @@ function firebaseHandlers(dbRef) {
 
 function AlertFn(clicked_id){
     console.log(clicked_id)
-    console.log(profile.userId)
+    console.log(lineData)
         // liff.getProfile().then(function(profile) {
         //     var lineID =profile.userId;
         //     var lineName =profile.displayName;
