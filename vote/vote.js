@@ -121,9 +121,15 @@ function firebaseHandlers(dbRef,lineID) {
             var voteValue = snapshot.key;
             var key = dbRef.child(voteValue).child("result");
             key.orderByKey().equalTo("test").once("value", snapshot => { 
-                console.log(snapshot.exists())
+                // console.log(snapshot.exists())
 
               snapshot.forEach(childSnapshot => {
+                if (!childSnapshot.exists()) {
+                    console.log("null");
+                }else{
+                    console.log("not null");
+
+                }
                   var truth = childSnapshot.exists();
                 //   console.log(truth)
                   resolve(truth)
@@ -133,7 +139,7 @@ function firebaseHandlers(dbRef,lineID) {
       });
 
       promise1.then(function(value) {
-        console.log(value);
+        // console.log(value);
       });
 
     //   dbRef.on("child_added", function(snapshot) {
