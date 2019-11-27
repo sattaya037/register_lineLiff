@@ -149,9 +149,9 @@ function AlertFn(clicked_id){
               firebase.analytics();
             //   var fireHeading =  document.getElementById("fireHeading");
               const dbRef = firebase.database().ref('HPY');
-              dbRef.orderByKey().equalTo(clicked_id).on("value", function (snapshot) {
-                    console.log(snapshot)
-
+              dbRef.on("child_added", function(snapshot) {
+                console.log(snapshot)
+                
               })
 
         }).catch(function(error) {
