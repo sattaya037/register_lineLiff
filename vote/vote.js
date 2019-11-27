@@ -64,30 +64,31 @@ function initializeLiff(myLiffId) {
 function initializeApp() {
     liff.getProfile()
     .then(profile => {
+        var firebaseConfig = {
+            apiKey: "AIzaSyAH1pTXZy4XxpS0DfRVLwC93aZhWRnYiPQ",
+            authDomain: "ics-vote.firebaseapp.com",
+            databaseURL: "https://ics-vote.firebaseio.com",
+            projectId: "ics-vote",
+            storageBucket: "ics-vote.appspot.com",
+            messagingSenderId: "88696350608",
+            appId: "1:88696350608:web:780899d63f1cebc33cb515",
+            measurementId: "G-PLXJ6VBZ8D"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          firebase.analytics();
+        //   var fireHeading =  document.getElementById("fireHeading");
+          const dbRef = firebase.database().ref('HPY');
+        // displayLiffData();
+        displayIsInClientInfo();
+        registerButtonHandlers();
+        firebaseHandlers(dbRef);
         console.log(profile.displayName)
     })
     .catch((err) => {
       console.log('error', err);
     });
-    var firebaseConfig = {
-        apiKey: "AIzaSyAH1pTXZy4XxpS0DfRVLwC93aZhWRnYiPQ",
-        authDomain: "ics-vote.firebaseapp.com",
-        databaseURL: "https://ics-vote.firebaseio.com",
-        projectId: "ics-vote",
-        storageBucket: "ics-vote.appspot.com",
-        messagingSenderId: "88696350608",
-        appId: "1:88696350608:web:780899d63f1cebc33cb515",
-        measurementId: "G-PLXJ6VBZ8D"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-    //   var fireHeading =  document.getElementById("fireHeading");
-      const dbRef = firebase.database().ref('HPY');
-    // displayLiffData();
-    displayIsInClientInfo();
-    registerButtonHandlers();
-    firebaseHandlers(dbRef);
+
     // check if the user is logged in/out, and disable inappropriate button
     if (liff.isLoggedIn()) {
         document.getElementById('liffLoginButton').disabled = true;
