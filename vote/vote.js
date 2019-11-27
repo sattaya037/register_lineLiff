@@ -149,10 +149,7 @@ function AlertFn(clicked_id){
               firebase.analytics();
             //   var fireHeading =  document.getElementById("fireHeading");
               const voteRef = firebase.database().ref('HPY');
-              voteRef.on("child_added", function(snapshot) {
-                console.log(snapshot)
-                
-              })
+              console.log(voteRef)
 
         }).catch(function(error) {
             window.alert('Error getting profile: ' + error);
