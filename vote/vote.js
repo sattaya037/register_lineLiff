@@ -85,6 +85,7 @@ function initializeApp() {
           // displayLiffData();
         displayIsInClientInfo();
         registerButtonHandlers();
+        PromiseHandlers(dbRef,lineID);
         firebaseHandlers(dbRef,lineID);
     })
     .catch((err) => {
@@ -115,7 +116,7 @@ function initializeApp() {
 */
 
 
-function firebaseHandlers(dbRef,lineID) {
+function PromiseHandlers(dbRef,lineID) {
     var promise1 = new Promise(function(resolve, reject) {
         dbRef.on("child_added", function(snapshot) {
             var voteValue = snapshot.key;
