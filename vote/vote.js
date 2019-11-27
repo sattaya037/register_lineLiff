@@ -118,7 +118,10 @@ function firebaseHandlers(dbRef,lineID) {
           key = dbRef.child(voteValue).child("result");
           key.orderByKey().equalTo("lineID").once("value",  snapshot => {
             snapshot.forEach(childSnapshot => {
-                console.log(childSnapshot.val())
+                console.log(childSnapshot.key)
+                if(childSnapshot.exists()){
+                    
+                }
             })
             // if(snapshot.exists()){
             //     console.log("in loop")
