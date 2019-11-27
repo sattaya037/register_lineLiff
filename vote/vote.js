@@ -75,7 +75,6 @@ function initializeApp() {
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
-      console.log(profile.userId)
     //   var fireHeading =  document.getElementById("fireHeading");
       const dbRef = firebase.database().ref('HPY');
     // displayLiffData();
