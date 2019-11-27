@@ -145,7 +145,7 @@ function firebaseHandlers(dbRef,lineID) {
         var theDiv = document.getElementById("ex-table");
 
         if(check==true){
-            button += '<button type="button" class="btn btn-primary">Voted</button>'
+            button == '<button type="button" class="btn btn-primary">Voted</button>'
             theDiv.innerHTML += content;  
 
         }
