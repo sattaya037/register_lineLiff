@@ -140,7 +140,7 @@ function firebaseHandlers(dbRef,lineId) {
 }
 
 
-function AlertFn(clicked_id){
+function AlertFn(clicked_id,lineId){
     console.log(clicked_id)
     console.log(lineId)
         // liff.getProfile().then(function(profile) {
