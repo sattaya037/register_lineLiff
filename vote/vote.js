@@ -115,16 +115,19 @@ function initializeApp() {
 function firebaseHandlers(dbRef,lineID) {
       dbRef.on("child_added", function(snapshot) {
           var voteValue = snapshot.key;
-          key = dbRef.child(voteValue).child("result").child("lineID");
-          key.once("value",function(snapshot){
-            if(snapshot.exists()){
-                console.log("in loop")
+          key = dbRef.child(voteValue).child("result");
+          key.orderByKey().equalTo("lineID").once("value",  snapshot => {
+            console.log(snapshot)
+        })
+        //   key.once("value",function(snapshot){
+        //     if(snapshot.exists()){
+        //         console.log("in loop")
 
-            }else{
-                console.log("exit")
-            }
+        //     }else{
+        //         console.log("exit")
+        //     }
       
-          })
+        //   })
     
         // if(snapshot.exists()){
         //     var content = '';
