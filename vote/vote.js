@@ -131,6 +131,12 @@ function firebaseHandlers(dbRef,lineID) {
 
       promise1.then(function(value) {
         console.log(value);
+        if(value){
+            console.log("1");
+        }else{
+            console.log("0");
+
+        }
       });
 
     //   dbRef.on("child_added", function(snapshot) {
