@@ -140,25 +140,24 @@ function firebaseHandlers(dbRef,lineId) {
 }
 
 
-function AlertFn(clicked_id,lineId){
+function AlertFn(clicked_id){
     console.log(clicked_id)
-    console.log(lineId)
-        // liff.getProfile().then(function(profile) {
-        //     var lineID =profile.userId;
-        //     var lineName =profile.displayName;
-        //     const dbRef = firebase.database().ref('HPY');
-        //     dbRef.orderByKey().equalTo(clicked_id).once("value", function (snapshot) {
-        //         console.log(snapshot.val());
-        //         const usersRef = dbRef.child(clicked_id).child("result").child(lineID);
-        //         usersRef.set({
-        //             lineName : lineName
-        //           });
+        liff.getProfile().then(function(profile) {
+            var lineID =profile.userId;
+            var lineName =profile.displayName;
+            const dbRef = firebase.database().ref('HPY');
+            dbRef.orderByKey().equalTo(clicked_id).once("value", function (snapshot) {
+                console.log(snapshot.val());
+                const usersRef = dbRef.child(clicked_id).child("result").child(lineID);
+                usersRef.set({
+                    lineName : lineName
+                  });
       
-        //     })
+            })
 
-        // }).catch(function(error) {
-        //     window.alert('Error getting profile: ' + error);
-        // });
+        }).catch(function(error) {
+            window.alert('Error getting profile: ' + error);
+        });
    
     
 }
