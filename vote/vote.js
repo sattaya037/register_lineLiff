@@ -115,12 +115,28 @@ function initializeApp() {
 function firebaseHandlers(dbRef,lineID) {
       dbRef.on("child_added", function(snapshot) {
           var voteValue = snapshot.key;
+          var content = '';
+          content +='<div class="card">';
+          content +='<img class="card-img-top"'; 
+          content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
+          content +='<div class="card-body">';
+          content +='<h5 class="card-title">';
+          content +=snapshot.key;
+          content +='</h5>';
+          content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
+          content +='</div>';
+          content +='<div class="card-footer">';
+          content +='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
+          content +='</div>';
+          content +='</div>';
+
           key = dbRef.child(voteValue).child("result");
           key.orderByKey().equalTo("lineID").once("value",  snapshot => {
             snapshot.forEach(childSnapshot => {
-                console.log(childSnapshot.key)
+        var theDiv = document.getElementById("ex-table");
+        theDiv.innerHTML += content;  
                 if(childSnapshot.exists()){
-                    
+
                 }
             })
             // if(snapshot.exists()){
