@@ -64,7 +64,7 @@ function initializeLiff(myLiffId) {
 function initializeApp() {
     liff.getProfile()
     .then(profile => {
-        const lineId = profile.userId;
+        const lineID = profile.userId
         var firebaseConfig = {
             apiKey: "AIzaSyAH1pTXZy4XxpS0DfRVLwC93aZhWRnYiPQ",
             authDomain: "ics-vote.firebaseapp.com",
@@ -84,7 +84,7 @@ function initializeApp() {
           // displayLiffData();
         displayIsInClientInfo();
         registerButtonHandlers();
-        firebaseHandlers(dbRef,lineId);
+        firebaseHandlers(dbRef,lineID);
     })
     .catch((err) => {
       console.log('error', err);
@@ -112,8 +112,8 @@ function initializeApp() {
 /**
 * Toggle the login/logout buttons based on the isInClient status, and display a message accordingly
 */
-function firebaseHandlers(dbRef,lineId) {
-  
+function firebaseHandlers(dbRef,lineID) {
+  console.log(lineID)
       dbRef.on("child_added", function(snapshot) {
 
         if(snapshot.exists()){
@@ -128,7 +128,7 @@ function firebaseHandlers(dbRef,lineId) {
             content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
             content +='</div>';
             content +='<div class="card-footer">';
-            content +='<button id="'+snapshot.key+'" onClick="AlertFn(this.id,lineId)" type="button" class="btn btn-primary">Vote</button>';
+            content +='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
             content +='</div>';
             content +='</div>';
         }
