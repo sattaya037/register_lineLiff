@@ -133,8 +133,26 @@ function firebaseHandlers() {
 function AlertFn(clicked_id){
     console.log(clicked_id)
         liff.getProfile().then(function(profile) {
-      
             console.log(profile.userId)
+            var firebaseConfig = {
+                apiKey: "AIzaSyAH1pTXZy4XxpS0DfRVLwC93aZhWRnYiPQ",
+                authDomain: "ics-vote.firebaseapp.com",
+                databaseURL: "https://ics-vote.firebaseio.com",
+                projectId: "ics-vote",
+                storageBucket: "ics-vote.appspot.com",
+                messagingSenderId: "88696350608",
+                appId: "1:88696350608:web:780899d63f1cebc33cb515",
+                measurementId: "G-PLXJ6VBZ8D"
+              };
+              // Initialize Firebase
+              firebase.initializeApp(firebaseConfig);
+              firebase.analytics();
+            //   var fireHeading =  document.getElementById("fireHeading");
+              const dbRef = firebase.database().ref('HPY');
+              dbRef.orderByKey().equalTo(clicked_id).on("value", function (snapshot) {
+                    console.log(snapshot)
+
+              })
 
         }).catch(function(error) {
             window.alert('Error getting profile: ' + error);
@@ -169,90 +187,6 @@ function displayIsInClientInfo() {
 * Register event handlers for the buttons displayed in the app
 */
 function registerButtonHandlers() {
-    // openWindow call
-    // document.getElementById('openWindowButton').addEventListener('click', function() {
-    //     liff.openWindow({
-    //         url: 'https://line.me',
-    //         external: true
-    //     });
-    // });
-
-    // closeWindow call
-    // document.getElementById('closeWindowButton').addEventListener('click', function() {
-    //     if (!liff.isInClient()) {
-    //         sendAlertIfNotInClient();
-    //     } else {
-    //         liff.closeWindow();
-    //     }
-    // });
-
-    // sendMessages call
-    // document.getElementById('sendMessageButton').addEventListener('click', function() {
-    //     if (!liff.isInClient()) {
-    //         sendAlertIfNotInClient();
-    //     } else {
-    //         liff.sendMessages([{
-    //             'type': 'text',
-    //             'text': "You've successfully sent a message! Hooray!"
-    //         }]).then(function() {
-    //             window.alert('Message sent');
-    //         }).catch(function(error) {
-    //             window.alert('Error sending message: ' + error);
-    //         });
-    //     }
-    // });
-
-    // scanCode call
-    // document.getElementById('scanQrCodeButton').addEventListener('click', function() {
-    //     if (!liff.isInClient()) {
-    //         sendAlertIfNotInClient();
-    //     } else {
-    //         liff.scanCode().then(result => {
-    //             // e.g. result = { value: "Hello LIFF app!" }
-    //             const stringifiedResult = JSON.stringify(result);
-    //             document.getElementById('scanQrField').textContent = stringifiedResult;
-    //             toggleQrCodeReader();
-    //         }).catch(err => {
-    //             document.getElementById('scanQrField').textContent = "scanCode failed!";
-    //         });
-    //     }
-    // });
-
-    // get access token
-    // document.getElementById('getAccessToken').addEventListener('click', function() {
-    //     if (!liff.isLoggedIn() && !liff.isInClient()) {
-    //         alert('To get an access token, you need to be logged in. Please tap the "login" button below and try again.');
-    //     } else {
-    //         const accessToken = liff.getAccessToken();
-    //         document.getElementById('accessTokenField').textContent = accessToken;
-    //         toggleAccessToken();
-    //     }
-    // });
-
-    // get profile call
-    document.getElementById('getProfileButton').addEventListener('click', function() {
-        liff.getProfile().then(function(profile) {
-            document.getElementById('userIdProfileField').textContent = profile.userId;
-            document.getElementById('displayNameField').textContent = profile.displayName;
-
-            const profilePictureDiv = document.getElementById('profilePictureDiv');
-            if (profilePictureDiv.firstElementChild) {
-                profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
-            }
-            const img = document.createElement('img');
-            img.src = profile.pictureUrl;
-            img.alt = 'Profile Picture';
-            profilePictureDiv.appendChild(img);
-
-            document.getElementById('statusMessageField').textContent = profile.statusMessage;
-            // toggleProfileData();
-            console.log(profile.userId)
-
-            pushFirebase(profile);
-        }).catch(function(error) {
-            window.alert('Error getting profile: ' + error);
-        });
-    });
 
     // login call, only when external browser is used
     document.getElementById('liffLoginButton').addEventListener('click', function() {
