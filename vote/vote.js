@@ -123,6 +123,11 @@ function firebaseHandlers(dbRef,lineID) {
             key.orderByKey().equalTo("lineID").once("value", snapshot => {       
               snapshot.forEach(childSnapshot => {
                   var truth = childSnapshot.exists();
+                  if(truth){
+                    console.log("1");
+                  }else{
+                    console.log("2");
+                  }
                   resolve(truth)
               })
           }) 
