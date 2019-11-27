@@ -131,8 +131,6 @@ function firebaseHandlers(dbRef,lineID) {
           content +=button;
           content +='</div>';
           content +='</div>';
-
-          
           var key = dbRef.child(voteValue).child("result");
           key.orderByKey().equalTo("lineID").once("value",  snapshot => {
               
@@ -141,14 +139,10 @@ function firebaseHandlers(dbRef,lineID) {
                 console.log(truth)
             })
         })
-        var check = true;
         var theDiv = document.getElementById("ex-table");
+        theDiv.innerHTML += content;  
 
-        if(check==true){
-            button == '<button type="button" class="btn btn-primary">Voted</button>'
-            theDiv.innerHTML += content;  
-
-        }
+ 
        
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
