@@ -64,6 +64,7 @@ function initializeLiff(myLiffId) {
 function initializeApp() {
     liff.getProfile()
     .then(profile => {
+        const lineId = profile.userId;
         var firebaseConfig = {
             apiKey: "AIzaSyAH1pTXZy4XxpS0DfRVLwC93aZhWRnYiPQ",
             authDomain: "ics-vote.firebaseapp.com",
@@ -79,11 +80,11 @@ function initializeApp() {
           firebase.analytics();
         //   var fireHeading =  document.getElementById("fireHeading");
           const dbRef = firebase.database().ref('HPY');
-          const lineData = profilel
-        // displayLiffData();
+          
+          // displayLiffData();
         displayIsInClientInfo();
         registerButtonHandlers();
-        firebaseHandlers(dbRef,lineData);
+        firebaseHandlers(dbRef,lineId);
     })
     .catch((err) => {
       console.log('error', err);
@@ -111,7 +112,7 @@ function initializeApp() {
 /**
 * Toggle the login/logout buttons based on the isInClient status, and display a message accordingly
 */
-function firebaseHandlers(dbRef,lineData) {
+function firebaseHandlers(dbRef,lineId) {
   
       dbRef.on("child_added", function(snapshot) {
 
@@ -141,7 +142,7 @@ function firebaseHandlers(dbRef,lineData) {
 
 function AlertFn(clicked_id){
     console.log(clicked_id)
-    console.log(lineData)
+    console.log(lineId)
         // liff.getProfile().then(function(profile) {
         //     var lineID =profile.userId;
         //     var lineName =profile.displayName;
