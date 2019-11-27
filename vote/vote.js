@@ -134,11 +134,13 @@ function firebaseHandlers(dbRef,lineID) {
           key = dbRef.child(voteValue).child("result");
           key.orderByKey().equalTo("lineID").once("value",  snapshot => {
             snapshot.forEach(childSnapshot => {
-                if(childSnapshot.exists()){
-                    console.log("true")
-                    button = '<button type="button" class="btn btn-primary">Voted</button>'
-                    return button
-                }
+                var truth = snapshot.exists();
+                console.log(truth)
+                // if(childSnapshot.exists()){
+                //     console.log("true")
+                //     button = '<button type="button" class="btn btn-primary">Voted</button>'
+                //     return button
+                // }
             })
             // if(snapshot.exists()){
             //     console.log("in loop")
