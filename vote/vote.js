@@ -62,10 +62,25 @@ function initializeLiff(myLiffId) {
  * Initialize the app by calling functions handling individual app components
  */
 function initializeApp() {
+    var firebaseConfig = {
+        apiKey: "AIzaSyAH1pTXZy4XxpS0DfRVLwC93aZhWRnYiPQ",
+        authDomain: "ics-vote.firebaseapp.com",
+        databaseURL: "https://ics-vote.firebaseio.com",
+        projectId: "ics-vote",
+        storageBucket: "ics-vote.appspot.com",
+        messagingSenderId: "88696350608",
+        appId: "1:88696350608:web:780899d63f1cebc33cb515",
+        measurementId: "G-PLXJ6VBZ8D"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    //   var fireHeading =  document.getElementById("fireHeading");
+      const dbRef = firebase.database().ref('HPY');
     // displayLiffData();
     displayIsInClientInfo();
     registerButtonHandlers();
-    firebaseHandlers();
+    firebaseHandlers(dbRef);
     // check if the user is logged in/out, and disable inappropriate button
     if (liff.isLoggedIn()) {
         document.getElementById('liffLoginButton').disabled = true;
@@ -88,22 +103,8 @@ function initializeApp() {
 /**
 * Toggle the login/logout buttons based on the isInClient status, and display a message accordingly
 */
-function firebaseHandlers() {
-    var firebaseConfig = {
-        apiKey: "AIzaSyAH1pTXZy4XxpS0DfRVLwC93aZhWRnYiPQ",
-        authDomain: "ics-vote.firebaseapp.com",
-        databaseURL: "https://ics-vote.firebaseio.com",
-        projectId: "ics-vote",
-        storageBucket: "ics-vote.appspot.com",
-        messagingSenderId: "88696350608",
-        appId: "1:88696350608:web:780899d63f1cebc33cb515",
-        measurementId: "G-PLXJ6VBZ8D"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-    //   var fireHeading =  document.getElementById("fireHeading");
-      const dbRef = firebase.database().ref('HPY');
+function firebaseHandlers(dbRef) {
+  
       dbRef.on("child_added", function(snapshot) {
 
         if(snapshot.exists()){
@@ -144,20 +145,6 @@ function AlertFn(clicked_id){
 }
 
 function pushFirebase(clicked_id,profile){
-    var firebaseConfig = {
-        apiKey: "AIzaSyCHQ4DM7_CqftwNk8hwM6AHTzXoT543n4g",
-        authDomain: "match-699cf.firebaseapp.com",
-        databaseURL: "https://match-699cf.firebaseio.com",
-        projectId: "match-699cf",
-        storageBucket: "match-699cf.appspot.com",
-        messagingSenderId: "496105033351",
-        appId: "1:496105033351:web:ddc576483480e68e10f222",
-        measurementId: "G-XX1B260S6W"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-
         console.log(clicked_id+" "+profile)
 }   
  
