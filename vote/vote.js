@@ -116,24 +116,23 @@ function initializeApp() {
 
 
 function firebaseHandlers(dbRef,lineID) {
-    let getKey = function(dbRef,lineID) {
-        return new Promise((resolve, reject) => {
-            dbRef.on("child_added", function(snapshot) {
-                var key = dbRef.child(voteValue).child("result");
-                key.orderByKey().equalTo("lineID").once("value",  snapshot => {       
-                  snapshot.forEach(childSnapshot => {
-                      var truth = childSnapshot.exists();
-                      resolve(truth)
-                  })
-              }) 
-            });
-        });
-    }
-    
-    getKey.then(truth => {
-        console.log(truth)
-        // do something withkey
-    })
+    var promise1 = new Promise(function(resolve, reject) {
+        dbRef.on("child_added", function(snapshot) {
+            var voteValue = snapshot.key;
+            var key = dbRef.child(voteValue).child("result");
+            key.orderByKey().equalTo("lineID").once("value", snapshot => {       
+              snapshot.forEach(childSnapshot => {
+                  var truth = childSnapshot.exists();
+                  resolve(truth)
+              })
+          }) 
+        });        
+      });
+
+      promise1.then(function(value) {
+        console.log(value);
+        // expected output: "foo"
+      });
 
     //   dbRef.on("child_added", function(snapshot) {
     //       var voteValue = snapshot.key;
