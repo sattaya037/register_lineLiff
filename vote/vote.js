@@ -108,9 +108,6 @@ function firebaseHandlers() {
 
         if(snapshot.exists()){
             var content = '';
-            var key = snapshot.key;
-
-            console.log(snapshot.val());
             content +='<div class="card">';
             content +='<img class="card-img-top"'; 
             content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
@@ -124,16 +121,9 @@ function firebaseHandlers() {
             content +='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Primary</button>';
             content +='</div>';
             content +='</div>';
-
-
-            // var theDiv = document.getElementById("ex-table");
-            // theDiv.innerHTML += content; 
         }
         var theDiv = document.getElementById("ex-table");
-        theDiv.innerHTML += content; 
-
-
-    
+        theDiv.innerHTML += content;     
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
       });
@@ -146,7 +136,6 @@ function AlertFn(clicked_id){
       
             console.log(profile.userId)
 
-            pushFirebase(profile);
         }).catch(function(error) {
             window.alert('Error getting profile: ' + error);
         });
