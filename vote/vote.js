@@ -117,7 +117,7 @@ function firebaseHandlers(dbRef,lineID) {
           var voteValue = snapshot.key;
           key = dbRef.child(voteValue).child("result");
           key.orderByKey().equalTo("lineID").once("value",  snapshot => {
-            console.log(snapshot)
+            console.log(snapshot.val())
         })
         //   key.once("value",function(snapshot){
         //     if(snapshot.exists()){
