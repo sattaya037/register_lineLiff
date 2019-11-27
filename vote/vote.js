@@ -142,7 +142,6 @@ function firebaseHandlers() {
 
 function AlertFn(clicked_id){
     console.log(clicked_id)
-    document.getElementById(clicked_id).addEventListener('click', function() {
         liff.getProfile().then(function(profile) {
       
             console.log(profile.userId)
@@ -151,7 +150,7 @@ function AlertFn(clicked_id){
         }).catch(function(error) {
             window.alert('Error getting profile: ' + error);
         });
-    });
+   
     
 }
  
