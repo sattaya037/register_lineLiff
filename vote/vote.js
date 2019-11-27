@@ -132,56 +132,24 @@ function firebaseHandlers(dbRef,lineID) {
           content +='</div>';
           content +='</div>';
 
-          key = dbRef.child(voteValue).child("result");
-    
           
+          var key = dbRef.child(voteValue).child("result");
           key.orderByKey().equalTo("lineID").once("value",  snapshot => {
               
             snapshot.forEach(childSnapshot => {
                 var truth = childSnapshot.exists();
                 console.log(truth)
-                // if(childSnapshot.exists()){
-                //     console.log("true")
-                //     button = '<button type="button" class="btn btn-primary">Voted</button>'
-                //     return button
-                // }
             })
-            // if(snapshot.exists()){
-            //     console.log("in loop")
-            // }else{
-            //     console.log("exit")
-            // }
         })
+        var check = true;
         var theDiv = document.getElementById("ex-table");
-        theDiv.innerHTML += content;  
-        //   key.once("value",function(snapshot){
-        //     if(snapshot.exists()){
-        //         console.log("in loop")
 
-        //     }else{
-        //         console.log("exit")
-        //     }
-      
-        //   })
-    
-        // if(snapshot.exists()){
-        //     var content = '';
-        //     content +='<div class="card">';
-        //     content +='<img class="card-img-top"'; 
-        //     content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
-        //     content +='<div class="card-body">';
-        //     content +='<h5 class="card-title">';
-        //     content +=snapshot.key;
-        //     content +='</h5>';
-        //     content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
-        //     content +='</div>';
-        //     content +='<div class="card-footer">';
-        //     content +='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
-        //     content +='</div>';
-        //     content +='</div>';
-        // }
-        // var theDiv = document.getElementById("ex-table");
-        // theDiv.innerHTML += content;     
+        if(check==true){
+            button = '<button type="button" class="btn btn-primary">Voted</button>'
+            theDiv.innerHTML += content;  
+
+        }
+       
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
       });
