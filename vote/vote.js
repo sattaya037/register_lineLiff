@@ -162,6 +162,7 @@ function displayIsInClientInfo() {
        
         // document.getElementById('isInClientMessage').textContent = 'You are opening the app in the in-app browser of LINE.';
     } else {
+        console.log("external")
         // document.getElementById('isInClientMessage').textContent = 'You are opening the app in an external browser.';
     }
 }
