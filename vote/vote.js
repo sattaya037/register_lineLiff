@@ -118,14 +118,14 @@ function firebaseHandlers(dbRef,lineID) {
           key = dbRef.child(voteValue).child("result").child("lineID");
           key.on("value",function(snapshot){
             // console.log(snapshot.val());
-            console.log(snapshot.key);
+            console.log(snapshot.val() );
 
-            // if(snapshot.val() == null){
-            //     console.log("null")
-            // }else{
-            //     console.log("not null")
+            if(snapshot.val() == null){
+                console.log("null")
+            }else{
+                console.log("not null")
 
-            // }
+            }
           })
     
         // if(snapshot.exists()){
