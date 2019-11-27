@@ -120,16 +120,17 @@ function firebaseHandlers(dbRef,lineID) {
         dbRef.on("child_added", function(snapshot) {
             var voteValue = snapshot.key;
             var key = dbRef.child(voteValue).child("result");
-            key.orderByKey().equalTo("lineID").once("value", snapshot => { 
-              snapshot.forEach(childSnapshot => {
+            key.orderByKey().once("value", snapshot => { 
+              console.log(snapshot)
+                snapshot.forEach(childSnapshot => {
                   var truth = childSnapshot.exists();
                   var test = childSnapshot.val();
                   var test2 = childSnapshot.key;
 
-                  console.log(test)
-                  console.log(test2)
+                //   console.log(test)
+                //   console.log(test2)
 
-                  console.log(truth)
+                //   console.log(truth)
                   resolve(truth)
               })
           }) 
