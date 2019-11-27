@@ -114,9 +114,11 @@ function initializeApp() {
 */
 function firebaseHandlers(dbRef,lineID) {
       dbRef.on("child_added", function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-            console.log(childSnapshot.key)
-        })
+          var voteValue = snapshot.key;
+          console.log(voteValue)
+        // dbRef.on(function(childSnapshot) {
+            
+        // })
         // if(snapshot.exists()){
         //     var content = '';
         //     content +='<div class="card">';
