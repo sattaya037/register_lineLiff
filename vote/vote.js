@@ -112,7 +112,7 @@ function initializeApp() {
 /**
 * Toggle the login/logout buttons based on the isInClient status, and display a message accordingly
 */
-function firebaseHandlers(dbRef,lineID,callback) {
+function firebaseHandlers(dbRef,lineID) {
       dbRef.on("child_added", function(snapshot) {
           var voteValue = snapshot.key;
           var content = '';
@@ -132,6 +132,7 @@ function firebaseHandlers(dbRef,lineID,callback) {
           content +='</div>';
 
           key = dbRef.child(voteValue).child("result");
+          
           key.orderByKey().equalTo("lineID").once("value",  snapshot => {
             snapshot.forEach(childSnapshot => {
                 var truth = childSnapshot.exists();
@@ -149,7 +150,6 @@ function firebaseHandlers(dbRef,lineID,callback) {
             //     console.log("exit")
             // }
         })
-        console.log(callback)
         var theDiv = document.getElementById("ex-table");
         theDiv.innerHTML += content;  
         //   key.once("value",function(snapshot){
