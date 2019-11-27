@@ -113,6 +113,7 @@ function initializeApp() {
 * Toggle the login/logout buttons based on the isInClient status, and display a message accordingly
 */
 function firebaseHandlers(dbRef,lineID) {
+
       dbRef.on("child_added", function(snapshot) {
           var voteValue = snapshot.key;
           var content = '';
