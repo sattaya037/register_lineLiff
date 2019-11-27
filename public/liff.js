@@ -192,7 +192,7 @@ function registerButtonHandlers() {
             // toggleProfileData();
             console.log(profile.userId)
 
-            pushFirebase(profile);
+            // pushFirebase(profile);
         }).catch(function(error) {
             window.alert('Error getting profile: ' + error);
         });

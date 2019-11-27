@@ -163,17 +163,7 @@ function displayIsInClientInfo() {
         // document.getElementById('isInClientMessage').textContent = 'You are opening the app in the in-app browser of LINE.';
     } else {
         console.log("external")
-        liff.getProfile()
-        .then(profile => {
-            document.getElementById('liffLoginButton').classList.toggle('invisible');
-            document.getElementById('liffLogoutButton').classList.toggle('invisible');
-            document.getElementById('displaynamefield').innerHTML=profile.displayName;
-            document.getElementById("image").src=profile.pictureUrl; 
-            console.log('profile');
-        })
-        .catch((err) => {
-          console.log('error', err);
-        });
+        
         // document.getElementById('isInClientMessage').textContent = 'You are opening the app in an external browser.';
     }
 }
