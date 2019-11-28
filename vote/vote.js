@@ -161,7 +161,7 @@ function firebaseHandlers(dbRef,lineID) {
           content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
           content +='</div>';
           content +='<div class="card-footer">';
-          content +='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
+          content +='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" class="btn btn-primary">Vote</button>';
           content +='</div>';
           content +='</div>';
           var key = dbRef.child(voteValue).child("result");
@@ -174,7 +174,7 @@ function firebaseHandlers(dbRef,lineID) {
       });
 }
 
-function AlertFn(clicked_id){
+function Vote(clicked_id){
     console.log(clicked_id)
         liff.getProfile().then(function(profile) {
             var lineID =profile.userId;
