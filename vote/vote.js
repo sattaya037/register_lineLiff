@@ -124,8 +124,9 @@ function PromiseHandlers(dbRef,lineID) {
             var check=[];
             var key = dbRef.child(voteValue).child("result");
                 key.on("child_added",function(snapshot){
-                    console.log(snapshot.key)
+                    check.push(snapshot.key)
                 })
+            console.log(check)
             // var key = dbRef.child(voteValue).child("result");
             // key.orderByKey().equalTo("test").once("value", function(snapshot){
             //     if (!snapshot.exists( )) {
