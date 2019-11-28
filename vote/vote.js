@@ -119,13 +119,13 @@ function initializeApp() {
 
 function PromiseHandlers(dbRef,lineID) {
     var promise1 = new Promise(function(resolve, reject) {
-        dbRef.on("value", function(snapshot) {
+        dbRef.on("child_added", function(snapshot) {
             var voteValue = snapshot.key;
-            console.log(snapshot.val())
             var check=[];
-            snapshot.forEach(childSnapshot => { 
-                        console.log(childSnapshot.val().result.key)
-                });
+            var key = dbRef.child(voteValue).child("result");
+                key.on("child_added",function(snapshot){
+                    console.log(snapshot.key)
+                })
             // var key = dbRef.child(voteValue).child("result");
             // key.orderByKey().equalTo("test").once("value", function(snapshot){
             //     if (!snapshot.exists( )) {
