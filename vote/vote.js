@@ -155,6 +155,7 @@ function firebaseHandlers(dbRef,lineID) {
               // snapshot.forEach(childSnapshot => {
                   var truth = snapshot.exists();
                   console.log(truth)
+                  console.log(snapshot.numChildren())
               // })
              })
             });
