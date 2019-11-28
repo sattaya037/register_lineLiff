@@ -108,7 +108,7 @@ function PromiseHandlers(dbRef,lineID) {
             var key = dbRef.child(voteValue);
                 key.child("result").on("child_added", function(snapshot) {
                 if(snapshot.key == "test"){
-                    resolve(value)
+                    resolve(true)
                 }
 
             })
