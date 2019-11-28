@@ -190,6 +190,8 @@ function PromiseHandlers(dbRef,lineID) {
 }
 
 function firebaseHandlers(dbRef,lineID){
+    console.log(lineID)
+
     console.log(check)
 }
 
