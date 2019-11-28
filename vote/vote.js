@@ -84,7 +84,7 @@ function initializeApp() {
             var key = dbRef.child(voteValue);
             var check=[];
             key.child("result").on("child_added", function(snapshot) {
-                if(snapshot.key == lineID){
+                if(snapshot.key == "test"){
                     console.log(snapshot.key)
                 }
                 // snapshot.forEach(childSnapshot => {
