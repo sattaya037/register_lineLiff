@@ -162,7 +162,7 @@ function firebaseHandlers(dbRef,lineID) {
                 content +='</div>';
                 content +='</div>';
                 if(value == null){
-                    //  button =='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
+                     button =='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
 
                 }
                 var theDiv = document.getElementById("ex-table");
