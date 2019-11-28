@@ -149,7 +149,6 @@ function firebaseHandlers(dbRef,lineID) {
           content +='</div>';
           var key = dbRef.child(voteValue).child("result");
           var check =[];
-          console.log(snapshot.key[0])
 
           var promise1 = new Promise(function(resolve, reject) { 
             key.orderByKey().equalTo("test").once("value",  snapshot => {
