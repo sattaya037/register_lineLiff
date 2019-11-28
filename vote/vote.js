@@ -79,6 +79,8 @@ function initializeApp() {
           firebase.initializeApp(firebaseConfig);
           firebase.analytics();
           const dbRef = firebase.database().ref('HPY');
+      
+          
           // displayLiffData();
         displayIsInClientInfo();
         registerButtonHandlers();
@@ -102,15 +104,17 @@ function initializeApp() {
 function PromiseHandlers(dbRef,lineID) {
     var promise1 = new Promise(function(resolve, reject) { 
         dbRef.on("child_added", function(snapshot) {
-            var voteValue = snapshot.key;
-            var key = dbRef.child(voteValue).child("result");
-            key.child("result").on("child_added", function(snapshot) {
+            var voteValue =snapshot.key;
+            var key = dbRef.child(voteValue);
+                key.child("result").on("child_added", function(snapshot) {
                 if(snapshot.key == "test"){
-                    resolve(true);
+                    resolve(value)
                 }
 
-            }) 
-        });        
+            })
+            
+            
+          })        
       });
 
       promise1.then(function(value) {
