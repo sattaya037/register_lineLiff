@@ -62,10 +62,36 @@ function initializeLiff(myLiffId) {
  * Initialize the app by calling functions handling individual app components
  */
 function initializeApp() {
-    // displayLiffData();
-    displayIsInClientInfo();
-    registerButtonHandlers();
-    firebaseHandlers();
+    liff.getProfile()
+    .then(profile => {
+        const lineID = profile.userId
+        
+        var firebaseConfig = {
+            apiKey: "AIzaSyAH1pTXZy4XxpS0DfRVLwC93aZhWRnYiPQ",
+            authDomain: "ics-vote.firebaseapp.com",
+            databaseURL: "https://ics-vote.firebaseio.com",
+            projectId: "ics-vote",
+            storageBucket: "ics-vote.appspot.com",
+            messagingSenderId: "88696350608",
+            appId: "1:88696350608:web:780899d63f1cebc33cb515",
+            measurementId: "G-PLXJ6VBZ8D"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          firebase.analytics();
+        //   var fireHeading =  document.getElementById("fireHeading");
+          const dbRef = firebase.database().ref('HPY');
+          
+          // displayLiffData();
+        displayIsInClientInfo();
+        registerButtonHandlers();
+        PromiseHandlers(dbRef,lineID);
+        firebaseHandlers(dbRef,lineID);
+    })
+    .catch((err) => {
+      console.log('error', err);
+    });
+
     // check if the user is logged in/out, and disable inappropriate button
     if (liff.isLoggedIn()) {
         document.getElementById('liffLoginButton').disabled = true;
@@ -88,54 +114,84 @@ function initializeApp() {
 /**
 * Toggle the login/logout buttons based on the isInClient status, and display a message accordingly
 */
-function firebaseHandlers(profile) {
-    console.log(profile);
-    var firebaseConfig = {
-        apiKey: "AIzaSyAH1pTXZy4XxpS0DfRVLwC93aZhWRnYiPQ",
-        authDomain: "ics-vote.firebaseapp.com",
-        databaseURL: "https://ics-vote.firebaseio.com",
-        projectId: "ics-vote",
-        storageBucket: "ics-vote.appspot.com",
-        messagingSenderId: "88696350608",
-        appId: "1:88696350608:web:780899d63f1cebc33cb515",
-        measurementId: "G-PLXJ6VBZ8D"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-    //   var fireHeading =  document.getElementById("fireHeading");
-      const dbRef = firebase.database().ref('HPY');
-      dbRef.on("child_added", function(snapshot) {
 
-        if(snapshot.exists()){
-            var content = '';
-            content +='<div class="card">';
-            content +='<img class="card-img-top"'; 
-            content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
-            content +='<div class="card-body">';
-            content +='<h5 class="card-title">';
-            content +=snapshot.key;
-            content +='</h5>';
-            content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
-            content +='</div>';
-            content +='<div class="card-footer">';
-            content +='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Primary</button>';
-            content +='</div>';
-            content +='</div>';
-        }
-        var theDiv = document.getElementById("ex-table");
-        theDiv.innerHTML += content;     
-      }, function (errorObject) {
-        console.log("The read failed: " + errorObject.code);
+
+function PromiseHandlers(dbRef,lineID) {
+    var promise1 = new Promise(function(resolve, reject) {
+        dbRef.on("child_added", function(snapshot) {
+            var voteValue = snapshot.key;
+            var key = dbRef.child(voteValue).child("result");
+            key.orderByKey().equalTo("test").once("value", snapshot => { 
+                // console.log(snapshot.exists())
+                if (snapshot.exists()) {
+                    snapshot.forEach(childSnapshot => {
+                        var truth = childSnapshot.exists();
+                        resolve(truth)
+                    })
+                }else{
+                  
+                    resolve(false)
+
+                }
+            
+          }) 
+        });        
       });
+
+      promise1.then(function(value) {
+        console.log(value);
+      });
+
+    //   dbRef.on("child_added", function(snapshot) {
+    //       var voteValue = snapshot.key;
+    //       var content = '';
+    //       var button ='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
+    //       content +='<div class="card">';
+    //       content +='<img class="card-img-top"'; 
+    //       content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
+    //       content +='<div class="card-body">';
+    //       content +='<h5 class="card-title">';
+    //       content +=snapshot.key;
+    //       content +='</h5>';
+    //       content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
+    //       content +='</div>';
+    //       content +='<div class="card-footer">';
+    //       content +=button;
+    //       content +='</div>';
+    //       content +='</div>';
+    //       var key = dbRef.child(voteValue).child("result");
+    //       key.orderByKey().equalTo("lineID").once("value",  snapshot => {
+              
+    //         snapshot.forEach(childSnapshot => {
+    //             var truth = childSnapshot.exists();
+    //             console.log(truth)
+    //         })
+    //     })
+    //     var theDiv = document.getElementById("ex-table");
+    //     theDiv.innerHTML += content;  
+
+ 
+       
+    //   }, function (errorObject) {
+    //     console.log("The read failed: " + errorObject.code);
+    //   });
 }
 
 
 function AlertFn(clicked_id){
     console.log(clicked_id)
         liff.getProfile().then(function(profile) {
+            var lineID =profile.userId;
+            var lineName =profile.displayName;
+            const dbRef = firebase.database().ref('HPY');
+            dbRef.orderByKey().equalTo(clicked_id).once("value", function (snapshot) {
+                console.log(snapshot.val());
+                const usersRef = dbRef.child(clicked_id).child("result").child(lineID);
+                usersRef.set({
+                    lineName : lineName
+                  });
       
-            console.log(profile.userId)
+            })
 
         }).catch(function(error) {
             window.alert('Error getting profile: ' + error);
@@ -143,6 +199,8 @@ function AlertFn(clicked_id){
    
     
 }
+
+
  
 function displayIsInClientInfo() {
     if (liff.isInClient()) {
@@ -160,7 +218,6 @@ function displayIsInClientInfo() {
        
         // document.getElementById('isInClientMessage').textContent = 'You are opening the app in the in-app browser of LINE.';
     } else {
-        console.log("external")
         
         // document.getElementById('isInClientMessage').textContent = 'You are opening the app in an external browser.';
     }
@@ -170,43 +227,12 @@ function displayIsInClientInfo() {
 * Register event handlers for the buttons displayed in the app
 */
 function registerButtonHandlers() {
-    document.getElementById('getProfileButton').addEventListener('click', function() {
-        liff.getProfile().then(function(profile) {
-            document.getElementById('userIdProfileField').textContent = profile.userId;
-            document.getElementById('displayNameField').textContent = profile.displayName;
-
-            const profilePictureDiv = document.getElementById('profilePictureDiv');
-            if (profilePictureDiv.firstElementChild) {
-                profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
-            }
-            const img = document.createElement('img');
-            img.src = profile.pictureUrl;
-            img.alt = 'Profile Picture';
-            profilePictureDiv.appendChild(img);
-
-            document.getElementById('statusMessageField').textContent = profile.statusMessage;
-            // toggleProfileData();
-            console.log(profile.userId)
-
-            pushFirebase(profile);
-        }).catch(function(error) {
-            window.alert('Error getting profile: ' + error);
-        });
-    });
 
     // login call, only when external browser is used
     document.getElementById('liffLoginButton').addEventListener('click', function() {
         if (!liff.isLoggedIn()) {
             // set `redirectUri` to redirect the user to a URL other than the front page of your LIFF app.
             liff.login();
-            liff.getProfile()
-            .then(profile => {
-                registerButtonHandlers(profile);
-
-            })
-            .catch((err) => {
-              console.log('error', err);
-            });
         }
     });
 
