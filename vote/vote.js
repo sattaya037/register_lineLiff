@@ -107,7 +107,8 @@ function PromiseHandlers(dbRef,lineID) {
             var key = dbRef.child(voteValue);
             var promise1 = new Promise(function(resolve, reject) { 
                 key.child("result").on("child_added", function(snapshot) {
-                if(snapshot.key == "test"){
+                    console.log(snapshot.key)
+                if(snapshot.key == lineID){
                     resolve(true)
                 }else{
                     resolve(false)
