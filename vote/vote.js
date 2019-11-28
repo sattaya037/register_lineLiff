@@ -147,7 +147,7 @@ function firebaseHandlers(dbRef,lineID) {
             promise1.then(function(value) {
                 console.log(value);
                 var content = '';
-                var button ='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
+                var button ='';
                 content +='<div class="card">';
                 content +='<img class="card-img-top"'; 
                 content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
@@ -162,7 +162,8 @@ function firebaseHandlers(dbRef,lineID) {
                 content +='</div>';
                 content +='</div>';
                 if(value == null){
-                    button =null
+                    //  button =='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
+
                 }
                 var theDiv = document.getElementById("ex-table");
                 theDiv.innerHTML += content;  
