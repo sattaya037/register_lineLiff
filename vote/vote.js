@@ -102,7 +102,7 @@ function initializeApp() {
 
 
 function PromiseHandlers(dbRef,lineID) {
-    var promise1 = new Promise(function(resolve, reject) {
+    var promise1 = new Promise(function(resolve, reject) { 
         dbRef.on("child_added", function(snapshot) {
             var voteValue = snapshot.key;
             var key = dbRef.child(voteValue).child("result");
@@ -124,7 +124,7 @@ function PromiseHandlers(dbRef,lineID) {
       });
 
       promise1.then(function(value) {
-        console.log(value);
+        // console.log(value);
       });
 
 
@@ -148,15 +148,22 @@ function firebaseHandlers(dbRef,lineID) {
           content +='</div>';
           content +='</div>';
           var key = dbRef.child(voteValue).child("result");
-          key.orderByKey().equalTo("test").once("value",  snapshot => {
-              console.log(snapshot.val())
-              console.log(snapshot.key)
+          var promise1 = new Promise(function(resolve, reject) { 
+            key.orderByKey().equalTo("test").once("value",  snapshot => {
+                resolve(snapshot.val())
 
-            // snapshot.forEach(childSnapshot => {
-            //     var truth = childSnapshot.exists();
-            //     console.log(truth)
-            // })
-        })
+              // snapshot.forEach(childSnapshot => {
+              //     var truth = childSnapshot.exists();
+              //     console.log(truth)
+              // })
+             })
+            });
+            promise1.then(function(value) {
+                console.log(value);
+              });
+        
+
+   
         var theDiv = document.getElementById("ex-table");
         // theDiv.innerHTML += content;  
 
