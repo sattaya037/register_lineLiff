@@ -158,7 +158,7 @@ function firebaseHandlers(dbRef,lineID) {
             // })
         })
         var theDiv = document.getElementById("ex-table");
-        theDiv.innerHTML += content;  
+        // theDiv.innerHTML += content;  
 
  
        
