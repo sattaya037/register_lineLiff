@@ -79,7 +79,7 @@ function initializeApp() {
           firebase.initializeApp(firebaseConfig);
           firebase.analytics();
           const dbRef = firebase.database().ref('HPY');
-          dbRefc.child("uid").on('value', function (snapshot) {
+          dbRef.child("uid").on('value', function (snapshot) {
               console.log(snapshot.val())
               console.log(snapshot.key)
 
