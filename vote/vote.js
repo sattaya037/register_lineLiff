@@ -62,10 +62,7 @@ function initializeLiff(myLiffId) {
  * Initialize the app by calling functions handling individual app components
  */
 function initializeApp() {
-    liff.getProfile()
-    .then(profile => {
-        const lineID = profile.userId
-        
+
         var firebaseConfig = {
             apiKey: "AIzaSyAH1pTXZy4XxpS0DfRVLwC93aZhWRnYiPQ",
             authDomain: "ics-vote.firebaseapp.com",
@@ -85,12 +82,9 @@ function initializeApp() {
           // displayLiffData();
         displayIsInClientInfo();
         registerButtonHandlers();
-        PromiseHandlers(dbRef,lineID);
-        firebaseHandlers(dbRef,lineID);
-    })
-    .catch((err) => {
-      console.log('error', err);
-    });
+        PromiseHandlers(dbRef);
+        firebaseHandlers(dbRef);
+  
 
     // check if the user is logged in/out, and disable inappropriate button
     if (liff.isLoggedIn()) {
@@ -116,7 +110,7 @@ function initializeApp() {
 */
 
 
-function PromiseHandlers(dbRef,lineID) {
+function PromiseHandlers(dbRef) {
     var promise1 = new Promise(function(resolve, reject) {
         dbRef.on("child_added", function(snapshot) {
             var voteValue = snapshot.key;
