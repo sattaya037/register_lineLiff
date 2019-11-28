@@ -129,15 +129,14 @@ function PromiseHandlers(dbRef,lineID) {
                     check.push(false);
 
                 }else{
-                    console.log(snapshot.exists())
-                    snapshot.forEach(childSnapshot => {
-                        var truth = childSnapshot.exists();
-                        // resolve(truth)
-                        check.push(truth);
-                    })
+                    var truth = snapshot.exists();
+                    check.push(truth);
+
                 }
                 console.log(check);
           }) 
+          console.log(check);
+
         });        
       });
 
