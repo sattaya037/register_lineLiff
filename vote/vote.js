@@ -126,7 +126,7 @@ function PromiseHandlers(dbRef,lineID) {
                         if(childSnapshot.key == "test"){
                             console.log(true)
                             var check = true;
-                            firebaseHandlers(dbRef,lineID,check);
+                            firebaseHandlers(lineID,check);
 
                         }
                     })
