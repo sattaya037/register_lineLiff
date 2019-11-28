@@ -132,21 +132,7 @@ function PromiseHandlers(dbRef,lineID) {
 function firebaseHandlers(dbRef,lineID) {
           dbRef.on("child_added", function(snapshot) {
           var voteValue = snapshot.key;
-          var content = '';
-          var button ='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
-          content +='<div class="card">';
-          content +='<img class="card-img-top"'; 
-          content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
-          content +='<div class="card-body">';
-          content +='<h5 class="card-title">';
-          content +=snapshot.key;
-          content +='</h5>';
-          content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
-          content +='</div>';
-          content +='<div class="card-footer">';
-          content +=button;
-          content +='</div>';
-          content +='</div>';
+          
           var key = dbRef.child(voteValue).child("result");
           var promise1 = new Promise(function(resolve, reject) { 
             key.orderByKey().equalTo("test").once("value",  snapshot => {
@@ -159,8 +145,22 @@ function firebaseHandlers(dbRef,lineID) {
 
             promise1.then(function(value) {
                 console.log(value);
-                if(value == null){
-                    button =null
+                var content = '';
+                var button ='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
+                if(value == true){
+                    content +='<div class="card">';
+                    content +='<img class="card-img-top"'; 
+                    content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
+                    content +='<div class="card-body">';
+                    content +='<h5 class="card-title">';
+                    content +=snapshot.key;
+                    content +='</h5>';
+                    content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
+                    content +='</div>';
+                    content +='<div class="card-footer">';
+                    content +=button;
+                    content +='</div>';
+                    content +='</div>';
                 }
                 var theDiv = document.getElementById("ex-table");
                 theDiv.innerHTML += content;  
