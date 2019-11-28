@@ -149,11 +149,11 @@ function firebaseHandlers(dbRef,lineID) {
           content +='</div>';
           var key = dbRef.child(voteValue).child("result");
           var check =[];
+          console.log(snapshot.key[0])
 
           var promise1 = new Promise(function(resolve, reject) { 
             key.orderByKey().equalTo("test").once("value",  snapshot => {
                   var truth = snapshot.exists();
-                  check.push(truth);
                   resolve(truth)
               // })
              })
@@ -162,7 +162,6 @@ function firebaseHandlers(dbRef,lineID) {
             promise1.then(function(value) {
                 console.log(value)
 
-                console.log(check);
            
                 // var theDiv = document.getElementById("ex-table");
                 // theDiv.innerHTML += content;  
