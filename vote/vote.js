@@ -89,7 +89,6 @@ function initializeApp() {
         firebaseHandlers(dbRef,lineID);
     })
     .catch((err) => {
-      console.log('error', err);
       registerButtonHandlers();
 
     });
@@ -123,20 +122,21 @@ function PromiseHandlers(dbRef,lineID) {
         dbRef.on("child_added", function(snapshot) {
             var voteValue = snapshot.key;
             var key = dbRef.child(voteValue).child("result");
+            check=[];
             key.orderByKey().equalTo("test").once("value", snapshot => { 
                 // console.log(snapshot.exists())
                 if (snapshot.exists()) {
                     snapshot.forEach(childSnapshot => {
                         var truth = childSnapshot.exists();
-                        resolve(truth)
+                        // resolve(truth)
+                        check.push(truth);
                     })
                 }else{
-                  
-                    resolve(false)
-
+                    check.push(false);
                 }
             
           }) 
+          console.log(check);
         });        
       });
 
