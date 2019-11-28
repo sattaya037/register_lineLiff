@@ -161,10 +161,13 @@ function firebaseHandlers(dbRef,lineID) {
                 content +=button;
                 content +='</div>';
                 content +='</div>';
+                console.log(button)
                 if(value == null){
-                     button =='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
+                     button ='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
 
                 }
+                console.log(button)
+
                 var theDiv = document.getElementById("ex-table");
                 theDiv.innerHTML += content;  
 
