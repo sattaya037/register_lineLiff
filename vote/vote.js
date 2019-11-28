@@ -150,13 +150,10 @@ function firebaseHandlers(dbRef,lineID) {
           var key = dbRef.child(voteValue).child("result");
           var promise1 = new Promise(function(resolve, reject) { 
             key.orderByKey().equalTo("test").once("value",  snapshot => {
-                // resolve(snapshot.val())
-
-              // snapshot.forEach(childSnapshot => {
                   var truth = snapshot.exists();
                   console.log(truth)
-                  console.log(snapshot.numChildren())
-              // })
+                 resolve(truth)
+
              })
             });
 
