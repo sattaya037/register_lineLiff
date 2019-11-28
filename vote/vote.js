@@ -123,6 +123,7 @@ function PromiseHandlers(dbRef,lineID) {
             var voteValue = snapshot.key;
             var key = dbRef.child(voteValue).child("result");
             key.orderByKey().equalTo("test").once("child_added", function(snapshot){
+                console.log(snapshot.val())
                 if (!snapshot.exists()) {
                     console.log(false);
                 }else{
