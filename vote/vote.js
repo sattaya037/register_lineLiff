@@ -124,10 +124,10 @@ function PromiseHandlers(dbRef,lineID) {
             var key = dbRef.child(voteValue).child("result");
                 key.on("child_added", function(snapshot) {
                     var check=[];
-                    if(snapshot.key){
-                        check.push(snapshot.key)
-                    }
-                    console.log(check)
+                    snapshot.forEach(childSnapshot => {
+                        console.log(childSnapshot.key)
+
+                    })
                 })
             // var key = dbRef.child(voteValue).child("result");
             // key.orderByKey().equalTo("test").once("value", function(snapshot){
