@@ -152,7 +152,7 @@ function firebaseHandlers(dbRef,lineID) {
             key.orderByKey().equalTo("test").once("value",  snapshot => {
                   var truth = snapshot.exists();
                   console.log(truth)
-                  console.log(snapshot.numChildren())
+                  console.log(snapshot)
                   
               // })
              })
