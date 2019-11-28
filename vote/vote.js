@@ -80,15 +80,18 @@ function initializeApp() {
           firebase.analytics();
           const dbRef = firebase.database().ref('HPY');
           dbRef.on("child_added", function(snapshot) {
-              var voteValue =snapshot.key;
+            var voteValue =snapshot.key;
             var key = dbRef.child(voteValue);
+            var check=[];
             key.child("result").on("child_added", function(snapshot) {
-                console.log(snapshot.key)
+                snapshot.forEach(childSnapshot => {
+                    console.log(childSnapshot)
+                    console.log(childSnapshot.key)
+
+                })
+
 
             })
-     
-
-
           })
           // displayLiffData();
         displayIsInClientInfo();
