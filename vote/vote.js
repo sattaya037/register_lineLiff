@@ -78,9 +78,10 @@ function initializeApp() {
           // Initialize Firebase
           firebase.initializeApp(firebaseConfig);
           firebase.analytics();
-        //   var fireHeading =  document.getElementById("fireHeading");
           const dbRef = firebase.database().ref('HPY');
-          
+          dbRef.child("child_added").child("result").on("child_added",function(snapshot) {
+              console.log(snapshot.key)
+          })
           // displayLiffData();
         displayIsInClientInfo();
         registerButtonHandlers();
@@ -133,7 +134,6 @@ function firebaseHandlers(dbRef,lineID) {
           dbRef.on("child_added", function(snapshot) {
           var voteValue = snapshot.key;
           var content = '';
-          var button ='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
           content +='<div class="card">';
           content +='<img class="card-img-top"'; 
           content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
@@ -144,28 +144,13 @@ function firebaseHandlers(dbRef,lineID) {
           content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
           content +='</div>';
           content +='<div class="card-footer">';
-          content +=button;
+          content +='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
           content +='</div>';
           content +='</div>';
           var key = dbRef.child(voteValue).child("result");
-          var check =[];
-
-          var promise1 = new Promise(function(resolve, reject) { 
-            key.orderByKey().equalTo("test").once("value",  snapshot => {
-                  var truth = snapshot.exists();
-                  resolve(truth)
-              // })
-             })
-            });
-
-            promise1.then(function(value) {
-                console.log(value)
-
-           
-                // var theDiv = document.getElementById("ex-table");
-                // theDiv.innerHTML += content;  
-
-              });
+          var theDiv = document.getElementById("ex-table");
+          theDiv.innerHTML += content;  
+    
        
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
