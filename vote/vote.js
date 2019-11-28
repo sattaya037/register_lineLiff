@@ -153,9 +153,8 @@ function firebaseHandlers(dbRef,lineID) {
           var promise1 = new Promise(function(resolve, reject) { 
             key.orderByKey().equalTo("test").once("value",  snapshot => {
                   var truth = snapshot.exists();
-                  console.log(truth)
-                  console.log(snapshot)
                   check.push(truth);
+                  resolve(truth)
               // })
              })
             });
