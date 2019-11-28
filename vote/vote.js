@@ -125,17 +125,17 @@ function PromiseHandlers(dbRef,lineID) {
             var check=[];
             key.orderByKey().equalTo("test").once("value", snapshot => { 
                 // console.log(snapshot.exists())
-                if (snapshot.exists()) {
+                if (!snapshot.exists()) {
+                    check.push(false);
+
+                }else{
                     snapshot.forEach(childSnapshot => {
                         var truth = childSnapshot.exists();
                         // resolve(truth)
                         check.push(truth);
                     })
-                }else{
-                    check.push(false);
                 }
                 console.log(check);
-
           }) 
         });        
       });
