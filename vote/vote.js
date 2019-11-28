@@ -125,7 +125,9 @@ function PromiseHandlers(dbRef,lineID) {
             var check=[];
                 key.on("child_added", function(snapshot) {
                     snapshot.forEach(childSnapshot => {
-                        check.push(childSnapshot.key)
+                        if(childSnapshot.key != null){
+                            check.push(childSnapshot.key)
+                        }
                     })
                     console.log(check)
 
