@@ -162,7 +162,7 @@ function firebaseHandlers(dbRef,lineID) {
                 content +='</div>';
                 console.log(content)
                 if(value == true){
-                    button ='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Voted</button>'
+                    button =='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Voted</button>'
                     console.log(content)
 
                 }
