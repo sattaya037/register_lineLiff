@@ -78,16 +78,13 @@ function initializeApp() {
           // Initialize Firebase
           firebase.initializeApp(firebaseConfig);
           firebase.analytics();
+        //   var fireHeading =  document.getElementById("fireHeading");
           const dbRef = firebase.database().ref('HPY');
-          dbRef.on("value", function(snapshot) {
-            var voteValue = snapshot.key;
-             snapshot.forEach(childSnapshot => {
-                console.log(childSnapshot.key)
-             })
-          })
-
+          
+          // displayLiffData();
         displayIsInClientInfo();
         registerButtonHandlers();
+        PromiseHandlers(dbRef,lineID);
         firebaseHandlers(dbRef,lineID);
     })
     .catch((err) => {
@@ -104,12 +101,39 @@ function initializeApp() {
 }
 
 
+function PromiseHandlers(dbRef,lineID) {
+    var promise1 = new Promise(function(resolve, reject) { 
+        dbRef.on("child_added", function(snapshot) {
+            var voteValue = snapshot.key;
+            var key = dbRef.child(voteValue).child("result");
+            key.orderByKey().equalTo("test").once("value", snapshot => { 
+                // console.log(snapshot.exists())
+                if (snapshot.exists()) {
+                    snapshot.forEach(childSnapshot => {
+                        var truth = childSnapshot.exists();
+                        resolve(truth)
+                    })
+                }else{
+                  
+                    resolve(false)
 
+                }
+            
+          }) 
+        });        
+      });
+
+      promise1.then(function(value) {
+        // console.log(value);
+      });
+
+
+}
 function firebaseHandlers(dbRef,lineID) {
           dbRef.on("child_added", function(snapshot) {
           var voteValue = snapshot.key;
           var content = '';
-          var button ='<button id="'+snapshot.key+'" onClick="vote(this.id)" type="button" class="btn btn-primary">Vote</button>';
+          var button ='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
           content +='<div class="card">';
           content +='<img class="card-img-top"'; 
           content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
@@ -123,15 +147,33 @@ function firebaseHandlers(dbRef,lineID) {
           content +=button;
           content +='</div>';
           content +='</div>';
-          var theDiv = document.getElementById("ex-table");
-          theDiv.innerHTML += content;  
+          var key = dbRef.child(voteValue).child("result");
+          var promise1 = new Promise(function(resolve, reject) { 
+            key.orderByKey().equalTo("test").once("value",  snapshot => {
+                  var truth = snapshot.exists();
+                  console.log(truth)
+                  console.log(snapshot.numChildren())
+                  
+              // })
+             })
+            });
+
+            promise1.then(function(value) {
+                console.log(value);
+                if(value == null){
+                    button =null
+                }
+                var theDiv = document.getElementById("ex-table");
+                theDiv.innerHTML += content;  
+
+              });
        
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
       });
 }
 
-function vote(clicked_id){
+function AlertFn(clicked_id){
     console.log(clicked_id)
         liff.getProfile().then(function(profile) {
             var lineID =profile.userId;
