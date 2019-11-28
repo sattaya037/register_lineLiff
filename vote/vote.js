@@ -148,12 +148,14 @@ function firebaseHandlers(dbRef,lineID) {
           content +='</div>';
           content +='</div>';
           var key = dbRef.child(voteValue).child("result");
-          key.orderByKey().equalTo("lineID").once("value",  snapshot => {
-              
-            snapshot.forEach(childSnapshot => {
-                var truth = childSnapshot.exists();
-                console.log(truth)
-            })
+          key.orderByKey().equalTo("test").once("value",  snapshot => {
+              console.log(snapshot.val())
+              console.log(snapshot.key)
+
+            // snapshot.forEach(childSnapshot => {
+            //     var truth = childSnapshot.exists();
+            //     console.log(truth)
+            // })
         })
         var theDiv = document.getElementById("ex-table");
         theDiv.innerHTML += content;  
