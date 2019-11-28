@@ -128,6 +128,9 @@ function PromiseHandlers(dbRef,lineID) {
                         if(childSnapshot.key == "test"){
                             check.push(childSnapshot.key)
                             console.log(true)
+                            var check = true;
+                            firebaseHandlers(dbRef,lineID,check);
+
                         }
                     })
                     console.log(check)
@@ -184,6 +187,10 @@ function PromiseHandlers(dbRef,lineID) {
     //   }, function (errorObject) {
     //     console.log("The read failed: " + errorObject.code);
     //   });
+}
+
+function firebaseHandlers(dbRef,lineID){
+    console.log(check)
 }
 
 
