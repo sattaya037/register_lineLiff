@@ -149,22 +149,22 @@ function firebaseHandlers(dbRef,lineID) {
           content +='</div>';
           var key = dbRef.child(voteValue).child("result");
           var promise1 = new Promise(function(resolve, reject) { 
+            var check =[];
             key.orderByKey().equalTo("test").once("value",  snapshot => {
                   var truth = snapshot.exists();
                   console.log(truth)
                   console.log(snapshot)
-                  
+                  resolve(truth)
               // })
              })
             });
 
             promise1.then(function(value) {
-                console.log(value);
-                if(value == null){
-                    button =null
-                }
-                var theDiv = document.getElementById("ex-table");
-                theDiv.innerHTML += content;  
+                check.push(value);
+                console.log(check);
+           
+                // var theDiv = document.getElementById("ex-table");
+                // theDiv.innerHTML += content;  
 
               });
        
