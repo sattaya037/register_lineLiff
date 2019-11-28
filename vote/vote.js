@@ -79,7 +79,7 @@ function initializeApp() {
           firebase.initializeApp(firebaseConfig);
           firebase.analytics();
           const dbRef = firebase.database().ref('HPY');
-          dbRef.on("child_added", function(snapshot) {
+          dbRef.on("value", function(snapshot) {
             var voteValue = snapshot.key;
              snapshot.forEach(childSnapshot => {
                 console.log(childSnapshot.key)
