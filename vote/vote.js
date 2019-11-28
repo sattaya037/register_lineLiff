@@ -79,7 +79,7 @@ function initializeApp() {
           firebase.initializeApp(firebaseConfig);
           firebase.analytics();
           const dbRef = firebase.database().ref('HPY');
-          dbRef.child("child_added").child("result").on("child_added",function(snapshot) {
+          dbRef.child("child_added").on("child_added",function(snapshot) {
               console.log(snapshot.key)
           })
           // displayLiffData();
