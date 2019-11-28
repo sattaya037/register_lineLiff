@@ -134,9 +134,9 @@ function PromiseHandlers(dbRef,lineID) {
                 }else{
                     check.push(false);
                 }
-            
+                console.log(check);
+
           }) 
-          console.log(check);
         });        
       });
 
