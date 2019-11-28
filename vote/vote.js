@@ -82,23 +82,18 @@ function initializeApp() {
           dbRef.on("child_added", function(snapshot) {
             var voteValue =snapshot.key;
             var key = dbRef.child(voteValue);
-            var check=[];
-            key.child("result").on("child_added", function(snapshot) {
-                if(snapshot.key == "test"){
-                    console.log(snapshot.key)
-                }else{
-                    console.log("null")
-
-                }
-                // snapshot.forEach(childSnapshot => {
-                //     console.log(childSnapshot)
-                //     console.log(childSnapshot.key)
-
-                // })
-
-
-            })
+            const check =function(){
+                key.child("result").on("child_added", function(snapshot) {
+                    if(snapshot.key == "test"){
+                       return true;
+                    }
+    
+                })
+            } 
+            
+            console.log(check);
           })
+          
           // displayLiffData();
         displayIsInClientInfo();
         registerButtonHandlers();
