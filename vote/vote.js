@@ -118,7 +118,6 @@ function initializeApp() {
 
 
 function PromiseHandlers(dbRef,lineID) {
-    var promise1 = new Promise(function(resolve, reject) {
         dbRef.on("child_added", function(snapshot) {
             var voteValue = snapshot.key;
             var key = dbRef.child(voteValue);
@@ -145,51 +144,44 @@ function PromiseHandlers(dbRef,lineID) {
             // })
   
         });        
-      });
-
-      promise1.then(function(value) {
-        console.log(value);
-      });
-
-    //   dbRef.on("child_added", function(snapshot) {
-    //       var voteValue = snapshot.key;
-    //       var content = '';
-    //       var button ='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
-    //       content +='<div class="card">';
-    //       content +='<img class="card-img-top"'; 
-    //       content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
-    //       content +='<div class="card-body">';
-    //       content +='<h5 class="card-title">';
-    //       content +=snapshot.key;
-    //       content +='</h5>';
-    //       content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
-    //       content +='</div>';
-    //       content +='<div class="card-footer">';
-    //       content +=button;
-    //       content +='</div>';
-    //       content +='</div>';
-    //       var key = dbRef.child(voteValue).child("result");
-    //       key.orderByKey().equalTo("lineID").once("value",  snapshot => {
-              
-    //         snapshot.forEach(childSnapshot => {
-    //             var truth = childSnapshot.exists();
-    //             console.log(truth)
-    //         })
-    //     })
-    //     var theDiv = document.getElementById("ex-table");
-    //     theDiv.innerHTML += content;  
-
- 
-       
-    //   }, function (errorObject) {
-    //     console.log("The read failed: " + errorObject.code);
-    //   });
 }
 
 function firebaseHandlers(dbRef,lineID,check){
     console.log(lineID)
-
     console.log(check)
+      dbRef.on("child_added", function(snapshot) {
+          var voteValue = snapshot.key;
+          var content = '';
+          var button ='<button id="'+snapshot.key+'" onClick="AlertFn(this.id)" type="button" class="btn btn-primary">Vote</button>';
+          content +='<div class="card">';
+          content +='<img class="card-img-top"'; 
+          content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
+          content +='<div class="card-body">';
+          content +='<h5 class="card-title">';
+          content +=snapshot.key;
+          content +='</h5>';
+          content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
+          content +='</div>';
+          content +='<div class="card-footer">';
+          content +=button;
+          content +='</div>';
+          content +='</div>';
+          var key = dbRef.child(voteValue).child("result");
+          key.orderByKey().equalTo("lineID").once("value",  snapshot => {
+              
+            snapshot.forEach(childSnapshot => {
+                var truth = childSnapshot.exists();
+                console.log(truth)
+            })
+        })
+        var theDiv = document.getElementById("ex-table");
+        theDiv.innerHTML += content;  
+
+ 
+       
+      }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+      });
 }
 
 
