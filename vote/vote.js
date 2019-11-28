@@ -121,17 +121,19 @@ function PromiseHandlers(dbRef,lineID) {
     var promise1 = new Promise(function(resolve, reject) {
         dbRef.on("child_added", function(snapshot) {
             var voteValue = snapshot.key;
-            var key = dbRef.child(voteValue).child("result");
-            key.orderByKey().equalTo("test").once("child_added", function(snapshot){
-                console.log(snapshot.val())
-                if (!snapshot.exists()) {
-                    console.log(false);
-                }else{
-                    var truth = snapshot.exists();
-                    resolve(truth)
+            snapshot.forEach(childSnapshot => { 
+                        console.log(childSnapshot)
+                });
+            // var key = dbRef.child(voteValue).child("result");
+            // key.orderByKey().equalTo("test").once("value", function(snapshot){
+            //     if (!snapshot.exists()) {
+            //         console.log(false);
+            //     }else{
+            //         var truth = snapshot.exists();
+            //         console.log(truth);
 
-                }
-            })
+            //     }
+            // })
   
         });        
       });
