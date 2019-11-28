@@ -120,7 +120,7 @@ function initializeApp() {
 function PromiseHandlers(dbRef,lineID) {
     var promise1 = new Promise(function(resolve, reject) {
         dbRef.on("value", function(snapshot) {
-            var voteValue = snapshot.val();
+            var voteValue = snapshot.val().result;
             console.log(voteValue);
             console.log(snapshot.val().result)
             var check=[];
