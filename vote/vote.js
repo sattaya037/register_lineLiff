@@ -105,7 +105,7 @@ function PromiseHandlers(dbRef,lineID) {
         dbRef.on("child_added", function(snapshot) {
             var voteValue =snapshot.key;
             var key = dbRef.child(voteValue);
-            var promise1 = new Promise(function(resolve, reject) { 
+            const  promise1 = new Promise(function(resolve, reject) { 
                 key.child("result").on("child_added", function(snapshot) {
                     console.log(snapshot.key)
                 if(snapshot.key == lineID){
@@ -116,15 +116,17 @@ function PromiseHandlers(dbRef,lineID) {
                 }
             });
             })
-            promise1.then(function(value) {
-                console.log(value);
+            let thenProm= promise1.then(function(value) {
+                return value;
+
               });
-        
-            
+              console.log(thenProm);
+
             
           })        
+      
+          console.log(thenProm);
 
- 
 
 }
 function firebaseHandlers(dbRef,lineID) {
