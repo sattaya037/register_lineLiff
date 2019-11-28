@@ -107,8 +107,11 @@ function PromiseHandlers(dbRef,lineID) {
             var voteValue =snapshot.key;
             var key = dbRef.child(voteValue);
                 key.child("result").on("child_added", function(snapshot) {
-                if(snapshot.key == "test"){
+                if(snapshot.key == "fsdf"){
                     resolve(true)
+                }else{
+                    resolve(false)
+
                 }
 
             })
