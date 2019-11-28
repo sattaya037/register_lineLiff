@@ -124,9 +124,8 @@ function PromiseHandlers(dbRef,lineID) {
                 key.on("child_added", function(snapshot) {
                     snapshot.forEach(childSnapshot => {
                         if(childSnapshot.key == "test"){
-                            console.log(true)
                             var check = true;
-                            firebaseHandlers(lineID,check);
+                            firebaseHandlers(check);
 
                         }
                     })
