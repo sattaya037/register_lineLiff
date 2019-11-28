@@ -121,11 +121,13 @@ function PromiseHandlers(dbRef,lineID) {
     var promise1 = new Promise(function(resolve, reject) {
         dbRef.on("child_added", function(snapshot) {
             var voteValue = snapshot.key;
-            console.log(snapshot.val().result)
-            var check=[];
             var key = dbRef.child(voteValue).child("result");
                 key.on("child_added", function(snapshot) {
-                    console.log(snapshot.key)
+                    var check=[];
+                    if(snapshot.key){
+                        check.push(snapshot.key)
+                    }
+                    console.log(check)
                 })
             // var key = dbRef.child(voteValue).child("result");
             // key.orderByKey().equalTo("test").once("value", function(snapshot){
