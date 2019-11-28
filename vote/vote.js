@@ -81,10 +81,9 @@ function initializeApp() {
           const dbRef = firebase.database().ref('HPY');
           dbRef.on("child_added", function(snapshot) {
               var voteValue =snapshot.key;
-            var key = dbRef.child(voteValue).child("result");
-            key.on("child_added", function(snapshot) {
+            var key = dbRef.child(voteValue);
+            key.child("result").on("child_added", function(snapshot) {
                 console.log(snapshot.key)
-                console.log(snapshot.val())
 
             })
      
