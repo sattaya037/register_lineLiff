@@ -148,19 +148,21 @@ function firebaseHandlers(dbRef,lineID) {
           content +='</div>';
           content +='</div>';
           var key = dbRef.child(voteValue).child("result");
+          var check =[];
+
           var promise1 = new Promise(function(resolve, reject) { 
-            var check =[];
             key.orderByKey().equalTo("test").once("value",  snapshot => {
                   var truth = snapshot.exists();
                   console.log(truth)
                   console.log(snapshot)
-                  resolve(truth)
+                  check.push(truth);
               // })
              })
             });
 
             promise1.then(function(value) {
-                check.push(value);
+                console.log(value)
+
                 console.log(check);
            
                 // var theDiv = document.getElementById("ex-table");
