@@ -83,10 +83,8 @@ function initializeApp() {
             var voteValue =snapshot.key;
             var key = dbRef.child(voteValue);
             var check=[];
-            key.child("result").on("value", function(snapshot) {
+            key.child("result").equalTo("test").on("child_added", function(snapshot) {
                 console.log(snapshot.val())
-                console.log(snapshot.key)
-
                 // snapshot.forEach(childSnapshot => {
                 //     console.log(childSnapshot)
                 //     console.log(childSnapshot.key)
