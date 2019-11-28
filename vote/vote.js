@@ -117,37 +117,7 @@ function initializeApp() {
 */
 
 
-function PromiseHandlers(dbRef,lineID) {
-        dbRef.on("child_added", function(snapshot) {
-            var voteValue = snapshot.key;
-            var key = dbRef.child(voteValue);
-                key.on("child_added", function(snapshot) {
-                    snapshot.forEach(childSnapshot => {
-                        if(childSnapshot.key == "test"){
-                            var check = true;
-                            firebaseHandlers(check);
-
-                        }
-                    })
-                    
-                })
-            // var key = dbRef.child(voteValue).child("result");
-            // key.orderByKey().equalTo("test").once("value", function(snapshot){
-            //     if (!snapshot.exists( )) {
-            //         console.log(false);
-            //     }else{
-            //         var truth = snapshot.exists();
-            //         console.log(truth);
-
-            //     }
-            // })
-  
-        });        
-}
-
-function firebaseHandlers(dbRef,lineID,check){
-    console.log(lineID)
-    console.log(check)
+function firebaseHandlers(dbRef,lineID) {
       dbRef.on("child_added", function(snapshot) {
           var voteValue = snapshot.key;
           var content = '';
@@ -182,7 +152,6 @@ function firebaseHandlers(dbRef,lineID,check){
         console.log("The read failed: " + errorObject.code);
       });
 }
-
 
 function AlertFn(clicked_id){
     console.log(clicked_id)
