@@ -129,6 +129,7 @@ function PromiseHandlers(dbRef,lineID) {
                     check.push(false);
 
                 }else{
+                    console.log(snapshot.exists())
                     snapshot.forEach(childSnapshot => {
                         var truth = childSnapshot.exists();
                         // resolve(truth)
