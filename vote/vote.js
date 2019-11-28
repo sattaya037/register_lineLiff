@@ -122,18 +122,15 @@ function PromiseHandlers(dbRef,lineID) {
         dbRef.on("child_added", function(snapshot) {
             var voteValue = snapshot.key;
             var key = dbRef.child(voteValue);
-            var check=[];
                 key.on("child_added", function(snapshot) {
                     snapshot.forEach(childSnapshot => {
                         if(childSnapshot.key == "test"){
-                            check.push(childSnapshot.key)
                             console.log(true)
                             var check = true;
                             firebaseHandlers(dbRef,lineID,check);
 
                         }
                     })
-                    console.log(check)
                     
                 })
             // var key = dbRef.child(voteValue).child("result");
