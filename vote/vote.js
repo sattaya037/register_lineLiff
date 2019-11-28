@@ -160,12 +160,16 @@ function firebaseHandlers(dbRef,lineID) {
             });
             promise1.then(function(value) {
                 console.log(value);
+                if(value == null){
+
+                }
+                var theDiv = document.getElementById("ex-table");
+                theDiv.innerHTML += content;  
+
               });
         
 
    
-        var theDiv = document.getElementById("ex-table");
-        // theDiv.innerHTML += content;  
 
  
        
