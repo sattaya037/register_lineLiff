@@ -88,7 +88,8 @@ function initializeApp() {
 /**
 * Toggle the login/logout buttons based on the isInClient status, and display a message accordingly
 */
-function firebaseHandlers() {
+function firebaseHandlers(profile) {
+    console.log(profile);
     var firebaseConfig = {
         apiKey: "AIzaSyAH1pTXZy4XxpS0DfRVLwC93aZhWRnYiPQ",
         authDomain: "ics-vote.firebaseapp.com",
@@ -200,10 +201,8 @@ function registerButtonHandlers() {
             liff.login();
             liff.getProfile()
             .then(profile => {
-                document.getElementById('liffLoginButton').classList.toggle('invisible');
-                document.getElementById('liffLogoutButton').classList.toggle('invisible');
-                document.getElementById('displaynamefield').innerHTML=profile.displayName;
-                console.log('profile');
+                registerButtonHandlers(profile);
+
             })
             .catch((err) => {
               console.log('error', err);
