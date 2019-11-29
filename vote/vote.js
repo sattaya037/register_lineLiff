@@ -104,9 +104,14 @@ function PromiseHandlers(dbRef,lineID) {
         dbRef.child("Voters").orderByKey().equalTo(lineID).once("child_added", function(snapshot) {
             var voters =snapshot.key;
             var check = true;
-            console.log(voters)
             console.log(snapshot.exists())
+            if(!snapshot.exists()){
+                console.log("true")
 
+            }else{
+                console.log("flase")
+
+            }
             // if(voters != lineID){
             //     firebaseHandlers(dbRef,lineID,check);
             //     console.log("no vote")
