@@ -163,8 +163,8 @@ function firebaseHandlers(dbRef,lineID,check) {
 }
 
 function Vote(clicked_id){
-    console.log(clicked_id)
     if(clicked_id =="voted" ){
+        alert('You have voted.');
 
     }else{
         liff.getProfile().then(function(profile) {
