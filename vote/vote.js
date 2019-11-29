@@ -1,10 +1,10 @@
 window.onload = function() {
     const useNodeJS = true;   // if you are not using a node server, set this value to false
     const defaultLiffId = "1553436015-04nm9w1G";   // change the default LIFF value if you are not using a node server
-
+  
     // DO NOT CHANGE THIS
     let myLiffId = "";
-
+  
     // if node is used, fetch the environment variable and pass it to the LIFF method
     // otherwise, pass defaultLiffId
     if (useNodeJS) {
@@ -24,26 +24,26 @@ window.onload = function() {
         myLiffId = defaultLiffId;
         initializeLiffOrDie(myLiffId);
     }
-};
-
-/**
-* Check if myLiffId is null. If null do not initiate liff.
-* @param {string} myLiffId The LIFF ID of the selected element
-*/
-function initializeLiffOrDie(myLiffId) {
+  };
+  
+  /**
+  * Check if myLiffId is null. If null do not initiate liff.
+  * @param {string} myLiffId The LIFF ID of the selected element
+  */
+  function initializeLiffOrDie(myLiffId) {
     if (!myLiffId) {
         document.getElementById("liffAppContent").classList.add('invisible');
         document.getElementById("liffIdErrorMessage").classList.remove('invisible');
     } else {
         initializeLiff(myLiffId);
     }
-}
-
-/**
-* Initialize LIFF
-* @param {string} myLiffId The LIFF ID of the selected element
-*/
-function initializeLiff(myLiffId) {
+  }
+  
+  /**
+  * Initialize LIFF
+  * @param {string} myLiffId The LIFF ID of the selected element
+  */
+  function initializeLiff(myLiffId) {
     liff
         .init({
             liffId: myLiffId
@@ -56,12 +56,12 @@ function initializeLiff(myLiffId) {
             document.getElementById("liffAppContent").classList.add('invisible');
             document.getElementById("liffInitErrorMessage").classList.remove('invisible');
         });
-}
-
-/**
- * Initialize the app by calling functions handling individual app components
- */
-function initializeApp() {
+  }
+  
+  /**
+  * Initialize the app by calling functions handling individual app components
+  */
+  function initializeApp() {
     liff.getProfile()
     .then(profile => {
         const lineID = profile.userId
@@ -90,36 +90,36 @@ function initializeApp() {
       console.log('error', err);
       registerButtonHandlers();
     });
-
+  
     // check if the user is logged in/out, and disable inappropriate button
     if (liff.isLoggedIn()) {
         document.getElementById('liffLoginButton').disabled = true;
     } else {
         document.getElementById('liffLogoutButton').disabled = true;
     }
-}
-
-
-function PromiseHandlers(dbRef,lineID) {
+  }
+  
+  
+  function PromiseHandlers(dbRef,lineID) {
         dbRef.child("Voters").orderByKey().equalTo(lineID).once("value", function(snapshot) {
             var check = snapshot.exists();
             console.log(check)
              firebaseHandlers(dbRef,check);
           })        
-}
-
-function firebaseHandlers(dbRef,check) {
+  }
+  
+  function firebaseHandlers(dbRef,check) {
     console.log(check);
           dbRef.child("choice").on("child_added", function(snapshot) {
             var content = ''; 
             var button ='';
             if(check == true){
                 button ='<button id="voted" onClick="Vote(this.id)" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Voted</button>';
-
-
+  
+  
             }else{
                 button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" class="btn btn-primary">Vote</button>';
-
+  
             }        
             content +='<div class="card">';
             content +='<img class="card-img-top"'; 
@@ -141,32 +141,37 @@ function firebaseHandlers(dbRef,check) {
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
       });
-}
-
-function Vote(clicked_id){
-
+  }
+  
+  function Vote(clicked_id){
+  
+    
+  
     if(clicked_id =="voted" ){
         var model ='';
             model +='<div class="modal fade" id="myModal">';
-            model +='<div class="modal-dialog">';
+            model +='<div class="modal-dialog modal-sm">';
             model +='<div class="modal-content">';
             model +='<div class="modal-header">';
-            model +='<h4 class="modal-title">Modal Heading</h4>';
+            model +='<h4 class="modal-title">Confirm</h4>';
             model +='<button type="button" class="close" data-dismiss="modal">&times;</button>';
             model +='</div>';
             model +='<div class="modal-body">';
-            model +='Modal body..';
+            model +='You want to vote '+clicked_id+'?';
             model +='</div>';
+  
             model +='<div class="modal-footer">';
+            model +='<button type="button" id="confirmVote" value="" class="btn btn-secondary"  value="'+clicked_id+'" data-dismiss="modal">Confirm</button>';
             model +='</div>';
-            model +='<button onClick="confirm()" id="confirmVote" type="button" class="btn btn-danger" value="'+clicked_id+'" data-dismiss="modal">Close</button>';
+
             model +='</div>';
             model +='</div>';
             model +='</div>';
-            model +='</div>';
+  
+            
             var theDiv = document.getElementById("model");
             theDiv.innerHTML += model;  
-
+  
     }else{
         liff.getProfile().then(function(profile) {
             var lineID =profile.userId;
@@ -176,27 +181,27 @@ function Vote(clicked_id){
                dbRef.child("choice").child(clicked_id).child("result").child(lineID).set(clicked_id);
                dbRef.child("Voters").child(lineID).set(clicked_id);
                liff.closeWindow();
-
+  
     
             })
-
+  
         }).catch(function(error) {
             window.alert('Error getting profile: ' + error);
         });
     }
-}
-
-function confirm(){
+  }
+  
+  function confirm(){
     dbRef = firebase.database().ref('HPY');
     console.log(dbRef)
-
+  
     var name_element = document.getElementById('confirmVote');
     var name = name_element.value;
     console.log(name)
-}
-
- 
-function displayIsInClientInfo() {
+  }
+  
+  
+  function displayIsInClientInfo() {
     if (liff.isInClient()) {
         liff.getProfile()
         .then(profile => {
@@ -215,13 +220,13 @@ function displayIsInClientInfo() {
         
         // document.getElementById('isInClientMessage').textContent = 'You are opening the app in an external browser.';
     }
-}
-
-/**
-* Register event handlers for the buttons displayed in the app
-*/
-function registerButtonHandlers() {
-
+  }
+  
+  /**
+  * Register event handlers for the buttons displayed in the app
+  */
+  function registerButtonHandlers() {
+  
     // login call, only when external browser is used
     document.getElementById('liffLoginButton').addEventListener('click', function() {
         if (!liff.isLoggedIn()) {
@@ -229,7 +234,7 @@ function registerButtonHandlers() {
             liff.login();
         }
     });
-
+  
     // logout call only when external browse
     document.getElementById('liffLogoutButton').addEventListener('click', function() {
         if (liff.isLoggedIn()) {
@@ -237,24 +242,24 @@ function registerButtonHandlers() {
             window.location.reload();
         }
     });
-}
-
-/**
-* Alert the user if LIFF is opened in an external browser and unavailable buttons are tapped
-*/
-function sendAlertIfNotInClient() {
+  }
+  
+  /**
+  * Alert the user if LIFF is opened in an external browser and unavailable buttons are tapped
+  */
+  function sendAlertIfNotInClient() {
     alert('This button is unavailable as LIFF is currently being opened in an external browser.');
-}
-
-/**
-* Toggle specified element
-* @param {string} elementId The ID of the selected element
-*/
-function toggleElement(elementId) {
+  }
+  
+  /**
+  * Toggle specified element
+  * @param {string} elementId The ID of the selected element
+  */
+  function toggleElement(elementId) {
     const elem = document.getElementById(elementId);
     if (elem.offsetWidth > 0 && elem.offsetHeight > 0) {
         elem.style.display = 'none';
     } else {
         elem.style.display = 'block';
     }
-}
+  }
