@@ -135,26 +135,24 @@ function firebaseHandlers(dbRef,lineID,check) {
             var button ='';
             if(check == true){
                 button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" class="btn btn-primary">Vote</button>';
-                content +='<div class="card">';
-                content +='<img class="card-img-top"'; 
-                content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
-                content +='<div class="card-body">';
-                content +='<h5 class="card-title">';
-                content +=snapshot.key;
-                content +='</h5>';
-                content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
-                content +='</div>';
-                content +='<div class="card-footer">';
-                content +=button;
-                content +='</div>';
-                content +='</div>';
+        
 
             }else{
 
-            }
-        
-        
-          var key = dbRef.child(voteValue).child("result");
+            }        
+            content +='<div class="card">';
+            content +='<img class="card-img-top"'; 
+            content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
+            content +='<div class="card-body">';
+            content +='<h5 class="card-title">';
+            content +=snapshot.key;
+            content +='</h5>';
+            content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
+            content +='</div>';
+            content +='<div class="card-footer">';
+            content +=button;
+            content +='</div>';
+            content +='</div>';
           var theDiv = document.getElementById("ex-table");
           theDiv.innerHTML += content;  
     
