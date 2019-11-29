@@ -114,7 +114,7 @@ function firebaseHandlers(dbRef,check) {
             var content = ''; 
             var button ='';
             if(check == true){
-                button ='<button id="voted" onClick="Vote(this.id)" value="Test" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Voted</button>';
+                button ='<button id="voted" onClick="Vote(this.id)" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Voted</button>';
 
 
             }else{
@@ -161,7 +161,7 @@ function Vote(clicked_id){
             model +='</div>';
             model +='<div class="modal-footer">';
             model +='</div>';
-            model +='<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>';
+            model +='<button onClick="confirm()" id="confirmVote" type="button" class="btn btn-danger" value="Test" data-dismiss="modal">Close</button>';
             model +='</div>';
             model +='</div>';
             model +='</div>';
@@ -172,7 +172,7 @@ function Vote(clicked_id){
     }else{
         liff.getProfile().then(function(profile) {
             var lineID =profile.userId;
-            const dbRef = firebase.database().ref('HPY');
+            var dbRef = firebase.database().ref('HPY');
             dbRef.child("choice").orderByKey().equalTo(clicked_id).once("value", function (snapshot) {
                 console.log(snapshot.val());
                dbRef.child("choice").child(clicked_id).child("result").child(lineID).set(clicked_id);
@@ -188,6 +188,13 @@ function Vote(clicked_id){
     }
 }
 
+function confirm(){
+    dbRef = firebase.database().ref('HPY');
+    console.log(dbRef)
+    var name_element = document.getElementById('confirmVote');
+    var name = name_element.value;
+    console.log(name)
+}
 
  
 function displayIsInClientInfo() {
