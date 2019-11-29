@@ -137,7 +137,7 @@ function firebaseHandlers(dbRef,lineID,check) {
         
 
             }else{
-                button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" class="btn btn-primary">Voted</button>';
+                button ='<button id="voted" onClick="Vote(this.id)" type="button" class="btn btn-secondary">Voted</button>';
 
             }        
             content +='<div class="card">';
@@ -164,6 +164,9 @@ function firebaseHandlers(dbRef,lineID,check) {
 
 function Vote(clicked_id){
     console.log(clicked_id)
+    if(clicked_id =="voted" ){
+
+    }else{
         liff.getProfile().then(function(profile) {
             var lineID =profile.userId;
             var lineName =profile.displayName;
@@ -180,6 +183,8 @@ function Vote(clicked_id){
         }).catch(function(error) {
             window.alert('Error getting profile: ' + error);
         });
+    }
+      
    
     
 }
