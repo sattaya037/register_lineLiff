@@ -150,12 +150,12 @@ function Vote(clicked_id){
     }else{
         liff.getProfile().then(function(profile) {
             var lineID =profile.userId;
-            var lineName =profile.displayName;
             const dbRef = firebase.database().ref('HPY');
             dbRef.child("choice").orderByKey().equalTo(clicked_id).once("value", function (snapshot) {
                 console.log(snapshot.val());
                dbRef.child("choice").child(clicked_id).child("result").child(lineID).set(clicked_id);
                dbRef.child("Voters").child(lineID).set(clicked_id);
+               liff.closeWindow();
 
     
             })
