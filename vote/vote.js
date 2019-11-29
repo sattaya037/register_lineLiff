@@ -104,30 +104,10 @@ function PromiseHandlers(dbRef,lineID) {
         dbRef.child("Voters").orderByKey().equalTo(lineID).once("value", function(snapshot) {
             var check = snapshot.exists();
              firebaseHandlers(dbRef,lineID,check);
-
-            // if(!snapshot.exists()){
-            //     console.log("true")
-
-            // }else{
-            //     console.log("flase")
-
-            // }
-            // if(voters != lineID){
-            //     firebaseHandlers(dbRef,lineID,check);
-            //     console.log("no vote")
-            // }else{
-            //     var check = false;
-            //     firebaseHandlers(dbRef,lineID,check);
-
-            //     console.log("has vote")
-
-            // }           
           })        
-      
-
-
 }
-function firebaseHandlers(dbRef,lineID,check) {
+
+function firebaseHandlers(dbRef,check) {
     console.log(check);
           dbRef.child("choice").on("child_added", function(snapshot) {
             var content = ''; 
@@ -171,12 +151,12 @@ function Vote(clicked_id){
             var lineID =profile.userId;
             var lineName =profile.displayName;
             const dbRef = firebase.database().ref('HPY');
-            dbRef.orderByKey().equalTo(clicked_id).once("value", function (snapshot) {
+            dbRef.child("choice").orderByKey().equalTo(clicked_id).once("value", function (snapshot) {
                 console.log(snapshot.val());
-                const usersRef = dbRef.child(clicked_id).child("result").child(lineID);
-                usersRef.set({
-                    lineName : lineName
-                  });
+                // const usersRef = dbRef.child(clicked_id).child("result").child(lineID);
+                // usersRef.set({
+                //     lineName : lineName
+                //   });
       
             })
 
@@ -184,9 +164,6 @@ function Vote(clicked_id){
             window.alert('Error getting profile: ' + error);
         });
     }
-      
-   
-    
 }
 
 
@@ -240,28 +217,6 @@ function registerButtonHandlers() {
 function sendAlertIfNotInClient() {
     alert('This button is unavailable as LIFF is currently being opened in an external browser.');
 }
-
-
-/**
-* Toggle access token data field
-*/
-// function toggleAccessToken() {
-//     toggleElement('accessTokenData');
-// }
-
-/**
-* Toggle profile info field
-*/
-function toggleProfileData() {
-    toggleElement('profileInfo');
-}
-
-/**
-* Toggle scanCode result field
-*/
-// function toggleQrCodeReader() {
-//     toggleElement('scanQr');
-// }
 
 /**
 * Toggle specified element
