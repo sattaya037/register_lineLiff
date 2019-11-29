@@ -118,7 +118,7 @@ window.onload = function() {
   
   
             }else{
-                button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Vote</button>';
+                button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" data-toggle="modal" data-target="#voteModel" class="btn btn-primary">Vote</button>';
   
             }        
             content +='<div class="card">';
@@ -145,34 +145,34 @@ window.onload = function() {
   
   function Vote(clicked_id){
   
-    
-  
     if(clicked_id =="voted" ){
   
         alert('Voted.');
   
     }else{
-        var model ='';
-        model +='<div class="modal fade" id="myModal">';
-        model +='<div class="modal-dialog modal-sm">';
-        model +='<div class="modal-content">';
-        model +='<div class="modal-header">';
-        model +='<h4 class="modal-title">Confirm</h4>';
-        model +='<button type="button" onClick="document.location.reload(true)" class="close" data-dismiss="modal">&times;</button>';
-        model +='</div>';
-        model +='<div class="modal-body">';
-        model +='You want to vote '+clicked_id+'?';
-        model +='</div>';
-        model +='<div class="modal-footer">';
-        model +='<button type="button" onClick="confirm()" id="confirmVote" class=" btn-success"  value="'+clicked_id+'" data-dismiss="modal">Confirm</button>';
-        model +='</div>';
-        model +='</div>';
-        model +='</div>';
-        model +='</div>';
+        document.getElementById("voteName").innerHTML = clicked_id;
+
+        // var model ='';
+        // model +='<div class="modal fade" id="myModal">';
+        // model +='<div class="modal-dialog modal-sm">';
+        // model +='<div class="modal-content">';
+        // model +='<div class="modal-header">';
+        // model +='<h4 class="modal-title">Confirm</h4>';
+        // model +='<button type="button" onClick="document.location.reload(true)" class="close" data-dismiss="modal">&times;</button>';
+        // model +='</div>';
+        // model +='<div class="modal-body">';
+        // model +='You want to vote '+clicked_id+'?';
+        // model +='</div>';
+        // model +='<div class="modal-footer">';
+        // model +='<button type="button" onClick="confirm()" id="confirmVote" class=" btn-success"  value="'+clicked_id+'" data-dismiss="modal">Confirm</button>';
+        // model +='</div>';
+        // model +='</div>';
+        // model +='</div>';
+        // model +='</div>';
   
         
-        var theDiv = document.getElementById("model");
-        theDiv.innerHTML += model;  
+        // var theDiv = document.getElementById("model");
+        // theDiv.innerHTML += model;  
   
     }
   }
