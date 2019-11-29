@@ -152,28 +152,6 @@ window.onload = function() {
     }else{
         document.getElementById("voteName").innerHTML = clicked_id;
         document.getElementById("confirmVote").value = clicked_id;
-
-        // var model ='';
-        // model +='<div class="modal fade" id="myModal">';
-        // model +='<div class="modal-dialog modal-sm">';
-        // model +='<div class="modal-content">';
-        // model +='<div class="modal-header">';
-        // model +='<h4 class="modal-title">Confirm</h4>';
-        // model +='<button type="button" onClick="document.location.reload(true)" class="close" data-dismiss="modal">&times;</button>';
-        // model +='</div>';
-        // model +='<div class="modal-body">';
-        // model +='You want to vote '+clicked_id+'?';
-        // model +='</div>';
-        // model +='<div class="modal-footer">';
-        // model +='<button type="button" onClick="confirm()" id="confirmVote" class=" btn-success"  value="'+clicked_id+'" data-dismiss="modal">Confirm</button>';
-        // model +='</div>';
-        // model +='</div>';
-        // model +='</div>';
-        // model +='</div>';
-  
-        
-        // var theDiv = document.getElementById("model");
-        // theDiv.innerHTML += model;  
   
     }
   }
@@ -181,22 +159,21 @@ window.onload = function() {
   function confirm(){
     var name_element = document.getElementById('confirmVote');
     var voteId = name_element.value;
-    console.log(voteId)
-    // liff.getProfile().then(function(profile) {
-    //     var lineID =profile.userId;
-    //     var dbRef = firebase.database().ref('HPY');
-    //     dbRef.child("choice").orderByKey().equalTo(voteId).once("value", function (snapshot) {
-    //         console.log(snapshot.val());
-    //        dbRef.child("choice").child(voteId).child("result").child(lineID).set(voteId);
-    //        dbRef.child("Voters").child(lineID).set(voteId);
-    //        liff.closeWindow();
+    liff.getProfile().then(function(profile) {
+        var lineID =profile.userId;
+        var dbRef = firebase.database().ref('HPY');
+        dbRef.child("choice").orderByKey().equalTo(voteId).once("value", function (snapshot) {
+            console.log(snapshot.val());
+           dbRef.child("choice").child(voteId).child("result").child(lineID).set(voteId);
+           dbRef.child("Voters").child(lineID).set(voteId);
+           liff.closeWindow();
   
   
-    //     })
+        })
   
-    // }).catch(function(error) {
-    //     window.alert('Error getting profile: ' + error);
-    // });
+    }).catch(function(error) {
+        window.alert('Error getting profile: ' + error);
+    });
   
   }
   
