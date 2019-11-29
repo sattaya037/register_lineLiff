@@ -145,7 +145,26 @@ function firebaseHandlers(dbRef,check) {
 
 function Vote(clicked_id){
     if(clicked_id =="voted" ){
-        alert('You have voted.');
+        var model ='';
+            model +='<div class="modal fade" id="myModal">';
+            model +='<div class="modal-dialog">';
+            model +='<div class="modal-content">';
+            model +='<div class="modal-header">';
+            model +='<h4 class="modal-title">Modal Heading</h4>';
+            model +='<button type="button" class="close" data-dismiss="modal">&times;</button>';
+            model +='</div>';
+            model +='<div class="modal-body">';
+            model +='Modal body..';
+            model +='</div>';
+            model +='<div class="modal-footer">';
+            model +='</div>';
+            model +='<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>';
+            model +='</div>';
+            model +='</div>';
+            model +='</div>';
+            model +='</div>';
+            var theDiv = document.getElementById("model");
+            theDiv.innerHTML += model;  
 
     }else{
         liff.getProfile().then(function(profile) {
