@@ -148,55 +148,59 @@ window.onload = function() {
     
   
     if(clicked_id =="voted" ){
+        alert('This button is unavailable as LIFF is currently being opened in an external browser.');
 
-        alert('Voted.');
-
+  
     }else{
-        console.log("null")
-        var model ='';
-        model +='<div class="modal fade" id="myModal">';
-        model +='<div class="modal-dialog modal-sm">';
-        model +='<div class="modal-content">';
-        model +='<div class="modal-header">';
-        model +='<h4 class="modal-title">Confirm</h4>';
-        model +='<button type="button" class="close" data-dismiss="modal">&times;</button>';
-        model +='</div>';
-        model +='<div class="modal-body">';
-        model +='You want to vote '+clicked_id+'?';
-        model +='</div>';
-        model +='<div class="modal-footer">';
-        model +='<button type="button" onClick="confirm()" id="confirmVote" class=" btn-success"  value="'+clicked_id+'" data-dismiss="modal">Confirm</button>';
-        model +='</div>';
-        model +='</div>';
-        model +='</div>';
-        model +='</div>';
-
         
-        var theDiv = document.getElementById("model");
-        theDiv.innerHTML += model;  
+        var model ='';
+            model +='<div class="modal fade" id="myModal">';
+            model +='<div class="modal-dialog modal-sm">';
+            model +='<div class="modal-content">';
+            model +='<div class="modal-header">';
+            model +='<h4 class="modal-title">Confirm</h4>';
+            model +='<button type="button" class="close" data-dismiss="modal">&times;</button>';
+            model +='</div>';
+            model +='<div class="modal-body">';
+            model +='You want to vote '+clicked_id+'?';
+            model +='</div>';
+            model +='<div class="modal-footer">';
+            model +='<button type="button" onClick="confirm()" id="confirmVote" value="" class=" btn-success"  value="'+clicked_id+'" data-dismiss="modal">Confirm</button>';
+            model +='</div>';
+            model +='</div>';
+            model +='</div>';
+            model +='</div>';
+  
+            
+            var theDiv = document.getElementById("model");
+            theDiv.innerHTML += model;  
 
+
+        // liff.getProfile().then(function(profile) {
+        //     var lineID =profile.userId;
+        //     var dbRef = firebase.database().ref('HPY');
+        //     dbRef.child("choice").orderByKey().equalTo(clicked_id).once("value", function (snapshot) {
+        //         console.log(snapshot.val());
+        //        dbRef.child("choice").child(clicked_id).child("result").child(lineID).set(clicked_id);
+        //        dbRef.child("Voters").child(lineID).set(clicked_id);
+        //        liff.closeWindow();
+  
+    
+        //     })
+  
+        // }).catch(function(error) {
+        //     window.alert('Error getting profile: ' + error);
+        // });
     }
   }
   
   function confirm(){
+    dbRef = firebase.database().ref('HPY');
+    console.log(dbRef)
+  
     var name_element = document.getElementById('confirmVote');
-    var voteId = name_element.value;
-    liff.getProfile().then(function(profile) {
-        var lineID =profile.userId;
-        var dbRef = firebase.database().ref('HPY');
-        dbRef.child("choice").orderByKey().equalTo(voteId).once("value", function (snapshot) {
-            console.log(snapshot.val());
-           dbRef.child("choice").child(voteId).child("result").child(lineID).set(voteId);
-           dbRef.child("Voters").child(lineID).set(voteId);
-           liff.closeWindow();
-
-
-        })
-
-    }).catch(function(error) {
-        window.alert('Error getting profile: ' + error);
-    });
-
+    var name = name_element.value;
+    console.log(name)
   }
   
   
