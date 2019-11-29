@@ -102,12 +102,9 @@ function initializeApp() {
 
 function PromiseHandlers(dbRef,lineID) {
         dbRef.child("Voters").orderByKey().equalTo(lineID).once("value", function(snapshot) {
-            var voters =snapshot.key;
-            var check = true;
-            console.log(snapshot.val())
-            console.log(snapshot.key)
+            var check = snapshot.exists();
+             firebaseHandlers(dbRef,lineID,check);
 
-            console.log(snapshot.exists())
             // if(!snapshot.exists()){
             //     console.log("true")
 
