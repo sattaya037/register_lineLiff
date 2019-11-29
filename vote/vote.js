@@ -103,8 +103,14 @@ function initializeApp() {
 
 function PromiseHandlers(dbRef,lineID) {
         dbRef.child("Voters").on("child_added", function(snapshot) {
-            var voteValue =snapshot.key;
-            console.log(voteValue)
+            var voters =snapshot.key;
+            if(voters != lineID){
+                console.log("no vote")
+
+            }else{
+                console.log("has vote")
+
+            }
             var key = dbRef.child(voteValue);
                 key.child("result").on("child_added", function(snapshot) {
                     console.log(snapshot.key)
