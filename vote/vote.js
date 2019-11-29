@@ -114,7 +114,7 @@ function firebaseHandlers(dbRef,check) {
             var content = ''; 
             var button ='';
             if(check == true){
-                button ='<button id="voted" onClick="Vote(this.id)" type="button" class="btn btn-secondary">Voted</button>';
+                button ='<button id="voted" onClick="Vote(this.id)" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Voted</button>';
 
 
             }else{
@@ -152,12 +152,10 @@ function Vote(clicked_id){
             var lineID =profile.userId;
             const dbRef = firebase.database().ref('HPY');
             dbRef.child("choice").orderByKey().equalTo(clicked_id).once("value", function (snapshot) {
-                console.log(snapshot.val());
                dbRef.child("choice").child(clicked_id).child("result").child(lineID).set(clicked_id);
                dbRef.child("Voters").child(lineID).set(clicked_id);
                liff.closeWindow();
 
-    
             })
 
         }).catch(function(error) {
