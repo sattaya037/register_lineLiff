@@ -144,9 +144,7 @@ function firebaseHandlers(dbRef,check) {
 }
 
 function Vote(clicked_id){
-    var name_element = document.getElementById(clicked_id);
-    var name = name_element.value;
-    console.log(name)
+
     if(clicked_id =="voted" ){
         var model ='';
             model +='<div class="modal fade" id="myModal">';
@@ -161,7 +159,7 @@ function Vote(clicked_id){
             model +='</div>';
             model +='<div class="modal-footer">';
             model +='</div>';
-            model +='<button onClick="confirm()" id="confirmVote" type="button" class="btn btn-danger" value="Test" data-dismiss="modal">Close</button>';
+            model +='<button onClick="confirm()" id="confirmVote" type="button" class="btn btn-danger" value="'+clicked_id+'" data-dismiss="modal">Close</button>';
             model +='</div>';
             model +='</div>';
             model +='</div>';
