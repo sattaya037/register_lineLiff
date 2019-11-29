@@ -102,7 +102,7 @@ function initializeApp() {
 
 
 function PromiseHandlers(dbRef,lineID) {
-        dbRef.on("child_added", function(snapshot) {
+        dbRef.child("Voters").on("child_added", function(snapshot) {
             var voteValue =snapshot.key;
             var key = dbRef.child(voteValue);
             const  promise1 = new Promise(function(resolve, reject) { 
