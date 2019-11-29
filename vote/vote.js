@@ -121,7 +121,7 @@ function PromiseHandlers(dbRef,lineID) {
 }
 function firebaseHandlers(dbRef,lineID,check) {
     console.log(check);
-          dbRef.on("child_added", function(snapshot) {
+          dbRef.child("choice").on("child_added", function(snapshot) {
           var voteValue = snapshot.key;
           var content = '';
           content +='<div class="card">';
