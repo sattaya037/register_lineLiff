@@ -101,7 +101,7 @@ function initializeApp() {
 
 
 function PromiseHandlers(dbRef,lineID) {
-        dbRef.child("Voters").orderByKey().equalTo(lineID).once("child_added", function(snapshot) {
+        dbRef.child("Voters").orderByKey().equalTo(lineID).once("value", function(snapshot) {
             var voters =snapshot.key;
             var check = true;
             console.log(snapshot.val())
