@@ -152,7 +152,6 @@ window.onload = function() {
         alert('Voted.');
   
     }else{
-        console.log("null")
         var model ='';
         model +='<div class="modal fade" id="myModal">';
         model +='<div class="modal-dialog modal-sm">';
@@ -188,7 +187,7 @@ window.onload = function() {
             console.log(snapshot.val());
            dbRef.child("choice").child(voteId).child("result").child(lineID).set(voteId);
            dbRef.child("Voters").child(lineID).set(voteId);
-           liff.closeWindow();
+        //    liff.closeWindow();
   
   
         })
