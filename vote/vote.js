@@ -113,11 +113,11 @@ function firebaseHandlers(dbRef,check) {
             var content = ''; 
             var button ='';
             if(check == true){
-                button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" class="btn btn-primary">Vote</button>';
-        
+                button ='<button id="voted" onClick="Vote(this.id)" type="button" class="btn btn-secondary">Voted</button>';
+
 
             }else{
-                button ='<button id="voted" onClick="Vote(this.id)" type="button" class="btn btn-secondary">Voted</button>';
+                button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" class="btn btn-primary">Vote</button>';
 
             }        
             content +='<div class="card">';
