@@ -180,21 +180,21 @@ window.onload = function() {
   function confirm(){
     var name_element = document.getElementById('confirmVote');
     var voteId = name_element.value;
-    liff.getProfile().then(function(profile) {
-        var lineID =profile.userId;
-        var dbRef = firebase.database().ref('HPY');
-        dbRef.child("choice").orderByKey().equalTo(voteId).once("value", function (snapshot) {
-            console.log(snapshot.val());
-           dbRef.child("choice").child(voteId).child("result").child(lineID).set(voteId);
-           dbRef.child("Voters").child(lineID).set(voteId);
-           liff.closeWindow();
+    // liff.getProfile().then(function(profile) {
+    //     var lineID =profile.userId;
+    //     var dbRef = firebase.database().ref('HPY');
+    //     dbRef.child("choice").orderByKey().equalTo(voteId).once("value", function (snapshot) {
+    //         console.log(snapshot.val());
+    //        dbRef.child("choice").child(voteId).child("result").child(lineID).set(voteId);
+    //        dbRef.child("Voters").child(lineID).set(voteId);
+    //        liff.closeWindow();
   
   
-        })
+    //     })
   
-    }).catch(function(error) {
-        window.alert('Error getting profile: ' + error);
-    });
+    // }).catch(function(error) {
+    //     window.alert('Error getting profile: ' + error);
+    // });
   
   }
   
