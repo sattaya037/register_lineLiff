@@ -152,6 +152,7 @@ window.onload = function() {
         alert('Voted.');
 
     }else{
+        console.log("null")
         var model ='';
         model +='<div class="modal fade" id="myModal">';
         model +='<div class="modal-dialog modal-sm">';
