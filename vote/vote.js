@@ -189,7 +189,6 @@ function Vote(clicked_id){
 function confirm(){
     dbRef = firebase.database().ref('HPY');
     console.log(dbRef)
-    console.log(profile)
 
     var name_element = document.getElementById('confirmVote');
     var name = name_element.value;
