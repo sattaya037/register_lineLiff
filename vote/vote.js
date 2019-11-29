@@ -159,11 +159,9 @@ window.onload = function() {
             model +='<div class="modal-body">';
             model +='You want to vote '+clicked_id+'?';
             model +='</div>';
-  
             model +='<div class="modal-footer">';
-            model +='<button type="button" id="confirmVote" value="" class="btn btn-secondary"  value="'+clicked_id+'" data-dismiss="modal">Confirm</button>';
+            model +='<button type="button" onClick="confirm()" id="confirmVote" value="" class=" btn-success"  value="'+clicked_id+'" data-dismiss="modal">Confirm</button>';
             model +='</div>';
-
             model +='</div>';
             model +='</div>';
             model +='</div>';
