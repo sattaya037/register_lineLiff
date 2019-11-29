@@ -153,11 +153,15 @@ function Vote(clicked_id){
             const dbRef = firebase.database().ref('HPY');
             dbRef.child("choice").orderByKey().equalTo(clicked_id).once("value", function (snapshot) {
                 console.log(snapshot.val());
-                // const usersRef = dbRef.child(clicked_id).child("result").child(lineID);
-                // usersRef.set({
-                //     lineName : lineName
-                //   });
-      
+                const voteChoice = dbRef.child("choice").child(clicked_id).child("result").child(lineID);
+                const voters = dbRef.child("Voters").child(lineID);
+
+                voteChoice.set({
+                    clicked_id
+                  });
+                  voters.set({
+                    clicked_id
+                });
             })
 
         }).catch(function(error) {
