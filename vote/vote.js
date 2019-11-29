@@ -85,7 +85,6 @@ function initializeApp() {
         displayIsInClientInfo();
         registerButtonHandlers();
         PromiseHandlers(dbRef,lineID);
-        firebaseHandlers(dbRef,lineID);
     })
     .catch((err) => {
       console.log('error', err);
@@ -104,30 +103,24 @@ function initializeApp() {
 function PromiseHandlers(dbRef,lineID) {
         dbRef.child("Voters").on("child_added", function(snapshot) {
             var voters =snapshot.key;
+            var check = true;
             if(voters != lineID){
+                firebaseHandlers(dbRef,lineID,check);
                 console.log("no vote")
-
             }else{
+                var check = false;
+                firebaseHandlers(dbRef,lineID,check);
+
                 console.log("has vote")
 
-            }
-            var key = dbRef.child(voteValue);
-                key.child("result").on("child_added", function(snapshot) {
-                    console.log(snapshot.key)
-                if(snapshot.key == lineID){
-                }else{
-
-                }
-            });
-        
-
-            
+            }           
           })        
       
 
 
 }
-function firebaseHandlers(dbRef,lineID) {
+function firebaseHandlers(dbRef,lineID,check) {
+    console.log(check);
           dbRef.on("child_added", function(snapshot) {
           var voteValue = snapshot.key;
           var content = '';
