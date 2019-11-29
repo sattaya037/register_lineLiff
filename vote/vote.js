@@ -158,7 +158,7 @@ window.onload = function() {
         model +='<div class="modal-content">';
         model +='<div class="modal-header">';
         model +='<h4 class="modal-title">Confirm</h4>';
-        model +='<button type="button" class="close" data-dismiss="modal">&times;</button>';
+        model +='<button type="button" onClick="document.location.reload(true)" class="close" data-dismiss="modal">&times;</button>';
         model +='</div>';
         model +='<div class="modal-body">';
         model +='You want to vote '+clicked_id+'?';
