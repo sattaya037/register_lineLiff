@@ -130,7 +130,6 @@ function PromiseHandlers(dbRef,lineID) {
 function firebaseHandlers(dbRef,lineID,check) {
     console.log(check);
           dbRef.child("choice").on("child_added", function(snapshot) {
-            var voteValue = snapshot.key;
             var content = ''; 
             var button ='';
             if(check == true){
@@ -138,6 +137,7 @@ function firebaseHandlers(dbRef,lineID,check) {
         
 
             }else{
+                button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" class="btn btn-primary">Voted</button>';
 
             }        
             content +='<div class="card">';
