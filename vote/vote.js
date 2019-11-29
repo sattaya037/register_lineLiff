@@ -104,28 +104,20 @@ function initializeApp() {
 function PromiseHandlers(dbRef,lineID) {
         dbRef.child("Voters").on("child_added", function(snapshot) {
             var voteValue =snapshot.key;
+            console.log(voteValue)
             var key = dbRef.child(voteValue);
-            const  promise1 = new Promise(function(resolve, reject) { 
                 key.child("result").on("child_added", function(snapshot) {
                     console.log(snapshot.key)
                 if(snapshot.key == lineID){
-                    resolve(true)
                 }else{
-                    resolve(false)
 
                 }
             });
-            })
-            let thenProm= promise1.then(function(value) {
-                return value;
-
-              });
-              console.log(thenProm);
+        
 
             
           })        
       
-          console.log(thenProm);
 
 
 }
