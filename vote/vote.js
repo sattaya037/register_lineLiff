@@ -151,6 +151,7 @@ window.onload = function() {
   
     }else{
         document.getElementById("voteName").innerHTML = clicked_id;
+        document.getElementById("confirmVote").value = clicked_id;
 
         // var model ='';
         // model +='<div class="modal fade" id="myModal">';
