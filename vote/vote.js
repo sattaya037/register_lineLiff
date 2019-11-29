@@ -187,7 +187,7 @@ window.onload = function() {
             console.log(snapshot.val());
            dbRef.child("choice").child(voteId).child("result").child(lineID).set(voteId);
            dbRef.child("Voters").child(lineID).set(voteId);
-        //    liff.closeWindow();
+           liff.closeWindow();
   
   
         })
