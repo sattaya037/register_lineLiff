@@ -101,19 +101,22 @@ function initializeApp() {
 
 
 function PromiseHandlers(dbRef,lineID) {
-        dbRef.child("Voters").on("child_added", function(snapshot) {
+        dbRef.child("choice").orderByKey().equalTo(lineID).once("child_added", function(snapshot) {
             var voters =snapshot.key;
             var check = true;
-            if(voters != lineID){
-                firebaseHandlers(dbRef,lineID,check);
-                console.log("no vote")
-            }else{
-                var check = false;
-                firebaseHandlers(dbRef,lineID,check);
+            console.log(voters)
+            console.log(snapshot.exists())
 
-                console.log("has vote")
+            // if(voters != lineID){
+            //     firebaseHandlers(dbRef,lineID,check);
+            //     console.log("no vote")
+            // }else{
+            //     var check = false;
+            //     firebaseHandlers(dbRef,lineID,check);
 
-            }           
+            //     console.log("has vote")
+
+            // }           
           })        
       
 
