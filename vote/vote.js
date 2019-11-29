@@ -154,15 +154,10 @@ function Vote(clicked_id){
             const dbRef = firebase.database().ref('HPY');
             dbRef.child("choice").orderByKey().equalTo(clicked_id).once("value", function (snapshot) {
                 console.log(snapshot.val());
-                const voteChoice = dbRef.child("choice").child(clicked_id).child("result").child(lineID);
-                const voters = dbRef.child("Voters").child(lineID);
+               dbRef.child("choice").child(clicked_id).child("result").child(lineID).set(clicked_id);
+               dbRef.child("Voters").child(lineID).set(clicked_id);
 
-                voteChoice.set({
-                    clicked_id
-                  });
-                  voters.set({
-                    clicked_id
-                });
+    
             })
 
         }).catch(function(error) {
