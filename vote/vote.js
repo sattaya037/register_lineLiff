@@ -180,6 +180,7 @@ window.onload = function() {
   function confirm(){
     var name_element = document.getElementById('confirmVote');
     var voteId = name_element.value;
+    console.log(voteId)
     // liff.getProfile().then(function(profile) {
     //     var lineID =profile.userId;
     //     var dbRef = firebase.database().ref('HPY');
