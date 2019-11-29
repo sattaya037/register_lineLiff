@@ -114,7 +114,7 @@ function firebaseHandlers(dbRef,check) {
             var content = ''; 
             var button ='';
             if(check == true){
-                button ='<button id="voted" onClick="Vote(this.id)" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Voted</button>';
+                button ='<button id="voted" onClick="Vote(this.id)" value="Test" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Voted</button>';
 
 
             }else{
@@ -123,7 +123,7 @@ function firebaseHandlers(dbRef,check) {
             }        
             content +='<div class="card">';
             content +='<img class="card-img-top"'; 
-            content +=  'src='+snapshot.val().image +'alt="Card image cap"  >';
+            content +=  'src='+snapshot.val().image +'alt="Card image cap">';
             content +='<div class="card-body">';
             content +='<h5 class="card-title">';
             content +=snapshot.key;
@@ -144,6 +144,9 @@ function firebaseHandlers(dbRef,check) {
 }
 
 function Vote(clicked_id){
+    var name_element = document.getElementById(clicked_id);
+    var name = name_element.value;
+    console.log(name)
     if(clicked_id =="voted" ){
         var model ='';
             model +='<div class="modal fade" id="myModal">';
