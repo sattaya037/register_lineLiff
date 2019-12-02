@@ -114,7 +114,7 @@ window.onload = function() {
             var content = ''; 
             var button ='';
             snapshot.forEach(function(childSnapshot) {
-                console.log(childSnapshot)
+                console.log(childSnapshot.val().result)
             });            
             if(check == true){
                 button ='<button id="voted" onClick="Vote(this.id)" type="button" class="btn btn-secondary">Voted</button>';
