@@ -121,13 +121,20 @@ window.onload = function() {
                 button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" data-toggle="modal" data-target="#voteModel" class="btn btn-primary">Vote</button>';
   
             }         
-            content +='<div class="custom-control custom-radio">';
-            content +='<li class="list-group-item d-flex justify-content-between align-items-center">';
-            content +='<input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">'
-            content +=snapshot.key;
-            content +='<span class="badge badge-primary badge-pill">14</span>';
-            content +='</li>';
-            content +='</div>'
+            // content +='<li class="list-group-item d-flex justify-content-between align-items-center">';
+            // content +=snapshot.key;
+            // content +='<span class="badge badge-primary badge-pill">14</span>';
+            // content +='</li>';
+
+            content +='<div class="input-group mb-3">';
+            content +='<div class="input-group-prepend">';
+            content +='<div class="input-group-text">';
+            content +='<input type="radio">';
+            content +='</div>';
+            content +='</div>';
+            content +='<input type="text" class="form-control" placeholder="Some text">';
+            content +='</div>';
+
             // content +='<div class="card">';
             // content +='<img class="card-img-top"'; 
             // content +=  'src='+snapshot.val().image +'alt="Card image cap">';
