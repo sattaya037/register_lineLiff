@@ -137,7 +137,7 @@ window.onload = function() {
 
             content +='<div class="form-check">';
             content +='<label class="form-check-label">';
-            content +='<input type="radio" class="form-check-input" name="optradio">'+snapshot.key;
+            content +='<input type="radio" class="form-check-input" name="optradio" value="'+snapshot.key+'">'+snapshot.key;
             content +='</label>';
             content +='</div>';
 
@@ -161,7 +161,11 @@ window.onload = function() {
         console.log("The read failed: " + errorObject.code);
       });
   }
-  
+  function con(){
+    var x = document.getElementById("optradio").value;
+    console.log(x)
+  }
+
   function Vote(clicked_id){
   
     if(clicked_id =="voted" ){
