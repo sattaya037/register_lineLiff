@@ -123,7 +123,6 @@ window.onload = function() {
             }         
             content +='<li class="list-group-item">'+snapshot.key+'</li>';
 
-
             // content +='<div class="card">';
             // // content +='<img class="card-img-top"'; 
             // // content +=  'src='+snapshot.val().image +'alt="Card image cap">';
