@@ -121,8 +121,9 @@ window.onload = function() {
                 button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" data-toggle="modal" data-target="#voteModel" class="btn btn-primary">Vote</button>';
   
             }         
-            content +='<li  id="'+snapshot.key+'" onClick="Vote(this.id)" class="list-group-item">'+snapshot.key+'</li>';
-
+            content +='<li class="list-group-item">'+snapshot.key;
+            content +=button;
+            content +'</li>';
             // content +='<div class="card">';
             // // content +='<img class="card-img-top"'; 
             // // content +=  'src='+snapshot.val().image +'alt="Card image cap">';
