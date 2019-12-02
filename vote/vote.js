@@ -137,7 +137,7 @@ window.onload = function() {
 
             content +='<div class="form-check">';
             content +='<label class="form-check-label">';
-            content +='<input type="radio" class="form-check-input" name="optradio" value="'+snapshot.key+'">'+snapshot.key;
+            content +='<input type="radio" class="form-check-input" id="optradio" value="'+snapshot.key+'">'+snapshot.key;
             content +='</label>';
             content +='</div>';
 
