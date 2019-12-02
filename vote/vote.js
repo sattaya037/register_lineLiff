@@ -113,7 +113,7 @@ window.onload = function() {
           dbRef.child("choice").on("child_added", function(snapshot) {
             var content = ''; 
             var button ='';
-            console.log(snapshot.val())
+            console.log(snapshot.val().result)
 
             snapshot.forEach(function(childSnapshot) {
                 console.log(childSnapshot.val().result)
