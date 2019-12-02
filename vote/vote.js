@@ -123,8 +123,8 @@ window.onload = function() {
             }         
 
             content +='<div class="card">';
-            content +='<img class="card-img-top"'; 
-            content +=  'src='+snapshot.val().image +'alt="Card image cap">';
+            // content +='<img class="card-img-top"'; 
+            // content +=  'src='+snapshot.val().image +'alt="Card image cap">';
             content +='<div class="card-body">';
             content +='<h5 class="card-title">';
             content +=snapshot.key;
