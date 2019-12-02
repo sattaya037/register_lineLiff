@@ -121,7 +121,8 @@ window.onload = function() {
                 button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" data-toggle="modal" data-target="#voteModel" class="btn btn-primary">Vote</button>';
   
             }         
-            content +='<li class="list-group-item">'+snapshot.key+'</li>';
+            // content +='<li class="list-group-item">'+snapshot.key+'</li>';
+            content +='<a class="list-group-item list-group-item-action active" id="'+snapshot.key+'" data-toggle="list" onClick="Vote(this.id)" role="tab" aria-controls="home">'+snapshot.key+'</a>';
 
             // content +='<div class="card">';
             // // content +='<img class="card-img-top"'; 
