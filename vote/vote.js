@@ -122,6 +122,7 @@ window.onload = function() {
   
             }         
             content +='<li class="list-group-item">'+snapshot.key;
+            content +='<span class="badge badge-primary badge-pill">14</span>';
             content +='<div class="float-right">'+button+'</div>';
             content +'</li>';
             // content +='<div class="card">';
