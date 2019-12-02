@@ -124,7 +124,7 @@ window.onload = function() {
             }         
             content +='<li class="list-group-item">'+snapshot.key;
             content +='<div class="float-right">'+button+'</div>';
-            content +'</li>';
+            content +='</li>';
             // content +='<div class="card">';
             // // content +='<img class="card-img-top"'; 
             // // content +=  'src='+snapshot.val().image +'alt="Card image cap">';
