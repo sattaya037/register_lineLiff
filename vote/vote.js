@@ -121,9 +121,9 @@ window.onload = function() {
                 button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" data-toggle="modal" data-target="#voteModel" class="btn btn-primary">Vote</button>';
   
             }         
-            content +='<span class="badge badge-primary badge-pill">14</span>';
-            content +='<div class="float-right">'+button+'</div>';
             content +='<li class="list-group-item">'+snapshot.key;
+            content +='<div class="float-right">'+button+'</div>';
+            content +='<span class="badge badge-primary badge-pill">14</span>';
 
             content +'</li>';
             // content +='<div class="card">';
