@@ -126,16 +126,20 @@ window.onload = function() {
             // content +='<span class="badge badge-primary badge-pill">14</span>';
             // content +='</li>';
 
-            content +='<div class="input-group mb-3">';
-            content +='<div class="input-group-prepend">';
-            content +='<div class="input-group-text">';
-            content +='<input type="radio" class="form-check-input" name="'+snapshot.key+'">';
-            content +='</div>';
-            content +='</div>';
-            content +=snapshot.key;
-            content +='</div>';
+            // content +='<div class="input-group mb-3">';
+            // content +='<div class="input-group-prepend">';
+            // content +='<div class="input-group-text">';
+            // content +='<input type="radio" class="form-check-input" name="'+snapshot.key+'">';
+            // content +='</div>';
+            // content +='</div>';
+            // content +=snapshot.key;
+            // content +='</div>';
 
-            
+            content +='<div class="form-check">';
+            content +='<label class="form-check-label">';
+            content +='<input type="radio" class="form-check-input" name="optradio">'+snapshot.key;
+            content +='</label>';
+            content +='</div>';
 
             // content +='<div class="card">';
             // content +='<img class="card-img-top"'; 
