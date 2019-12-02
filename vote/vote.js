@@ -129,11 +129,13 @@ window.onload = function() {
             content +='<div class="input-group mb-3">';
             content +='<div class="input-group-prepend">';
             content +='<div class="input-group-text">';
-            content +='<input type="radio">';
+            content +='<input type="radio" class="form-check-input" name="'+snapshot.key+'">';
             content +='</div>';
             content +='</div>';
-            content +='<input type="text" class="form-control" placeholder="Some text">';
+            content +=snapshot.key;
             content +='</div>';
+
+            
 
             // content +='<div class="card">';
             // content +='<img class="card-img-top"'; 
