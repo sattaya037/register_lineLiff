@@ -114,18 +114,16 @@ window.onload = function() {
             var content = ''; 
             var button ='';
             var count = snapshot.child("result").numChildren();
-            // if(check == true){
-            //     button ='<button id="voted" onClick="Vote(this.id)" type="button" class="btn btn-secondary">Voted <span class="badge badge-light">'+count+'</span> </button>';
+            if(check == true){
+                button ='<button id="voted" onClick="Vote(this.id)" type="button" class="btn btn-secondary">Voted <span class="badge badge-light">'+count+'</span> </button>';
   
   
-            // }else{
-            //     button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" data-toggle="modal" data-target="#voteModel" class="btn btn-primary">Vote <span class="badge badge-light">'+count+'</span> </button>';
+            }else{
+                button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" data-toggle="modal" data-target="#voteModel" class="btn btn-primary">Vote <span class="badge badge-light">'+count+'</span> </button>';
   
-            // }         
+            }         
             content +='<li class="list-group-item">'+snapshot.key;
-            content +='<div class="float-right">';
-            content +='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" data-toggle="modal" data-target="#voteModel" class="btn btn-primary">Vote <span class="badge badge-light">'+count+'</span> </button>';
-            content +='</div>';
+            content +='<div class="float-right">'+button+'</div>';
             content +='</li>';
             // content +='<div class="card">';
             // // content +='<img class="card-img-top"'; 
