@@ -224,9 +224,15 @@ window.onload = function() {
   /**
   * Alert the user if LIFF is opened in an external browser and unavailable buttons are tapped
   */
+  function addOption(){
+    var dbRef = firebase.database().ref('HPY');
+    console.log(dbRef)
+  }
+
   function sendAlertIfNotInClient() {
     alert('This button is unavailable as LIFF is currently being opened in an external browser.');
   }
+  
   
   /**
   * Toggle specified element
