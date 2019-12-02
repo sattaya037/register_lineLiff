@@ -33,7 +33,7 @@ window.onload = function() {
   function initializeLiffOrDie(myLiffId) {
     if (!myLiffId) {
         document.getElementById("liffAppContent").classList.add('invisible');
-    } else {
+     } else {
         initializeLiff(myLiffId);
     }
   }
