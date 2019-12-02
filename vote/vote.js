@@ -122,7 +122,7 @@ window.onload = function() {
   
             }         
             content +='<li class="list-group-item">'+snapshot.key;
-            content +=button;
+            content +='<div class="float-right">Float left on all viewport sizes</div>';
             content +'</li>';
             // content +='<div class="card">';
             // // content +='<img class="card-img-top"'; 
