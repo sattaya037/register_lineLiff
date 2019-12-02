@@ -121,38 +121,19 @@ window.onload = function() {
                 button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" data-toggle="modal" data-target="#voteModel" class="btn btn-primary">Vote</button>';
   
             }         
-            // content +='<li class="list-group-item d-flex justify-content-between align-items-center">';
-            // content +=snapshot.key;
-            // content +='<span class="badge badge-primary badge-pill">14</span>';
-            // content +='</li>';
 
-            // content +='<div class="input-group mb-3">';
-            // content +='<div class="input-group-prepend">';
-            // content +='<div class="input-group-text">';
-            // content +='<input type="radio" class="form-check-input" name="'+snapshot.key+'">';
-            // content +='</div>';
-            // content +='</div>';
-            // content +=snapshot.key;
-            // content +='</div>';
-
-            content +='<div class="form-check">';
-            content +='<label class="form-check-label">';
-            content +='<input type="radio" class="form-check-input" id="optradio" value="'+snapshot.key+'">'+snapshot.key;
-            content +='</label>';
+            content +='<div class="card">';
+            content +='<img class="card-img-top"'; 
+            content +=  'src='+snapshot.val().image +'alt="Card image cap">';
+            content +='<div class="card-body">';
+            content +='<h5 class="card-title">';
+            content +=snapshot.key;
+            content +='</h5>';
             content +='</div>';
-
-            // content +='<div class="card">';
-            // content +='<img class="card-img-top"'; 
-            // content +=  'src='+snapshot.val().image +'alt="Card image cap">';
-            // content +='<div class="card-body">';
-            // content +='<h5 class="card-title">';
-            // content +=snapshot.key;
-            // content +='</h5>';
-            // content +='</div>';
-            // content +='<div class="card-footer">';
-            // content +=button;
-            // content +='</div>';
-            // content +='</div>';
+            content +='<div class="card-footer">';
+            content +=button;
+            content +='</div>';
+            content +='</div>';
           var theDiv = document.getElementById("ex-table");
           theDiv.innerHTML += content;  
     
@@ -161,11 +142,7 @@ window.onload = function() {
         console.log("The read failed: " + errorObject.code);
       });
   }
-  function con(){
-    var x = document.getElementById("optradio").value;
-    console.log(x)
-  }
-
+  
   function Vote(clicked_id){
   
     if(clicked_id =="voted" ){
