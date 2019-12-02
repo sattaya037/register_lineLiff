@@ -113,7 +113,8 @@ window.onload = function() {
           dbRef.child("choice").on("child_added", function(snapshot) {
             var content = ''; 
             var button ='';
-            console.log(snapshot.val().result.numChildren())           
+            var b = snapshot.child("result").numChildren();
+            console.log(b)           
             if(check == true){
                 button ='<button id="voted" onClick="Vote(this.id)" type="button" class="btn btn-secondary">Voted</button>';
   
