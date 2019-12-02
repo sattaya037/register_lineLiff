@@ -226,10 +226,10 @@ window.onload = function() {
   */
   function addOption(){
    var option = document.getElementById("Option1").value ;
-
-
     var dbRef = firebase.database().ref('HPY');
     console.log(option)
+    dbRef.child("choice").child(option).set(option);
+
   }
 
   function sendAlertIfNotInClient() {
