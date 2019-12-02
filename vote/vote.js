@@ -115,7 +115,7 @@ window.onload = function() {
             var button ='';
             var count = snapshot.child("result").numChildren();
             if(check == true){
-                button ='<button id="voted" onClick="Vote(this.id)" type="button" class="btn btn-secondary">Voted</button>';
+                button ='<button id="voted" onClick="Vote(this.id)" type="button" class="btn btn-secondary">Voted <span class="badge badge-light">'+count+'</span> </button>';
   
   
             }else{
