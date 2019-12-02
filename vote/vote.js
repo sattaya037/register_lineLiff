@@ -113,14 +113,13 @@ window.onload = function() {
           dbRef.child("choice").on("child_added", function(snapshot) {
             var content = ''; 
             var button ='';
-            var b = snapshot.child("result").numChildren();
-            console.log(b)           
+            var count = snapshot.child("result").numChildren();
             if(check == true){
                 button ='<button id="voted" onClick="Vote(this.id)" type="button" class="btn btn-secondary">Voted</button>';
   
   
             }else{
-                button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" data-toggle="modal" data-target="#voteModel" class="btn btn-primary">Vote <span class="badge badge-light">4</span> </button>';
+                button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" data-toggle="modal" data-target="#voteModel" class="btn btn-primary">Vote <span class="badge badge-light">'+count+'</span> </button>';
   
             }         
             content +='<li class="list-group-item">'+snapshot.key;
