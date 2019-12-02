@@ -128,7 +128,6 @@ window.onload = function() {
             content +='<h5 class="card-title">';
             content +=snapshot.key;
             content +='</h5>';
-            content +='<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>';
             content +='</div>';
             content +='<div class="card-footer">';
             content +=button;
