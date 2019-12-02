@@ -133,8 +133,8 @@ window.onload = function() {
             content +=button;
             content +='</div>';
             content +='</div>';
-          var theDiv = document.getElementById("ex-table");
-          theDiv.innerHTML += content;  
+        //   var theDiv = document.getElementById("ex-table");
+        //   theDiv.innerHTML += content;  
     
        
       }, function (errorObject) {
