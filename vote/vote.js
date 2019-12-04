@@ -116,10 +116,10 @@ window.onload = function() {
             if(check == true){
                 button ='<button id="voted" onClick="Vote(this.id)" type="button"  class="list-group-item list-group-item-dark">'+snapshot.key+'<div class="float-right"><span class="badge badge-light">'+count+'</span></div> </button>';
             }else{
-                button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" data-toggle="modal" data-target="#voteModel" class="list-group-item list-group-item-action"><div class="float-right"><h2>'+snapshot.key+'</h2></div><div class="float-right"><span class="badge badge-primary">'+count+'</span></div> </button>';
+                button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" data-toggle="modal" data-target="#voteModel" class="list-group-item list-group-item-action"><div class="float-left"><h2>'+snapshot.key+'</h2></div><div class="float-right"><span class="badge badge-primary">'+count+'</span></div> </button>';
 
             }         
-            content+=button
+            content+=button;
             // content +='<li class="list-group-item">'+snapshot.key;
             // content +='<div class="float-right">'+button+'</div>';
             // content +='</li>'; 
