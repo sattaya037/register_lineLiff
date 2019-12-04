@@ -118,11 +118,13 @@ window.onload = function() {
   
   
             }else{
-                button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" data-toggle="modal" data-target="#voteModel" class="list-group-item list-group-item-action">Vote <span class="badge badge-light">'+count+'</span> </button>';
+                button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" data-toggle="modal" data-target="#voteModel" class="list-group-item list-group-item-action">'+snapshot.key+'<div class="float-right"><span class="badge badge-light">'+count+'</span></div> </button>';
 
             }         
-            content +=button;
-         
+            content+=button
+            // content +='<li class="list-group-item">'+snapshot.key;
+            // content +='<div class="float-right">'+button+'</div>';
+            // content +='</li>'; 
             // content +='<div class="card">';
             // // content +='<img class="card-img-top"'; 
             // // content +=  'src='+snapshot.val().image +'alt="Card image cap">';
