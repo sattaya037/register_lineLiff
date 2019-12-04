@@ -30,7 +30,7 @@ function main() {
 
    function exchang(people) {
     names =people;
-    pairedName = shuffle(people);
+    pairedName = shuffle(people); 
     while (names.length) {
       let name1 = names.pop(),
         name2 = pairedName[0] == name1 ? pairedName.pop() : pairedName.shift();
