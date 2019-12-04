@@ -13,7 +13,8 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 let names,
-	pairedName;
+  pairedName,
+  count;
 
 
 function main() {
@@ -31,10 +32,19 @@ function main() {
    function exchang(people) {
     names =people;
     pairedName = shuffle(people); 
+    count =0
     while (names.length) {
+      count++
       let name1 = names.pop(),
-        name2 = pairedName[0] == name1 ? pairedName.pop() : pairedName.shift();
-              console.log(name1+" "+ name2)
+          name2 = pairedName[0] == name1 ? pairedName.pop() : pairedName.shift();
+              var content = '<li class="list-group-item">'+'('+count+')'+name1+'</li>'; 
+              var content2 = '<li class="list-group-item">'+'('+count+')'+name2+'</li>'; 
+
+              var theDiv = document.getElementById("gift");
+              theDiv.innerHTML += content;  
+
+              var theDiv = document.getElementById("recive");
+              theDiv.innerHTML += content2;
               // document.getElementById("assignments").appendChild(`<li>${name1} gets ${name2}`);     // Append <li> to <ul> with id="myList"
     }
    }
