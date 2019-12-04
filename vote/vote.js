@@ -114,7 +114,8 @@ window.onload = function() {
             var button ='';
             var count = snapshot.child("result").numChildren();
             if(check == true){
-                button ='<button id="voted" onClick="Vote(this.id)" type="button"  class="list-group-item list-group-item-dark">'+snapshot.key+'<div class="float-right"><span class="badge badge-light">'+count+'</span></div> </button>';
+                button ='<button id="voted" onClick="Vote(this.id)" type="button"  class="list-group-item list-group-item-dark"><div class="float-left"><h5>'+snapshot.key+'</h5></div><div class="float-right"><span class="badge badge-light">'+count+'</span></div> </button>';
+
             }else{
                 button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" data-toggle="modal" data-target="#voteModel" class="list-group-item list-group-item-action"><div class="float-left"><h5>'+snapshot.key+'</h5></div><div class="float-right"><span class="badge badge-primary">'+count+'</span></div> </button>';
 
