@@ -8,7 +8,9 @@ const voteId = process.env.GIFT_LIFF_ID;
 app.use(express.static('public'));
 app.use(express.static('vote'));
 app.use(express.static('gift'));
-app.use('/map', express.static('images/rich.js'));
+app.use(express.static('images'));
+
+// app.use('/map', express.static('images/rich.js'));
 
 app.get('/send-id', function(req, res) {
     res.json({id: myLiffId});
