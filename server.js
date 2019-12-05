@@ -4,10 +4,11 @@ const port = process.env.PORT || 5000;
 const myLiffId = process.env.MY_LIFF_ID;
 const voteId = process.env.GIFT_LIFF_ID;
 
+
 app.use(express.static('public'));
 app.use(express.static('vote'));
 app.use(express.static('gift'));
-app.use('/map', express.static('img/rich.jpg'));
+app.use('/map', express.static('images/rich.js'));
 
 app.get('/send-id', function(req, res) {
     res.json({id: myLiffId});
