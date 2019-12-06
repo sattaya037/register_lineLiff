@@ -239,7 +239,6 @@ function pushFirebase(profile){
       var lineID =profile.userId;
       var lineName =profile.displayName;
       var Fullname = document.getElementById("getfullName").value;
-      var onClose = '<button type="button" class="close">&times;</button>';
       const dbRef = firebase.database().ref('HPY');
       if(Fullname){
         dbRef.orderByKey().equalTo(lineID).once("value", function (snapshot) {
@@ -264,7 +263,6 @@ function pushFirebase(profile){
         // alert('Please specify your full name.');
         document.getElementById("alert").className = "alert alert-danger alert-dismissible";
         document.getElementById("alert").innerHTML = "Please specify your full name.";
-        document.getElementById("close").innerHTML = onClose;
 
 
       }
