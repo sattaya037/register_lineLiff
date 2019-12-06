@@ -262,6 +262,7 @@ function pushFirebase(profile){
           })
       }else{
         alert('Please specify your full name.');
+        document.getElementById("alert").className = "alert alert-danger";
 
       }
   
