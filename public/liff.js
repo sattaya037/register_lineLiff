@@ -271,12 +271,12 @@ function pushFirebase(profile){
 
 
 }   
+document.getElementById('onclose').addEventListener('click', function() {
+    document.getElementById("alert").alert("close");
 
-function onclose(){
-    // document.getElementById("alert").closest;
-    document.getElementById('alert').classList.toggle('invisible');
+});
 
-}
+
 
 /**
 * Toggle access token data field
