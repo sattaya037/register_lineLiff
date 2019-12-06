@@ -227,8 +227,9 @@ window.onload = function() {
   * Alert the user if LIFF is opened in an external browser and unavailable buttons are tapped
   */
   function addOption(){
-   var option = document.getElementById("Option1").value ;
+   var option = document.getElementById("Option1").value;
    if(option){
+       console.log(option)
     var dbRef = firebase.database().ref('HPY');
     dbRef.child("choice").child(option).set(option);
     alert(option+" added")
