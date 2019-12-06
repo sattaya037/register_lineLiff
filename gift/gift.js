@@ -80,8 +80,8 @@ function initializeApp() {
         const dbRef = firebase.database().ref('HPY');
         dbRef.child(lineID).on("value", function(snapshot) {
           var match =snapshot.val().match;
-          // document.getElementById('displaynamefield').innerHTML=profile.displayName;
-          // document.getElementById('match').innerHTML=match;
+          document.getElementById('displaynamefield').innerHTML=profile.displayName;
+          document.getElementById('match').innerHTML=match;
 
 
         })
