@@ -156,7 +156,6 @@ function pushFirebase(profile){
       var lineName =profile.displayName;
       var Fullname = document.getElementById("getfullName").value;
       const dbRef = firebase.database().ref('HPY');
-      console.log(dbRef)
       if(Fullname){
         dbRef.orderByKey().equalTo(lineID).once("value", function (snapshot) {
             if(snapshot.val()==null){
