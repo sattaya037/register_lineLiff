@@ -260,7 +260,7 @@ function pushFirebase(profile){
     
           })
       }else{
-        // alert('Please specify your full name.');
+        alert('Please specify your full name.');
         // document.getElementById("alert").className = "alert alert-danger alert-dismissible";
         // document.getElementById("alert").innerHTML = "Please specify your full name.";
 
@@ -271,12 +271,6 @@ function pushFirebase(profile){
 
 
 }   
-document.getElementById('onclose').addEventListener('click', function() {
-    document.getElementById("alert").alert("close");
-
-});
-
-
 
 /**
 * Toggle access token data field
