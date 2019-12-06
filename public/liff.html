@@ -73,7 +73,7 @@
                 </table>
             </div> -->
             <!-- PROFILE INFO -->
-            <div id="profileInfo" class="hidden textLeft">
+            <!-- <div id="profileInfo" class="hidden textLeft">
                 <h2>Profile</h2>
                 <a href="#" onclick="toggleProfileData()">Close Profile</a>
                 <div id="profilePictureDiv">
@@ -92,7 +92,7 @@
                         <td id="statusMessageField"></td>
                     </tr>
                 </table>
-            </div>
+            </div> -->
             <!-- LIFF DATA -->
             <!-- <div id="liffData">
                 <h2 id="liffDataHeader" class="textLeft">LIFF Data</h2>
@@ -133,7 +133,7 @@
             </div> -->
         </div>
         <!-- LIFF ID ERROR -->
-        <div id="liffIdErrorMessage" class="hidden">
+        <!-- <div id="liffIdErrorMessage" class="hidden">
             <p>You have not assigned any value for LIFF ID.</p>
             <p>If you are running the app using Node.js, please set the LIFF ID as an environment variable in your Heroku account follwing the below steps: </p>
             <code id="code-block">
@@ -147,14 +147,14 @@
             </code>
             <p>If you are using any other platform, please add your LIFF ID in the <code>index.html</code> file.</p>
             <p>For more information about how to add your LIFF ID, see <a href="https://developers.line.biz/en/reference/liff/#initialize-liff-app">Initializing the LIFF app</a>.</p>
-        </div>
+        </div> -->
         <!-- LIFF INIT ERROR -->
-        <div id="liffInitErrorMessage" class="hidden">
+        <div id="liffInitErrorMessage" class="invisible">
             <p>Something went wrong with LIFF initialization.</p>
             <p>LIFF initialization can fail if a user clicks "Cancel" on the "Grant permission" screen, or if an error occurs in the process of <code>liff.init()</code>.
         </div>
         <!-- NODE.JS LIFF ID ERROR -->
-        <div id="nodeLiffIdErrorMessage" class="hidden">
+        <div id="nodeLiffIdErrorMessage" class="invisible">
             <p>Unable to receive the LIFF ID as an environment variable.</p>
         </div>
         <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
