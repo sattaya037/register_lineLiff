@@ -228,9 +228,15 @@ window.onload = function() {
   */
   function addOption(){
    var option = document.getElementById("Option1").value ;
+   if(option){
     var dbRef = firebase.database().ref('HPY');
-    console.log(option)
     dbRef.child("choice").child(option).set(option);
+    alert(value+" added")
+
+   }else{
+    alert("Please specify Option.")
+   }
+  
 
   }
 
