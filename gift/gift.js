@@ -79,13 +79,14 @@ function initializeApp() {
       firebase.analytics();
         const dbRef = firebase.database().ref('HPY');
         dbRef.child(lineID).on("value", function(snapshot) {
+          console.log(snapshot.val())
           console.log(snapshot)
+
         })
         
         // displayLiffData();
       displayIsInClientInfo();
       registerButtonHandlers();
-      PromiseHandlers(dbRef,lineID);
   })
   .catch((err) => {
     console.log('error', err);
