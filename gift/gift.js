@@ -65,20 +65,22 @@ function initializeApp() {
   .then(profile => {
       const lineID = profile.userId
       var firebaseConfig = {
-          apiKey: "AIzaSyAH1pTXZy4XxpS0DfRVLwC93aZhWRnYiPQ",
-          authDomain: "ics-vote.firebaseapp.com",
-          databaseURL: "https://ics-vote.firebaseio.com",
-          projectId: "ics-vote",
-          storageBucket: "ics-vote.appspot.com",
-          messagingSenderId: "88696350608",
-          appId: "1:88696350608:web:780899d63f1cebc33cb515",
-          measurementId: "G-PLXJ6VBZ8D"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
+        apiKey: "AIzaSyCHQ4DM7_CqftwNk8hwM6AHTzXoT543n4g",
+        authDomain: "match-699cf.firebaseapp.com",
+        databaseURL: "https://match-699cf.firebaseio.com",
+        projectId: "match-699cf",
+        storageBucket: "match-699cf.appspot.com",
+        messagingSenderId: "496105033351",
+        appId: "1:496105033351:web:ddc576483480e68e10f222",
+        measurementId: "G-XX1B260S6W"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
         const dbRef = firebase.database().ref('HPY');
-    
+        dbRef.child(lineID).on("value", function(snapshot) {
+          console.log(snapshot)
+        })
         
         // displayLiffData();
       displayIsInClientInfo();
@@ -98,86 +100,6 @@ function initializeApp() {
   }
 }
 
-
-function PromiseHandlers(dbRef,lineID) {
-      dbRef.child("Voters").orderByKey().equalTo(lineID).once("value", function(snapshot) {
-          var check = snapshot.exists();
-          console.log(check)
-           firebaseHandlers(dbRef,check);
-        })        
-}
-
-function firebaseHandlers(dbRef,check) {
-  console.log(check);
-        dbRef.child("choice").on("child_added", function(snapshot) {
-          var content = ''; 
-          var button ='';
-          var count = snapshot.child("result").numChildren();
-          if(check == true){
-              button ='<button id="voted" onClick="Vote(this.id)" type="button"  class="list-group-item list-group-item-dark"><div class="float-left"><h5>'+snapshot.key+'</h5></div><div class="float-right"><span class="badge badge-light">'+count+'</span></div> </button>';
-
-          }else{
-              button ='<button id="'+snapshot.key+'" onClick="Vote(this.id)" type="button" data-toggle="modal" data-target="#voteModel" class="list-group-item list-group-item-action"><div class="float-left"><h5>'+snapshot.key+'</h5></div><div class="float-right"><span class="badge badge-primary">'+count+'</span></div> </button>';
-
-          }         
-          content+=button;
-          // content +='<li class="list-group-item">'+snapshot.key;
-          // content +='<div class="float-right">'+button+'</div>';
-          // content +='</li>'; 
-          // content +='<div class="card">';
-          // // content +='<img class="card-img-top"'; 
-          // // content +=  'src='+snapshot.val().image +'alt="Card image cap">';
-          // content +='<div class="card-body">';
-          // content +='<h5 class="card-title">';
-          // content +=snapshot.key;
-          // content +='</h5>';
-          // content +='</div>';
-          // content +='<div class="card-footer">';
-          // content +=button;
-          // content +='</div>';
-          // content +='</div>';
-        var theDiv = document.getElementById("ex-table");
-        theDiv.innerHTML += content;  
-  
-     
-    }, function (errorObject) {
-      console.log("The read failed: " + errorObject.code);
-    });
-}
-
-function Vote(clicked_id){
-
-  if(clicked_id =="voted" ){
-
-      alert('Voted.');
-
-  }else{
-      document.getElementById("voteName").innerHTML = clicked_id;
-      document.getElementById("confirmVote").value = clicked_id;
-
-  }
-}
-
-function confirm(){
-  var name_element = document.getElementById('confirmVote');
-  var voteId = name_element.value;
-  liff.getProfile().then(function(profile) {
-      var lineID =profile.userId;
-      var dbRef = firebase.database().ref('HPY');
-      dbRef.child("choice").orderByKey().equalTo(voteId).once("value", function (snapshot) {
-          console.log(snapshot.val());
-         dbRef.child("choice").child(voteId).child("result").child(lineID).set(voteId);
-         dbRef.child("Voters").child(lineID).set(voteId);
-         liff.closeWindow();
-
-
-      })
-
-  }).catch(function(error) {
-      window.alert('Error getting profile: ' + error);
-  });
-
-}
 
 
 function displayIsInClientInfo() {
@@ -226,13 +148,6 @@ function registerButtonHandlers() {
 /**
 * Alert the user if LIFF is opened in an external browser and unavailable buttons are tapped
 */
-function addOption(){
- var option = document.getElementById("Option1").value ;
-  var dbRef = firebase.database().ref('HPY');
-  console.log(option)
-  dbRef.child("choice").child(option).set(option);
-
-}
 
 function sendAlertIfNotInClient() {
   alert('This button is unavailable as LIFF is currently being opened in an external browser.');
