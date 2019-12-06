@@ -17,8 +17,8 @@ window.onload = function() {
                 initializeLiffOrDie(myLiffId);
             })
             .catch(function(error) {
-                document.getElementById("liffAppContent").classList.add('hidden');
-                document.getElementById("nodeLiffIdErrorMessage").classList.remove('hidden');
+                document.getElementById("liffAppContent").classList.add('invisible');
+                document.getElementById("nodeLiffIdErrorMessage").classList.remove('invisible');
             });
     } else {
         myLiffId = defaultLiffId;
@@ -32,8 +32,8 @@ window.onload = function() {
 */
 function initializeLiffOrDie(myLiffId) {
     if (!myLiffId) {
-        document.getElementById("liffAppContent").classList.add('hidden');
-        document.getElementById("liffIdErrorMessage").classList.remove('hidden');
+        document.getElementById("liffAppContent").classList.add('invisible');
+        document.getElementById("liffIdErrorMessage").classList.remove('invisible');
     } else {
         initializeLiff(myLiffId);
     }
@@ -53,8 +53,8 @@ function initializeLiff(myLiffId) {
             initializeApp();
         })
         .catch((err) => {
-            document.getElementById("liffAppContent").classList.add('hidden');
-            document.getElementById("liffInitErrorMessage").classList.remove('hidden');
+            document.getElementById("liffAppContent").classList.add('invisible');
+            document.getElementById("liffInitErrorMessage").classList.remove('invisible');
         });
 }
 
@@ -92,8 +92,8 @@ function displayIsInClientInfo() {
     if (liff.isInClient()) {
         liff.getProfile()
         .then(profile => {
-            document.getElementById('liffLoginButton').classList.toggle('hidden');
-            document.getElementById('liffLogoutButton').classList.toggle('hidden');
+            document.getElementById('liffLoginButton').classList.toggle('invisible');
+            document.getElementById('liffLogoutButton').classList.toggle('invisible');
             document.getElementById('displaynamefield').innerHTML=profile.displayName;
             document.getElementById("image").src=profile.pictureUrl; 
 
@@ -273,7 +273,9 @@ function pushFirebase(profile){
 }   
 
 function onclose(){
-    document.getElementById("alert").alert("close");
+    // document.getElementById("alert").closest;
+    document.getElementById('alert').classList.toggle('invisible');
+
 }
 
 /**
