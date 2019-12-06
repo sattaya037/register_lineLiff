@@ -63,7 +63,19 @@ function initializeLiff(myLiffId) {
  */
 function initializeApp() {
     // displayLiffData();
-    displayIsInClientInfo();
+    liff.getProfile()
+    .then(profile => {
+        document.getElementById('liffLoginButton').classList.toggle('invisible');
+        document.getElementById('liffLogoutButton').classList.toggle('invisible');
+        document.getElementById('displaynamefield').innerHTML=profile.displayName;
+        document.getElementById("image").src=profile.pictureUrl; 
+        
+    })
+    .catch((err) => {
+      console.log('error', err);
+      registerButtonHandlers();
+
+    });
     registerButtonHandlers();
 
     // check if the user is logged in/out, and disable inappropriate button
@@ -81,21 +93,7 @@ function initializeApp() {
 * Toggle the login/logout buttons based on the isInClient status, and display a message accordingly
 */
 function displayIsInClientInfo() {
-    if (liff.isInClient()) {
-        liff.getProfile()
-        .then(profile => {
-            document.getElementById('liffLoginButton').classList.toggle('invisible');
-            document.getElementById('liffLogoutButton').classList.toggle('invisible');
-            document.getElementById('displaynamefield').innerHTML=profile.displayName;
-            document.getElementById("image").src=profile.pictureUrl; 
-            
-        })
-        .catch((err) => {
-          console.log('error', err);
-          registerButtonHandlers();
-
-        });
-       
+    if (liff.isInClient()) { 
         // document.getElementById('isInClientMessage').textContent = 'You are opening the app in the in-app browser of LINE.';
     } else {
         // document.getElementById('isInClientMessage').textContent = 'You are opening the app in an external browser.';
