@@ -242,8 +242,7 @@ function pushFirebase(profile){
 
       const dbRef = firebase.database().ref('HPY');
       if(Fullname){
-        dbRef.orderByKey().equalTo(lineID).on("value", function (snapshot) {
-            console.log(snapshot.val())
+        dbRef.orderByKey().equalTo(lineID).once("value", function (snapshot) {
             if(snapshot.val()==null){
                 const usersRef = dbRef.child(lineID);
                 usersRef.set({
