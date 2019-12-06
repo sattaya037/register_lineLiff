@@ -29,6 +29,19 @@
                             </div>
                     </form>
                      
+                    <div class="buttonGroup">
+                            <button id="liffLoginButton">Log in</button>
+                            <button id="liffLogoutButton">Log out</button>
+                        </div>
+
+                        <div id="liffInitErrorMessage" class="invisible">
+                                <p>Something went wrong with LIFF initialization.</p>
+                                <p>LIFF initialization can fail if a user clicks "Cancel" on the "Grant permission" screen, or if an error occurs in the process of <code>liff.init()</code>.
+                            </div>
+                            <!-- NODE.JS LIFF ID ERROR -->
+                            <div id="nodeLiffIdErrorMessage" class="invisible">
+                                <p>Unable to receive the LIFF ID as an environment variable.</p>
+                            </div>
                 </div>
              
 
@@ -119,10 +132,7 @@
                 </table>
             </div> -->
             <!-- LOGIN LOGOUT BUTTONS -->
-            <div class="buttonGroup">
-                <button id="liffLoginButton">Log in</button>
-                <button id="liffLogoutButton">Log out</button>
-            </div>
+      
             <!-- <div id="statusMessage">
                 <div id="isInClientMessage"></div>
                 <div id="apiReferenceMessage">
@@ -148,14 +158,7 @@
             <p>For more information about how to add your LIFF ID, see <a href="https://developers.line.biz/en/reference/liff/#initialize-liff-app">Initializing the LIFF app</a>.</p>
         </div> -->
         <!-- LIFF INIT ERROR -->
-        <div id="liffInitErrorMessage" class="invisible">
-            <p>Something went wrong with LIFF initialization.</p>
-            <p>LIFF initialization can fail if a user clicks "Cancel" on the "Grant permission" screen, or if an error occurs in the process of <code>liff.init()</code>.
-        </div>
-        <!-- NODE.JS LIFF ID ERROR -->
-        <div id="nodeLiffIdErrorMessage" class="invisible">
-            <p>Unable to receive the LIFF ID as an environment variable.</p>
-        </div>
+
         <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
                 <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
