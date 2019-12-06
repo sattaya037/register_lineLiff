@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
 const myLiffId = process.env.MY_LIFF_ID;
-const voteId = process.env.GIFT_LIFF_ID;
+const voteId = process.env.VOTE_LIFF_ID;
+const giftId = process.env.GIFT_LIFF_ID;
 
 
 app.use(express.static('public'));
@@ -17,6 +18,10 @@ app.get('/send-id', function(req, res) {
 });
 
 app.get('/vote-id', function(req, res) {
+    res.json({id: voteId});
+});
+
+app.get('/gift-id', function(req, res) {
     res.json({id: voteId});
 });
 

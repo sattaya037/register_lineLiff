@@ -25,11 +25,11 @@ let firebaseConfig = {
 				  var name =childSnapshot.val().Fullname;
 				  people.push(name) 
 			  })
-			  exchang(people);
+			  exchang(people,dbRef);
 			})
 	 }
   
-	 function exchang(people) {
+	 function exchang(people,dbRef) {
 	  names =people;
 	  pairedName = shuffle(people); 
 	  count =0
@@ -43,10 +43,12 @@ let firebaseConfig = {
   
 				var theDiv = document.getElementById("gift");
 				theDiv.innerHTML += content;  
-				console.log(dbRef);
 				var theDiv = document.getElementById("recive");
 				theDiv.innerHTML += content2;
-				// dbRef.orderByChild('Fullname').equalTo(name1).child('match').set(name2)
+				dbRef.orderByChild('Fullname').equalTo(name1).on("child_added", function(snapshot) {
+					var key = snapshot.key;
+					dbRef.child(key).child('match').set(name2)
+				});
 
 				// document.getElementById("assignments").appendChild(`<li>${name1} gets ${name2}`);     // Append <li> to <ul> with id="myList"
 	  }

@@ -248,9 +248,7 @@ function pushFirebase(profile){
             usersRef.set({
                 lineName : lineName,
                 Fullname : Fullname,
-                match : 0,
-                gift : 0
-
+                match : 0
               });
               alert('  You have successfully registered.');
               liff.closeWindow();
