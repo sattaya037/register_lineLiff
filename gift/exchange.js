@@ -33,6 +33,8 @@ let firebaseConfig = {
 	  names =people;
 	  pairedName = shuffle(people); 
 	  count =0
+	  const dbRef = firebase.database().ref('HPY');
+
 	  while (names.length) {
 		count++
 		let name1 = names.pop(),
@@ -45,6 +47,9 @@ let firebaseConfig = {
   
 				var theDiv = document.getElementById("recive");
 				theDiv.innerHTML += content2;
+				dbRef.orderByChild('Fullname').equalTo(name1).child('match').set(name2)
+	  const dbRef = firebase.database().ref('HPY');
+
 				// document.getElementById("assignments").appendChild(`<li>${name1} gets ${name2}`);     // Append <li> to <ul> with id="myList"
 	  }
 	 }
