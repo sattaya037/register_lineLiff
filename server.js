@@ -22,7 +22,7 @@ app.get('/vote-id', function(req, res) {
 });
 
 app.get('/gift-id', function(req, res) {
-    res.json({id: voteId});
+    res.json({id: giftId});
 });
 
 
