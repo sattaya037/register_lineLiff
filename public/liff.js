@@ -96,7 +96,7 @@ function displayIsInClientInfo() {
             document.getElementById('liffLogoutButton').classList.toggle('invisible');
             document.getElementById('displaynamefield').innerHTML=profile.displayName;
             document.getElementById("image").src=profile.pictureUrl; 
-
+            
         })
         .catch((err) => {
           console.log('error', err);
@@ -221,6 +221,9 @@ function registerButtonHandlers() {
 function sendAlertIfNotInClient() {
     alert('This button is unavailable as LIFF is currently being opened in an external browser.');
 }
+function register(){
+    console.log(profiles)
+}
 
 function pushFirebase(profile){
     var firebaseConfig = {
@@ -271,6 +274,7 @@ function pushFirebase(profile){
 
 
 }   
+
 
 /**
 * Toggle access token data field
