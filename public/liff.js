@@ -191,7 +191,6 @@ function registerButtonHandlers() {
 
             document.getElementById('statusMessageField').textContent = profile.statusMessage;
             // toggleProfileData();
-            console.log(profile.userId)
 
             pushFirebase(profile);
         }).catch(function(error) {
@@ -237,7 +236,6 @@ function pushFirebase(profile){
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
-      console.log(profile.userId)
       var lineID =profile.userId;
       var lineName =profile.displayName;
       var Fullname = document.getElementById("getfullName").value;
@@ -245,6 +243,7 @@ function pushFirebase(profile){
       const dbRef = firebase.database().ref('HPY');
       if(Fullname){
         dbRef.orderByKey().equalTo(lineID).on("value", function (snapshot) {
+            console.log(snapshot.val())
             if(snapshot.val()==null){
                 const usersRef = dbRef.child(lineID);
                 usersRef.set({
@@ -252,7 +251,7 @@ function pushFirebase(profile){
                     Fullname : Fullname,
                     match : 0
                   });
-                  alert('  You have successfully registered.');
+                  alert(' You have successfully registered.');
                   liff.closeWindow();
     
             }else{
