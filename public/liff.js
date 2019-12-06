@@ -96,11 +96,12 @@ function displayIsInClientInfo() {
             document.getElementById('liffLogoutButton').classList.toggle('hidden');
             document.getElementById('displaynamefield').innerHTML=profile.displayName;
             document.getElementById("image").src=profile.pictureUrl; 
-                        console.log('profile');
 
         })
         .catch((err) => {
           console.log('error', err);
+          registerButtonHandlers();
+
         });
        
         // document.getElementById('isInClientMessage').textContent = 'You are opening the app in the in-app browser of LINE.';
@@ -242,24 +243,30 @@ function pushFirebase(profile){
       var Fullname = document.getElementById("getfullName").value;
 
       const dbRef = firebase.database().ref('HPY');
-    dbRef.orderByKey().equalTo(lineID).on("value", function (snapshot) {
-        if(snapshot.val()==null){
-            const usersRef = dbRef.child(lineID);
-            usersRef.set({
-                lineName : lineName,
-                Fullname : Fullname,
-                match : 0
-              });
-              alert('  You have successfully registered.');
-              liff.closeWindow();
+      if(Fullname){
+        dbRef.orderByKey().equalTo(lineID).on("value", function (snapshot) {
+            if(snapshot.val()==null){
+                const usersRef = dbRef.child(lineID);
+                usersRef.set({
+                    lineName : lineName,
+                    Fullname : Fullname,
+                    match : 0
+                  });
+                  alert('  You have successfully registered.');
+                  liff.closeWindow();
+    
+            }else{
+                alert('You are already registered.');
+                liff.closeWindow();
+    
+            }
+    
+          })
+      }else{
+        alert('Please specify your full name.');
 
-        }else{
-            alert('You are already registered.');
-            liff.closeWindow();
-
-        }
-
-      })
+      }
+  
 
 
 
