@@ -79,8 +79,10 @@ function initializeApp() {
       firebase.analytics();
         const dbRef = firebase.database().ref('HPY');
         dbRef.child(lineID).on("value", function(snapshot) {
-          console.log(snapshot.val())
-          console.log(snapshot)
+          var match =snapshot.val().match;
+          document.getElementById('displaynamefield').innerHTML=profile.displayName;
+          document.getElementById('match').innerHTML=match;
+
 
         })
         
