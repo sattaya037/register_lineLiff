@@ -222,7 +222,11 @@ function sendAlertIfNotInClient() {
     alert('This button is unavailable as LIFF is currently being opened in an external browser.');
 }
 function register(){
-    console.log(profiles)
+    liff.getProfile()
+    .then(profile => {
+        console.log(profile)
+        
+    })
 }
 
 function pushFirebase(profile){
