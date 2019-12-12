@@ -89,9 +89,8 @@ function makeDiv(Obj){
       var posx = (Math.random() * (width - divsize)).toFixed();
       var posy = (Math.random() * (height - divsize)).toFixed();
   
-  
       div.className = "ani-bubble";
-      div.style.position = "absolute";
+      div.style.position = "relative";
       div.style.left = posx+"px";
       div.style.top = posy+"px";
       div.style.width = divsize+"px";
@@ -107,16 +106,16 @@ function makeDiv(Obj){
       document.getElementById("main").appendChild(div);
       document.getElementById("main").animate([
         // keyframes
-        { transform: 'translateY(0px)' }, 
-        { transform: 'translateY(-100px)' }
+        { transform: 'translateY('+posx+'px)' }, 
+        { transform: 'translateX('+posy+'px)' }
       ], { 
         // timing options
-        duration: 2000,
+        duration: 5000,
         iterations: Infinity
       });
   }
 }
 
-setInterval(freshImage, 2000);
+setInterval(freshImage, 5000);
 
 
