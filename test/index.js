@@ -17,25 +17,6 @@
   const width = document.body.clientWidth;
   freshImage();
 
-	//Set the dimensions of canvas equal to the window's dimensions
-	
-  // setInterval(function(){ 
-  //   var myElement = document.getElementById('main');
-  //   makeDiv();
-
-  //   if(myElement){ 
-  //     // makeDiv();
-
-  //     console.log(true)
-  //   }else{
-  //     console.log(false)
-
-  //   }
-
-  // }, 5000);
-
-    var  Obj =document.querySelector('.ani-bubble');  
-    var check =  document.querySelector('.ani-bubble');    // Does not match anything
  
 function freshImage(){
   var Obj =[];
