@@ -108,7 +108,6 @@ window.onload = function() {
   }
   
   function firebaseHandlers(dbRef,check) {
-    console.log(check);
           dbRef.child("choice").on("child_added", function(snapshot) {
             var content = ''; 
             var button ='';
@@ -121,21 +120,6 @@ window.onload = function() {
 
             }         
             content+=button;
-            // content +='<li class="list-group-item">'+snapshot.key;
-            // content +='<div class="float-right">'+button+'</div>';
-            // content +='</li>'; 
-            // content +='<div class="card">';
-            // // content +='<img class="card-img-top"'; 
-            // // content +=  'src='+snapshot.val().image +'alt="Card image cap">';
-            // content +='<div class="card-body">';
-            // content +='<h5 class="card-title">';
-            // content +=snapshot.key;
-            // content +='</h5>';
-            // content +='</div>';
-            // content +='<div class="card-footer">';
-            // content +=button;
-            // content +='</div>';
-            // content +='</div>';
           var theDiv = document.getElementById("ex-table");
           theDiv.innerHTML += content;  
     
@@ -229,7 +213,6 @@ window.onload = function() {
   function addOption(){
    var option = document.getElementById("Option1").value;
    if(option){
-       console.log(option)
     var dbRef = firebase.database().ref('HPY');
     dbRef.child("choice").child(option).set(option);
     alert(option+" added")

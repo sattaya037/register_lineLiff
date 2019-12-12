@@ -10,6 +10,7 @@ app.use(express.static('public'));
 app.use(express.static('vote'));
 app.use(express.static('gift'));
 app.use(express.static('images'));
+app.use(express.static('test'));
 
 // app.use('/map', express.static('images/rich.js'));
 
