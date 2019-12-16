@@ -88,6 +88,8 @@ function makeDiv(Obj){
   for(var j = 0; j < Obj.length; j++) {
     var c = Obj[j].picUrl;
       var div = document.createElement("div");
+      var div2 = document.createElement("div");
+
       var divsize = ((Math.random()*100) + 50).toFixed();
       var posx = (Math.random() * (width - divsize)).toFixed();
       var posy = (Math.random() * (height - divsize)).toFixed();
@@ -104,11 +106,26 @@ function makeDiv(Obj){
       div.style.boxShadow = "  0 15px 35px  black , 0 3px 10px black";
       div.style.backgroundImage = "url("+c+")";
       div.style.backgroundSize="contain";
-      div.style.backgroundRepeat="no-repeat";
+      div.style.backgroundRepeat="space";
+
+ 
+
       // div.style.animationDuration ="3s";
 
       document.getElementById("main").appendChild(div);
 
+      // var container = document.querySelector(".ani-bubble"+j);
+      // console.log(container) 
+
+      //  document.getElementsByClassName("ani-bubble"+j).animate([
+      //   { transform: 'translateX('+posx+'px)' }, 
+      //   { transform: 'translateY('+(posy-100)+'px)' }
+      // ], { 
+      //   duration: 100*j,
+      //   iterations: Infinity
+        
+      // });
+      
       // document.getElementById("main").animate([
       //   { transform: 'translateX('+posx+'px)' }, 
       //   { transform: 'translateY('+(posy-100)+'px)' }
@@ -118,8 +135,10 @@ function makeDiv(Obj){
         
       // });
   }
+  // console.log(container)
+
 }
 
-// setInterval(freshImage, 10000);
+setInterval(freshImage, 10000);
 
 
