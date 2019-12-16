@@ -15,6 +15,9 @@
   const dbRef = firebase.database().ref('people');
   const height = document.body.clientHeight;
   const width = document.body.clientWidth;
+  const SCROLL_SPEED = 0.3;
+  const CANVAS_WIDTH = 2800;
+
   freshImage();
 
  
@@ -88,7 +91,7 @@ function makeDiv(Obj){
       var divsize = ((Math.random()*100) + 50).toFixed();
       var posx = (Math.random() * (width - divsize)).toFixed();
       var posy = (Math.random() * (height - divsize)).toFixed();
-  
+
       div.className = "ani-bubble";
       div.style.position = "relative";
       div.style.left = posx+"px";
@@ -102,20 +105,21 @@ function makeDiv(Obj){
       div.style.backgroundImage = "url("+c+")";
       div.style.backgroundSize="contain";
       div.style.backgroundRepeat="no-repeat";
-    
+      // div.style.animationDuration ="3s";
+
       document.getElementById("main").appendChild(div);
-      document.getElementById("main").animate([
-        // keyframes
-        { transform: 'translateY('+posx+'px)' }, 
-        { transform: 'translateX('+posy+'px)' }
-      ], { 
-        // timing options
-        duration: 5000,
-        iterations: Infinity
-      });
+
+      // document.getElementById("main").animate([
+      //   { transform: 'translateX('+posx+'px)' }, 
+      //   { transform: 'translateY('+(posy-100)+'px)' }
+      // ], { 
+      //   duration: 10000,
+      //   iterations: Infinity
+        
+      // });
   }
 }
 
-setInterval(freshImage, 5000);
+// setInterval(freshImage, 10000);
 
 

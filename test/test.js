@@ -1,145 +1,78 @@
-/*
-Drew Noakes 6 Apr 2002 http://drewnoakes.com
-- Images now can go up and down (allowing bubbles, as well as snow)
-- Images move into the screen and move out smoothly, without disappearing or
-  appearing suddenly
-- Scrolling the page doesn't effect the appearance of the snow/bubbles
-- renamed variables to be more meaningful
-- refactored common code out to functions, replacing different repeating
-  functions for each browser with a single function (moveFloatingImages)
-  for all browsers
+const SCROLL_SPEED = 0.3;
+const CANVAS_WIDTH = 2800;
 
-Modified 8 Dec 2006 for XHTML support.  This required the 'top' and 'left' attributes
-be set with a "px" suffix which in turn requires parsing by the CSS engine, reducing
-performance.  If you don't use XHTML validation, remove the string appends below.
-*/
+const bubblesEl = document.querySelector('.bubbles');
+const bubbleSpecs = [
+  { s: .6, x: 1134, y: 45  }, 
+  { s: .6, x: 1620, y: 271 }, 
+  { s: .6, x: 1761, y: 372 },
+  { s: .6, x: 2499, y: 79  },
+  { s: .6, x: 2704, y: 334 },
+  { s: .6, x: 2271, y: 356 },
+  { s: .6, x: 795,  y: 226 },
+  { s: .6, x: 276,  y: 256 },
+  { s: .6, x: 1210, y: 365 },
+  { s: .6, x: 444,  y: 193 },
+  { s: .6, x: 2545, y: 387 },
+  { s: .8, x: 1303, y: 193 },
+  { s: .8, x: 907,  y: 88  },
+  { s: .8, x: 633,  y: 320 },
+  { s: .8, x: 323,  y: 60  },
+  { s: .8, x: 129,  y: 357 },
+  { s: .8, x: 1440, y: 342 },
+  { s: .8, x: 1929, y: 293 },
+  { s: .8, x: 2135, y: 198 },
+  { s: .8, x: 2276, y: 82  },
+  { s: .8, x: 2654, y: 182 },
+  { s: .8, x: 2783, y: 60  },
+  {        x: 1519, y: 118 },
+  {        x: 1071, y: 233 },
+  {        x: 1773, y: 148 },
+  {        x: 2098, y: 385 },
+  {        x: 2423, y: 244 },
+  {        x: 901,  y: 385 },
+  {        x: 624,  y: 111 },
+  {        x: 75,   y: 103 },
+  {        x: 413,  y: 367 },
+  {        x: 2895, y: 271 },
+  {        x: 1990, y: 75  }
+];
 
-// relative URL path to the image
-var imageSrc = "bubbleDark.gif"
-// the height of the image in use
-var imageHeight = 16;
-// number of images to display
-var imageCount = 5;
-// -1 for up, 1 for down
-var imageDirection = -1;
+class Bubbles {
+  constructor(specs) {
+    this.bubbles = [];
 
-// time to wait before queueing the next screen update
-var TIMEOUT_INTERVAL_MILLIS = 10;
-
-// browser sniffer
-var ns4up = (document.layers) ? 1 : 0;
-var ie4up = (document.all) ? 1 : 0;
-var ns6up = (document.getElementById&&!document.all) ? 1 : 0;
-
-// coordinate and position arrays
-var thetaRadians = new Array();
-var xPosition = new Array();
-var yPosition = new Array();
-
-// amplitude and step arrays
-var xAmplitude = new Array();
-var thetaStep = new Array();
-var yStep = new Array();
-
-// window size variables, set by function detectWindowSize()
-var windowWidth, windowHeight;
-
-// create DIVs and start the function
-function initialiseFloatingImages()
-{
-    detectWindowSize();
-
-    for (var i = 0; i < imageCount; i++) {
-        // set coordinate variables
-        thetaRadians[i] = 0;
-        // set position variables
-        xPosition[i] = Math.random()*(windowWidth-50);
-        yPosition[i] = Math.random()*windowHeight;
-        // set amplitude variables
-        xAmplitude[i] = Math.random()*20;
-        // set step variables
-        thetaStep[i] = 0.02 + Math.random()/10;
-        // set step variables
-        yStep[i] = 0.7 + Math.random();
-        // write layers etc...
-        if (ns4up) {
-            document.write('<layer name="dot'+i+'" left="15" top="15" visibility="show"><img src="'+imageSrc+'" alt="Floating image"/></layer>');
-        } else if (ie4up||ns6up) {
-            document.write('<div id="dot'+i+'" style="POSITION:absolute; Z-INDEX:'+i+'; VISIBILITY:visible; TOP:15px; LEFT:15px;"><img src="'+imageSrc+'" alt="Floating image"/></div>');
-        }
-    }
-
-    moveFloatingImages();
+    specs.forEach((spec, index) => {
+      this.bubbles.push(new Bubble(index, spec));
+    })
+    
+    requestAnimationFrame(this.update.bind(this));
+  }
+  
+  update() {
+    this.bubbles.forEach(bubble => bubble.update());
+    this.raf = requestAnimationFrame(this.update.bind(this))
+  }  
 }
 
-// this is the main function
-function moveFloatingImages()
-{
-    // for each image...
-    for (var i = 0; i < imageCount; i++) {
-        // recalculate y position
-        yPosition[i] += imageDirection * yStep[i];
-        // ensure not off top or bottom of visible screen
-        if (yPosition[i] > windowHeight+getPageYOffset()) {
-            // downwards-heading image is at the bottom...  reset it
-            xPosition[i] = Math.random()*(windowWidth-xAmplitude[i]-30);
-            yPosition[i] = -imageHeight;
-            thetaStep[i] = 0.02 + Math.random()/10;
-            yStep[i] = 0.7 + Math.random();
-            detectWindowSize();
-        } else if (yPosition[i] < getPageYOffset()-imageHeight) {
-            // upwards-heading image is at the top...  reset it
-            xPosition[i] = Math.random()*(windowWidth-xAmplitude[i]-30);
-            yPosition[i] = getPageYOffset() + windowHeight;
-            thetaStep[i] = 0.02 + Math.random()/10;
-            yStep[i] = 0.7 + Math.random();
-            detectWindowSize();
-        }
-        thetaRadians[i] += thetaStep[i];
-        // move each image
-        var newXPosition = xPosition[i] + xAmplitude[i]*Math.sin(thetaRadians[i]);
-        if (ns4up) {
-            document.layers["dot"+i].top = yPosition[i] + "px";
-            document.layers["dot"+i].left = newXPosition + "px";
-        } else if (ie4up) {
-            document.all["dot"+i].style.pixelTop = yPosition[i];
-            document.all["dot"+i].style.pixelLeft = newXPosition;
-        } else if (ns6up) {
-            document.getElementById("dot"+i).style.top = yPosition[i] + "px";
-            document.getElementById("dot"+i).style.left = newXPosition + "px";
-        }
-    }
-    setTimeout("moveFloatingImages()", TIMEOUT_INTERVAL_MILLIS);
+
+class Bubble {
+  constructor(index, {x, y, s = 1}) {
+    this.index = index;
+    this.x = x;
+    this.y = y;
+    this.scale = s;
+    console.log(this.x)
+    this.el = document.createElement("div");
+    this.el.className = `bubble logo${this.index + 1}`;
+    bubblesEl.appendChild(this.el);
+  }
+  
+  update() {
+    this.x = (this.x <  -200) ? CANVAS_WIDTH : this.x - SCROLL_SPEED; 
+    console.log(this.scale)
+    this.el.style.transform = `translate(${this.x}px, ${this.y}px) scale(${this.scale})`;
+  }
 }
 
-// return the page's offset due to vertical scrolling
-function getPageYOffset()
-{
-    var yOffset = 0;
-    if (ns4up) {
-        yOffset = window.pageYOffset;
-    } else if (ie4up||ns6up) {
-        yOffset = document.body.scrollTop;
-    }
-    return yOffset;
-}
-
-// detect information about the window's size
-function detectWindowSize()
-{
-    if (ns6up) {
-        windowWidth = window.innerWidth;
-        windowHeight = window.innerHeight;
-    } else if (ns4up) {
-        windowWidth = document.body.clientWidth;
-        windowHeight = document.body.clientHeight;
-    } else if (ie4up) {
-        windowWidth = document.body.clientWidth;
-        windowHeight = document.body.clientHeight;
-    } else {
-        windowWidth = 800;
-        windowHeight = 600;
-    }
-}
-
-initialiseFloatingImages();
+const bubbles = new Bubbles(bubbleSpecs);
