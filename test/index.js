@@ -88,7 +88,7 @@ function makeDiv(Obj){
   for(var j = 0; j < Obj.length; j++) {
     var c = Obj[j].picUrl;
       var div = document.createElement("div");
-
+      console.log(Obj[j])
       var divsize = ((Math.random()*100) + 50).toFixed();
       var posx = (Math.random() * (width - divsize)).toFixed();
       var posy = (Math.random() * (height - divsize)).toFixed();
@@ -132,6 +132,6 @@ function makeDiv(Obj){
 var mybubbles = document.getElementsByClassName("ani-bubble");
 
 
-setInterval(freshImage, 20000);
+// setInterval(freshImage, 20000);
 
 
