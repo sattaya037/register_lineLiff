@@ -137,7 +137,7 @@ function vote(value){
 
 function view(){
     const voteRef = firebase.database().ref('HPY/voters')
-    voteRef.on("value", function(snapshot) {
+    voteRef.child('vote').orderByValue().on("value", function(snapshot) {
         console.log(snapshot.val())
     })
 
