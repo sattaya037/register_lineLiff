@@ -148,17 +148,10 @@ function view(){
 
 function render(arrObj){
     console.log(arrObj)
-    var key = {};
-    for(var i=0; i<arrObj.length; i++){
-        for(var j=0; j<arrObj[i].length; j++){
-          if(typeof key[arrObj[i][j]] === 'undefined'){
-            key[arrObj[i][j]] = 1;
-          } else {
-            key[arrObj[i][j]] = parseInt(key[arrObj[i][j]]) + 1;
-          }
-        }
-      }
-      console.log(key);
+    var counts = {};
+    for(var i=0;i<arrObj.length;i++)
+    arrObj[i].forEach((x)=> { counts[x] = (counts[x] || 0)+1; });
+    console.log(counts);
 
 }
 
