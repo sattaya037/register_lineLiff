@@ -156,18 +156,15 @@ function render(arrObj){
     } else {
         obj[item] = 1;
     }
-    });
-    Object.keys(obj).map(function(item) {
-        var output =''
-        var output ='<div class="progress">'+item
-        var output ='<div class="progress-bar" role="progressbar" aria-valuenow="'+ obj[item]+'" aria-valuemin="'+ obj[item]+'" aria-valuemax="'+arrObj.length+'"></div>'
-        var output ='</div>'
+    var output =''
+    var output ='<div class="progress">'+item
+    var output ='<div class="progress-bar" role="progressbar" aria-valuenow="'+ obj[item]+'" aria-valuemin="'+ obj[item]+'" aria-valuemax="'+arrObj.length+'"></div>'
+    var output ='</div>'
 
-        var theDiv2 = document.getElementById("output");
-        theDiv2.innerHTML += output; 
-        // return item +''+ obj[item];
-    
-    })
+    var theDiv2 = document.getElementById("output");
+    theDiv2.innerHTML += output; 
+    });
+
     // document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
 
     // return item +''+ obj[item];
