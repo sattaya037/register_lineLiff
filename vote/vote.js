@@ -137,74 +137,37 @@ function view(){
     const voteRef = firebase.database().ref('HPY/voters')
     voteRef.orderByChild('vote').on("value", function(snapshot) {
         console.log(snapshot.val())
-        var content2 ='';
         var arrObj =[];
         snapshot.forEach(function(childsnapshot){
             console.log(childsnapshot.val().vote)
             arrObj.push(childsnapshot.val().vote)
         })
-        // render(arrObj);
-        var sortedArr = [];
-        var count = 1;
-        sortedArr = arrObj.sort();
-        var content2 ='';
-        for (var i = 0; i < sortedArr.length; i = i + count) {
-            count = 1;
-            for (var j = i + 1; j < sortedArr.length; j++) {
-            if (sortedArr[i] === sortedArr[j])
-                count++;
-            }
-                content2 +='<div class="progress">';
-                content2 +='<div class="progress-bar" role="progressbar" style="width:'+count+'%;" aria-valuenow="'+count+'" aria-valuemin="0" aria-valuemax="'+arrObj.length+'">'+sortedArr[i]+'</div>';
-                content2 +='</div>';
-                content2 +='<br>';
-        }
-  var theDiv2 = document.getElementById("output");
-    theDiv2.innerHTML += content2; 
-
+        render(arrObj);
     })
 }
 
 function render(arrObj){
     console.log(arrObj)
-    var sortedArr = [];
-    var count = 1;
-  
-  sortedArr = arrObj.sort();
-  var content2 ='';
-  for (var i = 0; i < sortedArr.length; i = i + count) {
-    count = 1;
-    for (var j = i + 1; j < sortedArr.length; j++) {
-      if (sortedArr[i] === sortedArr[j])
-        count++;
+    var obj = {};
+    arrObj.forEach(function(item) {
+    if (typeof obj[item] == 'number') {
+        obj[item]++;
+
+    } else {
+        obj[item] = 1;
     }
-         content2 +='<div class="progress">';
-         content2 +='<div class="progress-bar" role="progressbar" style="width:'+count+'%;" aria-valuenow="'+count+'" aria-valuemin="0" aria-valuemax="'+arrObj.length+'">'+sortedArr[i]+'</div>';
-         content2 +='</div>';
-         content2 +='<br>';
-  }
-  var theDiv2 = document.getElementById("output");
-    theDiv2.innerHTML += content2; 
+    });
+    document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
+        console.log(item)
+        console.log(obj[item])
 
-    // var obj = {};
-    // arrObj.forEach(function(item) {
-    // if (typeof obj[item] == 'number') {
-    //     obj[item]++;
+    return item +''+ obj[item] ;
+    }).join('\n');
 
-    // } else {
-    //     obj[item] = 1;
-    // }
-    // });
-    // document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
-    //     console.log(item)
-    //     console.log(obj[item])
-
-    // return item +' '+ obj[item] ;
-    // }).join('\n');
-
-    // var  count = {};
-    // arrObj.forEach(function(i) { count[i] = (count[i]||0) + 1;});
-    // console.log(count);
+        //  content2 +='<div class="progress">';
+        //  content2 +='<div class="progress-bar" role="progressbar" style="width:'+count+'%;" aria-valuenow="'+count+'" aria-valuemin="0" aria-valuemax="'+arrObj.length+'">'+sortedArr[i]+'</div>';
+        //  content2 +='</div>';
+        //  content2 +='<br>';
 
     
     }
