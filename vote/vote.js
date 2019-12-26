@@ -81,6 +81,7 @@ window.onload = function() {
           console.log(lineID)
           
           // displayLiffData();
+        vote(dbRef);
         displayIsInClientInfo();
         registerButtonHandlers();
     })
@@ -97,7 +98,9 @@ window.onload = function() {
     }
   }
   
-
+function vote(dbRef){
+    console.log(dbRef)
+}
   
   /**
   * Register event handlers for the buttons displayed in the app
