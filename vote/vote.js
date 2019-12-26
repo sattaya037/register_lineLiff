@@ -78,7 +78,7 @@ window.onload = function() {
           firebase.initializeApp(firebaseConfig);
           firebase.analytics();
           const dbRef = firebase.database().ref('HPY');
-          console.log(dbRef)
+          console.log(lineID)
           
           // displayLiffData();
         displayIsInClientInfo();
