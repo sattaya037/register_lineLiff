@@ -111,6 +111,7 @@ window.onload = function() {
   
 function vote(value){
     console.log(value.userId)
+    var uid=value.userId;
     const dbRef = firebase.database().ref('HPY')
     dbRef.child("choice").on("value", function(snapshot) {
         console.log(snapshot.val())
@@ -118,7 +119,7 @@ function vote(value){
         snapshot.forEach(function(childsnapshot) {
             console.log(childsnapshot.val())
             console.log(childsnapshot.key)
-            content +='<button onclick="onSubmit('+value+')" class="w3-button w3-black">'+childsnapshot.key+'</button>';
+            content +='<button onclick="onSubmit('+uid+')" class="w3-button w3-black">'+childsnapshot.key+'</button>';
 
         })
         var theDiv = document.getElementById("btn");
@@ -128,9 +129,9 @@ function vote(value){
     console.log(dbRef)
 }
 
-function onSubmit(value){
+function onSubmit(uid){
     console.log("tt")
-    console.log(value)
+    console.log(uid)
 
 }
   
