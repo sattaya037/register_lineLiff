@@ -84,8 +84,6 @@ window.onload = function() {
     });
 
     profileProm.then(function(value) {
-        console.log(value);
-        const lineProfile=value;
         vote(value);
       });
 
@@ -112,7 +110,7 @@ window.onload = function() {
   }
   
 function vote(value){
-    console.log(value)
+    console.log(value.userId)
     const dbRef = firebase.database().ref('HPY')
     dbRef.child("choice").on("value", function(snapshot) {
         console.log(snapshot.val())
