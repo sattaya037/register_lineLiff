@@ -118,8 +118,9 @@ function vote(value){
         var content = '';
         snapshot.forEach(function(childsnapshot) {
             console.log(childsnapshot.val())
-            console.log(childsnapshot.key)
-            content +='<button onclick="onSubmit(\'' + value + '\')" class="w3-button w3-black">'+childsnapshot.key+'</button>';
+             console.log(childsnapshot.key)
+             var snapKey =childsnapshot.key;
+            content +='<button id="'+childsnapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="w3-button w3-black" value="'+childsnapshot+'" >'+childsnapshot.key+'</button>';
 
         })
         var theDiv = document.getElementById("btn");
@@ -129,9 +130,10 @@ function vote(value){
     console.log(dbRef)
 }
 
-function onSubmit(value){
+function onSubmit(snapKey){
+    var a =
     console.log("tt")
-    console.log(value.userId)
+    console.log(snapKey)
 
 }
   
