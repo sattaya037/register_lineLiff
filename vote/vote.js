@@ -160,9 +160,9 @@ function render(arrObj){
       if (sortedArr[i] === sortedArr[j])
         count++;
     }
-    var content2 ='<div class="progress">';
-    var content2 ='<div class="progress-bar" role="progressbar" style="width:'+count+'%;" aria-valuenow="'+count+'" aria-valuemin="0" aria-valuemax="'+arrObj.length+'">'+sortedArr[i]+'</div>';
-    var content2 ='</div>';
+         content2 +='<div class="progress">';
+         content2 +='<div class="progress-bar" role="progressbar" style="width:'+count+'%;" aria-valuenow="'+count+'" aria-valuemin="0" aria-valuemax="'+arrObj.length+'">'+sortedArr[i]+'</div>';
+         content2 +='</div>';
 
     var theDiv2 = document.getElementById("output");
     theDiv2.innerHTML += content2; 
