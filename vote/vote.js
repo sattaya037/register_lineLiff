@@ -119,7 +119,7 @@ function vote(value){
         snapshot.forEach(function(childsnapshot) {
             console.log(childsnapshot.val())
             console.log(childsnapshot.key)
-            content +='<button onclick="onSubmit('+uid+')" class="w3-button w3-black">'+childsnapshot.key+'</button>';
+            content +='<button onclick="onSubmit(uid)" class="w3-button w3-black">'+childsnapshot.key+'</button>';
 
         })
         var theDiv = document.getElementById("btn");
