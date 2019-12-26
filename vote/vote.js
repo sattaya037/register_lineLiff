@@ -120,7 +120,7 @@ function vote(value){
             console.log(childsnapshot.val())
              console.log(childsnapshot.key)
              var snapKey =childsnapshot.key;
-            content +='<button id="'+childsnapshot.key+'" onclick="onSubmit(\'' + snapKey,uid + '\')" class="w3-button w3-black" value="'+childsnapshot+'" >'+childsnapshot.key+'</button>';
+            content +='<button id="'+childsnapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="w3-button w3-black" value="'+childsnapshot+'" >'+childsnapshot.key+'</button>';
 
         })
         var theDiv = document.getElementById("btn");
@@ -129,9 +129,8 @@ function vote(value){
 
 }
 
-function onSubmit(snapKey,uid){
+function onSubmit(snapKey){
     console.log(snapKey)
-    console.log(uid)
 
 }
   
