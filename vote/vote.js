@@ -85,6 +85,7 @@ window.onload = function() {
 
     profileProm.then(function(value) {
         vote(value);
+        view();
       });
 
     // liff.getProfile()
@@ -134,10 +135,12 @@ function vote(value){
 }
 
 
-function view(arrObj){
-    for (i = 0; i < arrObj.length; i++) {
-            console.log(arrObj[i])
-      }
+function view(){
+    const voteRef = firebase.database().ref('HPY/voters')
+    voteRef.on("child_added", function(snapshot) {
+        console.log(snapshot.val())
+    })
+
 
 
 
