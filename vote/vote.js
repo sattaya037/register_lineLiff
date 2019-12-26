@@ -116,15 +116,16 @@ function vote(value){
     const dbRef = firebase.database().ref('HPY')
     dbRef.child("choice").on("value", function(snapshot) {
         console.log(snapshot.val())
-        var content = '';
         var arrObj=[];
         snapshot.forEach(function(childsnapshot) {
+            var content = '';
             var snapKey =childsnapshot.key;
             content +='<button id="'+childsnapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="w3-button w3-black" value="'+uid+'" >'+childsnapshot.key+'</button>';
             arrObj.push(childsnapshot.key)
+            var theDiv = document.getElementById("btn");
+            theDiv.innerHTML += content; 
         })
-        var theDiv = document.getElementById("btn");
-        theDiv.innerHTML += content; 
+     
         view(arrObj)
     })
 
