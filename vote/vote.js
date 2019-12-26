@@ -139,10 +139,10 @@ function view(){
         console.log(snapshot.val())
         var arrObj =[];
         snapshot.forEach(function(childsnapshot){
-            console.log(childsnapshot.vote)
-            arrObj.push(childsnapshot.vote)
+            console.log(childsnapshot)
+            arrObj.push(childsnapshot)
         })
-        render(arrObj);
+        // render(arrObj);
     })
 }
 
