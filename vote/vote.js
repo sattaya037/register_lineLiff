@@ -132,7 +132,7 @@ function vote(value){
 function onSubmit(snapKey){
     console.log(snapKey)
     var lineID = document.getElementById(snapKey).value;
-    const dbRef = firebase.database().ref('HPY')
+    // const dbRef = firebase.database().ref('HPY')
     console.log(dbRef)
 
 }
