@@ -163,21 +163,21 @@ function render(arrObj){
   }
 
 
-    var obj = {};
-    arrObj.forEach(function(item) {
-    if (typeof obj[item] == 'number') {
-        obj[item]++;
+    // var obj = {};
+    // arrObj.forEach(function(item) {
+    // if (typeof obj[item] == 'number') {
+    //     obj[item]++;
 
-    } else {
-        obj[item] = 1;
-    }
-    });
-    document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
-        console.log(item)
-        console.log(obj[item])
+    // } else {
+    //     obj[item] = 1;
+    // }
+    // });
+    // document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
+    //     console.log(item)
+    //     console.log(obj[item])
 
-    return item +''+ obj[item] ;
-    }).join('\n');
+    // return item +' '+ obj[item] ;
+    // }).join('\n');
 
     // var  count = {};
     // arrObj.forEach(function(i) { count[i] = (count[i]||0) + 1;});
