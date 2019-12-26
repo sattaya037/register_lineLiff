@@ -74,14 +74,20 @@ window.onload = function() {
   * Initialize the app by calling functions handling individual app components
   */
   function initializeApp() {
-
-    var promise1 = new Promise(function(resolve, reject) {
+    registerButtonHandlers();
+    var profileProm = new Promise(function(resolve, reject) {
             liff.getProfile().then(profile => {
+            
             resolve(profile)
         }).catch((err) => {
             console.log('error', err);
         });
     });
+
+    profileProm.then(function(value) {
+        console.log(value);
+        // expected output: "foo"
+      });
 
     // liff.getProfile()
     // .then(profile => {
