@@ -134,7 +134,7 @@ function onSubmit(snapKey){
     var lineID = document.getElementById(snapKey).value;
     const voteRef = firebase.database().ref('HPY/voters')
     voteRef.child(lineID).set({
-        snapKey
+        vote : snapKey
       });
 
 
