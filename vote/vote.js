@@ -157,11 +157,17 @@ function render(arrObj){
         obj[item] = 1;
     }
     });
+    
     document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
-        console.log(item)
-        console.log(obj[item])
+        var content2 = '';
+         content2 +='<div class="progress">';
+         content2 +='<div class="progress-bar" role="progressbar" style="width:'+count+'%;" aria-valuenow="'+count+'" aria-valuemin="0" aria-valuemax="4">'+sortedArr[i]+'</div>';
+         content2 +='</div>';
+         content2 +='<br>';
+        // console.log(item)
+        // console.log(obj[item])
 
-    return item +''+ obj[item] ;
+    return content2 ;
     }).join('\n');
 
         //  content2 +='<div class="progress">';
