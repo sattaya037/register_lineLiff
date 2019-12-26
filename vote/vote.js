@@ -114,19 +114,21 @@ function vote(value){
     console.log(value.userId)
     var uid=value.userId;
     const dbRef = firebase.database().ref('HPY')
-    dbRef.child("choice").on("value", function(snapshot) {
+    dbRef.child("choice").on("child_added", function(snapshot) {
         console.log(snapshot.val())
+        console.log(snapshot.key)
+
+        var content = '';
         var arrObj=[];
-        snapshot.forEach(function(childsnapshot) {
-            var content = '';
-            var snapKey =childsnapshot.key;
-            content +='<button id="'+childsnapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="w3-button w3-black" value="'+uid+'" >'+childsnapshot.key+'</button>';
-            arrObj.push(childsnapshot.key)
-            var theDiv = document.getElementById("btn");
-            theDiv.innerHTML += content; 
-        })
-     
-        view(arrObj)
+        content +='<button id="'+childsnapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="w3-button w3-black" value="'+uid+'" >'+childsnapshot.key+'</button>';
+
+        // snapshot.forEach(function(childsnapshot) {
+        //     var snapKey =childsnapshot.key;
+        //     arrObj.push(childsnapshot.key)
+        // })
+        var theDiv = document.getElementById("btn");
+        theDiv.innerHTML += content; 
+        // view(arrObj)
     })
 
 }
