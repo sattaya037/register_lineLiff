@@ -85,7 +85,6 @@ window.onload = function() {
 
     profileProm.then(function(value) {
         vote(value);
-        view();
       });
 
     // liff.getProfile()
@@ -110,9 +109,6 @@ window.onload = function() {
     }
   }
 
-function view(){
-    console.log("this is view")
-}
   
 function vote(value){
     console.log(value.userId)
@@ -121,17 +117,23 @@ function vote(value){
     dbRef.child("choice").on("value", function(snapshot) {
         console.log(snapshot.val())
         var content = '';
+        var arrObj=[];
         snapshot.forEach(function(childsnapshot) {
             console.log(childsnapshot.val())
-             console.log(childsnapshot.key)
              var snapKey =childsnapshot.key;
             content +='<button id="'+childsnapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="w3-button w3-black" value="'+uid+'" >'+childsnapshot.key+'</button>';
-
+            arrObj.push(childsnapshot.key)
         })
         var theDiv = document.getElementById("btn");
         theDiv.innerHTML += content; 
+        view(arrObj)
     })
 
+}
+
+
+function view(arrObj){
+    console.log(arrObj)
 }
 
 function onSubmit(snapKey){
