@@ -85,6 +85,7 @@ window.onload = function() {
 
     profileProm.then(function(value) {
         vote(value);
+        view();
       });
 
     // liff.getProfile()
@@ -108,6 +109,10 @@ window.onload = function() {
         document.getElementById('liffLogoutButton').disabled = true;
     }
   }
+
+function view(){
+    console.log("this is view")
+}
   
 function vote(value){
     console.log(value.userId)
@@ -136,8 +141,6 @@ function onSubmit(snapKey){
     voteRef.child(lineID).set({
         vote : snapKey
       });
-
-
 }
   
   /**
