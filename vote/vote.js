@@ -148,24 +148,29 @@ function view(){
 
 function render(arrObj){
     console.log(arrObj)
+    var obj = {};
+    arrObj.forEach(function(item) {
+    if (typeof obj[item] == 'number') {
+        obj[item]++;
 
-    var  count = {};
-    arrObj.forEach(function(i) { count[i] = (count[i]||0) + 1;});
-    console.log(count);
-    // var obj = {};
-    // arrObj.forEach(function(item) {
-    // if (typeof obj[item] == 'number') {
-    //     obj[item]++;
+    } else {
+        obj[item] = 1;
+    }
+    });
+    Object.keys(obj).map(function(item) {
+        var output =''
+        var output ='<div class="progress">'+item
+        var output ='<div class="progress-bar" role="progressbar" aria-valuenow="'+ obj[item]+'" aria-valuemin="'+ obj[item]+'" aria-valuemax="'+arrObj.length+'"></div>'
+        var output ='</div>'
 
-    // } else {
-    //     obj[item] = 1;
-    // }
-    // });
+        var theDiv2 = document.getElementById("output");
+        theDiv2.innerHTML += output; 
+        // return item +''+ obj[item];
+    
+    })
     // document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
-    //     console.log(item)
-    //     console.log(obj[item])
 
-    // return item +' '+ obj[item];
+    // return item +''+ obj[item];
     // }).join('\n');
 
     // var  count = {};
