@@ -159,7 +159,7 @@ function render(arrObj){
       if (sortedArr[i] === sortedArr[j])
         count++;
     }
-    console.log(sortedArr[i] + " = " + count)
+    console.log(sortedArr[i] +"  " + count)
   }
 
 
