@@ -115,7 +115,7 @@ function vote(){
 }
 
 function onSubmit(){
-    console.log(tt)
+    console.log("tt")
     console.log(profile)
 
 }
