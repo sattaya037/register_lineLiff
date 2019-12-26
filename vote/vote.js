@@ -157,8 +157,6 @@ function render(arrObj){
         obj[item] = 1;
     }
     });
-    console.log(item +' '+ obj[item])
-
     document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
         console.log(item)
         console.log(obj[item])
