@@ -150,7 +150,7 @@ function render(arrObj){
     console.log(arrObj)
     var  count = {};
     arrObj.forEach(function(i) { count[i] = (count[i]||0) + 1;});
-    console.log(count[1]);
+    console.log(count);
 }
 
 function onSubmit(snapKey){
