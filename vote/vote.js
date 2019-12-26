@@ -152,21 +152,18 @@ function render(arrObj){
     count = 1;
   
   sortedArr = arrObj.sort();
-  var content2 ='';
-
+  
   for (var i = 0; i < sortedArr.length; i = i + count) {
     count = 1;
+    var content2 ='';
     for (var j = i + 1; j < sortedArr.length; j++) {
-
       if (sortedArr[i] === sortedArr[j])
         count++;
-
     }
-      
-    content2 +='<div class="progress">';
-    content2 +='<div class="progress-bar" role="progressbar" style="width:'+count+'%;" aria-valuenow="'+count+'" aria-valuemin="0" aria-valuemax="'+arrObj.length+'">'+sortedArr[i]+'</div>';
-    content2 +='</div>';
-    content2 +='<br>';
+         content2 +='<div class="progress">';
+         content2 +='<div class="progress-bar" role="progressbar" style="width:'+count+'%;" aria-valuenow="'+count+'" aria-valuemin="0" aria-valuemax="'+arrObj.length+'">'+sortedArr[i]+'</div>';
+         content2 +='</div>';
+         content2 +='<br>';
 
     var theDiv2 = document.getElementById("output");
     theDiv2.innerHTML += content2; 
