@@ -74,19 +74,28 @@ window.onload = function() {
   * Initialize the app by calling functions handling individual app components
   */
   function initializeApp() {
-    liff.getProfile()
-    .then(profile => {
-        const lineID = profile.userId;
-          console.log(lineID)
-          
-          // displayLiffData();
-        vote();
-        registerButtonHandlers();
-    })
-    .catch((err) => {
-      console.log('error', err);
-      registerButtonHandlers();
+
+    var promise1 = new Promise(function(resolve, reject) {
+            liff.getProfile().then(profile => {
+            resolve(profile)
+        }).catch((err) => {
+            console.log('error', err);
+        });
     });
+
+    // liff.getProfile()
+    // .then(profile => {
+    //     const lineID = profile.userId;
+    //       console.log(lineID)
+          
+    //       // displayLiffData();
+    //     vote();
+    //     registerButtonHandlers();
+    // })
+    // .catch((err) => {
+    //   console.log('error', err);
+    //   registerButtonHandlers();
+    // });
   
     // check if the user is logged in/out, and disable inappropriate button
     if (liff.isLoggedIn()) {
