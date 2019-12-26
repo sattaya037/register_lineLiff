@@ -1,7 +1,20 @@
 window.onload = function() {
     const useNodeJS = true;   // if you are not using a node server, set this value to false
     const defaultLiffId = "1553436015-04nm9w1G";   // change the default LIFF value if you are not using a node server
-  
+    var firebaseConfig = {
+        apiKey: "AIzaSyAH1pTXZy4XxpS0DfRVLwC93aZhWRnYiPQ",
+        authDomain: "ics-vote.firebaseapp.com",
+        databaseURL: "https://ics-vote.firebaseio.com",
+        projectId: "ics-vote",
+        storageBucket: "ics-vote.appspot.com",
+        messagingSenderId: "88696350608",
+        appId: "1:88696350608:web:780899d63f1cebc33cb515",
+        measurementId: "G-PLXJ6VBZ8D"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      
     // DO NOT CHANGE THIS
     let myLiffId = "";
   
@@ -63,25 +76,11 @@ window.onload = function() {
   function initializeApp() {
     liff.getProfile()
     .then(profile => {
-        const lineID = profile.userId
-        var firebaseConfig = {
-            apiKey: "AIzaSyAH1pTXZy4XxpS0DfRVLwC93aZhWRnYiPQ",
-            authDomain: "ics-vote.firebaseapp.com",
-            databaseURL: "https://ics-vote.firebaseio.com",
-            projectId: "ics-vote",
-            storageBucket: "ics-vote.appspot.com",
-            messagingSenderId: "88696350608",
-            appId: "1:88696350608:web:780899d63f1cebc33cb515",
-            measurementId: "G-PLXJ6VBZ8D"
-          };
-          // Initialize Firebase
-          firebase.initializeApp(firebaseConfig);
-          firebase.analytics();
-          const dbRef = firebase.database().ref('HPY');
+        const lineID = profile.userId;
           console.log(lineID)
           
           // displayLiffData();
-        vote(dbRef);
+        vote();
         displayIsInClientInfo();
         registerButtonHandlers();
     })
@@ -98,7 +97,8 @@ window.onload = function() {
     }
   }
   
-function vote(dbRef){
+function vote(){
+    const dbRef = firebase.database().ref('HPY')
     console.log(dbRef)
 }
   
