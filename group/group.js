@@ -16,151 +16,29 @@
 //   dbRef.push({
 //     startedAt: firebase.database.ServerValue.TIMESTAMP
 //   });
+  addGroup();
 
-  let getLast = new Promise(function(resolve, reject) {
-        dbRef.child("register").limitToLast(1).once("value", function(snapshot) {
-            snapshot.val()
-            resolve(snapshot.val());
-        })
-  });
-  let getMember = new Promise(function(resolve, reject) {
-    dbRef.once("child_added", function(snapshot) {
-        var childKey = snapshot.child("member").hasChildren(); // "last"
-        resolve(childKey);
-    })
-  });
+function addGroup(){
+    var lineID="dasd";
+      dbRef.child("member").on("value", function(snapshot) {
+        var hasID = snapshot.hasChild(lineID); // true
+        var msg='';
+        if(hasID == false){
+          msg={
+            type: 'text',
+            text:  "You haven't queue!! ,Please register first."
+          };
+        }else{
+         
+          snapshot.forEach(function(childSnapshot) {
+            if(childSnapshot.key ==lineID){
+              msg="a"+childSnapshot.val().number
 
-
-Promise.all([getLast, getMember]).then(function(values) {
-    addGroup(values); 
-
-});
-
-function addGroup(values){
-    var lineID="ertger";
-    var TIMESTAMP =new Date().getTime();
-    if(values[0] == null && values[1]==false){
-        dbRef.child("register").child(TIMESTAMP).set({
-                lineID:lineID,
-                group:1,
-        })
-
-        dbRef.child("member").child(lineID).set({
-                lineName:"lineName",
-                group:1,
-        })
-        console.log(false)
-    }else{
-        console.log(true)
-        dbRef.child("member").once("value", function(snapshot) {
-            var hasName = snapshot.hasChild(lineID);
-            var count = snapshot.numChildren()+1;
-         if(hasName == false){
-            console.log('not regis')
-            dbRef.child("register").limitToLast(1).once("value", function(snapshot) {
-                console.log(snapshot.val())
-                snapshot.forEach(function(childSnapshot) {
-                    if(childSnapshot.val().group == 1){
-                        dbRef.child("register").child(TIMESTAMP).set({
-                            lineID:lineID,
-                            group:2,
-                          })
-                          dbRef.child("member").child(lineID).set({
-                            lineName:"lineName",
-                            group:2,
-                          })
-                    }else if(childSnapshot.val().group == 2){
-                        dbRef.child("register").child(TIMESTAMP).set({
-                            lineID:lineID,
-                            group:3,
-                          })
-                          dbRef.child("member").child(lineID).set({
-                            lineName:"lineName",
-                            group:3,
-                          })
-                    }else if(childSnapshot.val().group == 3){
-                        dbRef.child("register").child(TIMESTAMP).set({
-                            lineID:lineID,
-                            group:4,
-                          })
-                          dbRef.child("member").child(lineID).set({
-                            lineName:"lineName",
-                            group:4,
-                          })
-                    }else if(childSnapshot.val().group == 4){
-                        dbRef.child("register").child(TIMESTAMP).set({
-                            lineID:lineID,
-                            group:1,
-                          })
-                          dbRef.child("member").child(lineID).set({
-                            lineName:"lineName",
-                            group:1,
-                          })
-                    }
-                })
-                
+            }
           })
+        }
+        console.log(msg)
+      })
+   
 
-         }else{
-
-            console.log('registed')
-
-         }
-
-        })
-    }
-    // dbRef.once("child_added", function(snapshot) {
-    //     var lineID="adasdds";
-    //     var childKey = snapshot.child("member").hasChildren(); // "last"
-    //     var hasName = snapshot.hasChild(lineID);
-    //   })
 }
-
-
-    // dbRef.child("register").limitToLast(1).once("value", function(snapshot) {
-    //     if(childKey == false && snapshot.val() == null ){
-    //         console.log(false)
-    //         dbRef.child("register").child("1").set({
-    //             lineID:lineID,
-    //             group:1,
-    //         })
-    //         dbRef.child("member").child("lineID").set({
-    //             lineName:"lineName",
-    //             group:1,
-    //         })
-    
-    //     }else{
-      
-    //     }
-
-    // })
-
-
-    // var childKey = snapshot.child(lineID).hasChild("a"); // "last"
-    // var j=1;
-    // var count = snapshot.numChildren()+1;
-    // var childKey = snapshot.child("member").hasChild("a"); // "last"
-    // j++
-    // console.log(j)
-    // console.log(childKey)
-    // if(childKey == 0){
-    //     dbRef.child("register").child("2").set({
-    //         LineID:"aadasdda",    
-    //         group:2,
-    //         LineName:"fwefsd",
-    //     })
-    //     dbRef.child("member").child("aaa").set({
-    //         group:1,
-    //     })
-    //     console.log("sucess")
-    // }else{
-    //     // console.log("not 0")
-    //     if(childKey !== "aaa"){
-    //         // console.log("new regis")
-
-    //     }
-    // }
-
-
-  
-

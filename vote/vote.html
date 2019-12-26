@@ -13,52 +13,9 @@
     </head>
     <body>
         <div id="liffAppContent" class="container">
-                <div class="container p-3 my-3 border">
-                        <div class="input-group mb-3">
-                                <input id="Option1" type="text" class="form-control" placeholder="Option" aria-label="Option" aria-describedby="button-addon2">
-                                <div class="input-group-append">
-                                  <button onclick="addOption()" class="btn btn-success" type="button" id="button-addon2"><ion-icon name="add"></ion-icon></button>
-                                </div>
-                         </div>
-
-                         <div class="list-group">
-                                <div id="ex-table" class="card-deck"></div>
-                
-                            </div>
-
-                            <div class="modal fade" id="voteModel">
-                                    <div class="modal-dialog modal-sm">
-                                    <div class="modal-content">
-                                    
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                        <h4 class="modal-title">Confirm</h4>
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        </div>
-                                        
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-                                                <p id="voteName">..</p>
-                                        </div>
-                                        
-                                        <!-- Modal footer -->
-                                        <div class="modal-footer">
-                                        <button type="button" onClick="confirm()" id="confirmVote" value="test"  class="btn-success" data-dismiss="modal">Confirm</button>
-                                        </div>
-                                        
-                                    </div>
-                                    </div>
-                                </div>
-
-                                <div >
-                                        <button id="liffLoginButton">Log in</button>
-                                        <button id="liffLogoutButton">Log out</button>
-                                </div>
-                
-                    </div>
-           
-                <!-- LIFF INIT ERROR -->
-                <div id="liffInitErrorMessage" class="invisible">
+            
+                    <!-- LIFF INIT ERROR -->
+                    <div id="liffInitErrorMessage" class="invisible">
                         <p>Something went wrong with LIFF initialization.</p>
                         <p>LIFF initialization can fail if a user clicks "Cancel" on the "Grant permission" screen, or if an error occurs in the process of <code>liff.init()</code>.
                     </div>
