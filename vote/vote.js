@@ -151,7 +151,7 @@ function render(arrObj){
 
     var  count = {};
     arrObj.forEach(function(i) { count[i] = (count[i]||0) + 1;});
-    console.log(count[0]);
+    console.log(count);
     // var obj = {};
     // arrObj.forEach(function(item) {
     // if (typeof obj[item] == 'number') {
