@@ -159,7 +159,17 @@ function render(arrObj){
       if (sortedArr[i] === sortedArr[j])
         count++;
     }
-    console.log(sortedArr[i] +"  " + count)
+    var content ='';
+    var content ='<div class="progress">';
+    var content ='<div class="progress-bar" role="progressbar" style="width:'+count+'%;" aria-valuenow="'+count+'" aria-valuemin="0" aria-valuemax="'+arrObj.length+'">'+sortedArr[i]+'</div>';
+    var content ='</div>';
+    
+  
+
+
+    var theDiv = document.getElementById("output");
+    theDiv.innerHTML += content; 
+    console.log(sortedArr[i] +" " + count)
   }
 
 
