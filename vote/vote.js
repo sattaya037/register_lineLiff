@@ -81,7 +81,6 @@ window.onload = function() {
           
           // displayLiffData();
         vote();
-        displayIsInClientInfo();
         registerButtonHandlers();
     })
     .catch((err) => {
@@ -99,6 +98,10 @@ window.onload = function() {
   
 function vote(){
     const dbRef = firebase.database().ref('HPY')
+    dbRef.child("choice").on("value", function(snapshot) {
+        console.log(snapshot.val())
+    })
+
     console.log(dbRef)
 }
   
@@ -127,19 +130,7 @@ function vote(){
   /**
   * Alert the user if LIFF is opened in an external browser and unavailable buttons are tapped
   */
-  function addOption(){
-   var option = document.getElementById("Option1").value;
-   if(option){
-    var dbRef = firebase.database().ref('HPY');
-    dbRef.child("choice").child(option).set(option);
-    alert(option+" added")
 
-   }else{
-    alert("Please specify Option.")
-   }
-  
-
-  }
 
   function sendAlertIfNotInClient() {
     alert('This button is unavailable as LIFF is currently being opened in an external browser.');
