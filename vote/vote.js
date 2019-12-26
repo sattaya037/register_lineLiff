@@ -157,23 +157,14 @@ function render(arrObj){
         obj[item] = 1;
     }
     });
-    Object.keys(obj).map(function(item) {
-        var itemObj = '';
-        var itemObj = '<p>'+item +' '+ obj[item]+'</p>';
+    console.log(item +' '+ obj[item])
 
-        var output = document.getElementById("output");
-        output.innerHTML += itemObj; 
+    document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
+        console.log(item)
+        console.log(obj[item])
 
-        console.log(item +' '+ obj[item])
-        
-    })
-
-    // document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
-    //     console.log(item)
-    //     console.log(obj[item])
-
-    // return item +' '+ obj[item];
-    // }).join('\n');
+    return item +' '+ obj[item];
+    }).join('\n');
 
     // var  count = {};
     // arrObj.forEach(function(i) { count[i] = (count[i]||0) + 1;});
