@@ -146,9 +146,9 @@ function view(arrObj){
 function onSubmit(snapKey){
     console.log(snapKey)
     var lineID = document.getElementById(snapKey).value;
-    const voteRef = firebase.database().ref('HPY/choice')
-    voteRef.child(snapKey).child("voters").child(lineID).set({
-        lineID
+    const voteRef = firebase.database().ref('HPY/voters')
+    voteRef.child(lineID).set({
+        vote:snapKey
       });
 }
   
