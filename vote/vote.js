@@ -117,10 +117,10 @@ function vote(value){
     dbRef.child("choice").on("child_added", function(snapshot) {
         console.log(snapshot.val())
         console.log(snapshot.key)
-
+        var snapKey =snapshot.key;
         var content = '';
         var arrObj=[];
-        content +='<button id="'+childsnapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="w3-button w3-black" value="'+uid+'" >'+childsnapshot.key+'</button>';
+        content +='<button id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="w3-button w3-black" value="'+uid+'" >'+snapshot.key+'</button>';
 
         // snapshot.forEach(function(childsnapshot) {
         //     var snapKey =childsnapshot.key;
