@@ -161,7 +161,7 @@ function render(arrObj){
         console.log(item)
         console.log(obj[item])
 
-    return item + (obj[item] == 1 ? '' : ' ' + obj[item]);
+    return item + obj[item];
     }).join('\n');
 
     // var  count = {};
