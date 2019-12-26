@@ -135,14 +135,14 @@ function vote(value){
 
 function view(){
     const voteRef = firebase.database().ref('HPY/voters')
-    voteRef.orderByChild('vote').on("child_added", function(snapshot) {
+    voteRef.orderByChild('vote').on("value", function(snapshot) {
         console.log(snapshot.val())
         var arrObj =[];
         snapshot.forEach(function(childsnapshot){
-            console.log(childsnapshot)
-            arrObj.push(childsnapshot)
+            console.log(childsnapshot.val().vote)
+            arrObj.push(childsnapshot.val().vote)
         })
-        // render(arrObj);
+        render(arrObj);
     })
 }
 
@@ -152,10 +152,9 @@ function render(arrObj){
     count = 1;
   
   sortedArr = arrObj.sort();
-  
+  var content2 ='';
   for (var i = 0; i < sortedArr.length; i = i + count) {
     count = 1;
-    var content2 ='';
     for (var j = i + 1; j < sortedArr.length; j++) {
       if (sortedArr[i] === sortedArr[j])
         count++;
