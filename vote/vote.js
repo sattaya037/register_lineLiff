@@ -158,8 +158,14 @@ function render(arrObj){
     }
     });
     Object.keys(obj).map(function(item) {
-        console.log(item +' '+ obj[item])
+        var itemObj = '';
+        var itemObj = '<p>'+item +' '+ obj[item]+'</p>';
 
+        var output = document.getElementById("output");
+        output.innerHTML += itemObj; 
+
+        console.log(item +' '+ obj[item])
+        
     })
 
     // document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
