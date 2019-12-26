@@ -148,6 +148,21 @@ function view(){
 
 function render(arrObj){
     console.log(arrObj)
+    sortedArr = [],
+    count = 1;
+  
+  sortedArr = arrObj.sort();
+  
+  for (var i = 0; i < sortedArr.length; i = i + count) {
+    count = 1;
+    for (var j = i + 1; j < sortedArr.length; j++) {
+      if (sortedArr[i] === sortedArr[j])
+        count++;
+    }
+    console.log(sortedArr[i] + " = " + count)
+  }
+
+
     var obj = {};
     arrObj.forEach(function(item) {
     if (typeof obj[item] == 'number') {
@@ -156,19 +171,13 @@ function render(arrObj){
     } else {
         obj[item] = 1;
     }
-    var output =''
-    var output ='<div class="progress">'+item
-    var output ='<div class="progress-bar" role="progressbar" aria-valuenow="'+ obj[item]+'" aria-valuemin="'+ obj[item]+'" aria-valuemax="'+arrObj.length+'"></div>'
-    var output ='</div>'
-
-    var theDiv2 = document.getElementById("output");
-    theDiv2.innerHTML += output; 
     });
+    document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
+        console.log(item)
+        console.log(obj[item])
 
-    // document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
-
-    // return item +''+ obj[item];
-    // }).join('\n');
+    return item +''+ obj[item] ;
+    }).join('\n');
 
     // var  count = {};
     // arrObj.forEach(function(i) { count[i] = (count[i]||0) + 1;});
