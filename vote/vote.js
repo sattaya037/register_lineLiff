@@ -163,11 +163,9 @@ function render(arrObj){
          content2 +='<div class="progress-bar" role="progressbar" style="width:'+count+'%;" aria-valuenow="'+count+'" aria-valuemin="0" aria-valuemax="'+arrObj.length+'">'+sortedArr[i]+'</div>';
          content2 +='</div>';
          content2 +='<br>';
-
-    var theDiv2 = document.getElementById("output");
-    theDiv2.innerHTML += content2; 
   }
-
+  var theDiv2 = document.getElementById("output");
+    theDiv2.innerHTML += content2; 
 
     // var obj = {};
     // arrObj.forEach(function(item) {
