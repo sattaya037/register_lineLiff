@@ -148,11 +148,9 @@ function view(){
 
 function render(arrObj){
     console.log(arrObj)
-    var counts = {};
-    for(var i=0;i<arrObj.length;i++)
-    arrObj[i].forEach((x)=> { counts[x] = (counts[x] || 0)+1; });
-    console.log(counts);
-
+    var  count = {};
+    arrObj.forEach(function(i) { count[i] = (count[i]||0) + 1;});
+    console.log(count);
 }
 
 function onSubmit(snapKey){
