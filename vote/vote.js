@@ -137,14 +137,17 @@ function view(){
     const voteRef = firebase.database().ref('HPY/voters')
     voteRef.orderByChild('vote').on("value", function(snapshot) {
         console.log(snapshot.val())
+        var arrObj =[];
         snapshot.forEach(function(childsnapshot){
             console.log(childsnapshot.val().vote)
+            arrObj.push(childsnapshot.val().vote)
         })
+        render(arrObj);
     })
+}
 
-
-
-
+function render(arrObj){
+    console.log(arrObj)
 }
 
 function onSubmit(snapKey){
