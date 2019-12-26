@@ -119,8 +119,7 @@ function vote(value){
         var content = '';
         var arrObj=[];
         snapshot.forEach(function(childsnapshot) {
-            console.log(childsnapshot.val())
-             var snapKey =childsnapshot.key;
+            var snapKey =childsnapshot.key;
             content +='<button id="'+childsnapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="w3-button w3-black" value="'+uid+'" >'+childsnapshot.key+'</button>';
             arrObj.push(childsnapshot.key)
         })
@@ -133,7 +132,11 @@ function vote(value){
 
 
 function view(arrObj){
-    console.log(arrObj)
+    for (i = 0; i < arrObj.length; i++) {
+            console.log(arrObj[i])
+      }
+
+
 }
 
 function onSubmit(snapKey){
