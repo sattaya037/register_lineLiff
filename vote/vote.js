@@ -100,6 +100,11 @@ function vote(){
     const dbRef = firebase.database().ref('HPY')
     dbRef.child("choice").on("value", function(snapshot) {
         console.log(snapshot.val())
+        snapshot.forEach(function(childsnapshot) {
+            console.log(childsnapshot.val())
+            console.log(childsnapshot.key)
+
+        })
     })
 
     console.log(dbRef)
