@@ -118,7 +118,7 @@ function vote(value){
         snapshot.forEach(function(childsnapshot) {
             console.log(childsnapshot.val())
             console.log(childsnapshot.key)
-            content +='<button onclick="onSubmit()" class="w3-button w3-black">'+childsnapshot.key+'</button>';
+            content +='<button onclick="onSubmit('+value+')" class="w3-button w3-black">'+childsnapshot.key+'</button>';
 
         })
         var theDiv = document.getElementById("btn");
@@ -128,9 +128,9 @@ function vote(value){
     console.log(dbRef)
 }
 
-function onSubmit(){
+function onSubmit(value){
     console.log("tt")
-    console.log(lineProfile)
+    console.log(value)
 
 }
   
