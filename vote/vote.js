@@ -135,7 +135,7 @@ function vote(value){
 
 function view(){
     const voteRef = firebase.database().ref('HPY/voters')
-    voteRef.orderByChild('vote').on("value", function(snapshot) {
+    voteRef.orderByChild('vote').on("child_added", function(snapshot) {
         console.log(snapshot.val())
         var arrObj =[];
         snapshot.forEach(function(childsnapshot){
