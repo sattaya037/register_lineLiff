@@ -135,9 +135,6 @@ function view(arrObj){
     for (i = 0; i < arrObj.length; i++) {
             console.log(arrObj[i])
       }
-      dbRef.child("choice").on("value", function(snapshot) {
-
-      })
 
 
 
