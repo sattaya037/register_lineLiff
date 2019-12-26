@@ -76,8 +76,7 @@ window.onload = function() {
   function initializeApp() {
     registerButtonHandlers();
     var profileProm = new Promise(function(resolve, reject) {
-            liff.getProfile().then(profile => {
-            
+            liff.getProfile().then(profile => { 
             resolve(profile)
         }).catch((err) => {
             console.log('error', err);
@@ -86,7 +85,8 @@ window.onload = function() {
 
     profileProm.then(function(value) {
         console.log(value);
-        // expected output: "foo"
+        const lineProfile=value;
+        vote(value);
       });
 
     // liff.getProfile()
@@ -111,7 +111,8 @@ window.onload = function() {
     }
   }
   
-function vote(){
+function vote(value){
+    console.log(value)
     const dbRef = firebase.database().ref('HPY')
     dbRef.child("choice").on("value", function(snapshot) {
         console.log(snapshot.val())
@@ -131,7 +132,7 @@ function vote(){
 
 function onSubmit(){
     console.log("tt")
-    console.log(profile)
+    console.log(lineProfile)
 
 }
   
