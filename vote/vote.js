@@ -152,14 +152,15 @@ function render(arrObj){
     arrObj.forEach(function(item) {
     if (typeof obj[item] == 'number') {
         obj[item]++;
-        console.log(obj[item])
 
     } else {
         obj[item] = 1;
-        console.log(obj[item])
     }
     });
     document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
+        console.log(item)
+        console.log(obj[item])
+
     return item + (obj[item] == 1 ? '' : ' ' + obj[item]);
     }).join('\n');
 
