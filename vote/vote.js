@@ -148,8 +148,8 @@ function view(){
 
 function render(arrObj){
     console.log(arrObj)
-    sortedArr = [],
-    count = 1;
+    var sortedArr = [];
+    var count = 1;
   
   sortedArr = arrObj.sort();
   var content2 ='';
