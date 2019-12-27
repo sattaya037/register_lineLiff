@@ -35,10 +35,11 @@
         arr.forEach(function(item) {
           Object.keys(item).forEach(function(key) {
             console.log("key:" + key + "value:" + item[key]);
+            debugger;
+
           });
         });
     
-        debugger;
     // var i=0
     // for (let [key, value] of Object.entries(data[0].data)) {
     //   var count = i++
