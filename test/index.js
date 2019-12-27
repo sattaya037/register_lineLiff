@@ -23,12 +23,19 @@
   .then(function(data) {
   
     // console.log(data[0].data)
-    var i=0
-    for (let [key, value] of Object.entries(data[0].data)) {
-      var count = i++
-      console.log(`${key}: ${value[1]}`);
+    for (var key in data[0].data) {
+      if (Object.prototype.hasOwnProperty.call(data[0].data, key)) {
+          var val = data[0].data[key];
+          console.log(val)
+          // use val
+      }
+  }
+    // var i=0
+    // for (let [key, value] of Object.entries(data[0].data)) {
+    //   var count = i++
+    //   console.log(`${key}: ${value[1]}`);
      
-    }
+    // }
 
     // for (var i = 0; i < objArr.length; i = i ++) {
     //   for (var j = 0; j < objArr2.length; j++) {
