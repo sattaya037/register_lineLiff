@@ -118,16 +118,17 @@ function vote(value){
     dbRef.child("choice").on("child_added", function(snapshot) {
         var snapKey =snapshot.key;
         var content = '';
-        var arrObj=[];
-        content +='<button id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="w3-button w3-black" value="'+uid+'" >'+snapshot.key+'</button>';
-
-        // snapshot.forEach(function(childsnapshot) {
-        //     var snapKey =childsnapshot.key;
-        //     arrObj.push(childsnapshot.key)
-        // })
+        content += '<div class="card" style="width:400px">';
+        content += '<img class="card-img-top" src="" alt="Card image" style="width:100%">';
+        content += '<div class="card-body">';
+        content += '<h4 class="card-title">'+snapshot.key+'</h4>';
+        content += '<button id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" type="button" class="btn" value="'+uid+'">'+snapshot.key+'</button>';
+        content += ' </div>';
+        content += ' </div>';
+        content += ' <br>';       
+    
         var theDiv = document.getElementById("btn");
         theDiv.innerHTML += content; 
-        // view(arrObj)
     })
 
 }
