@@ -28,11 +28,11 @@
       console.log(`${key}: ${value}`);
       objArr.push(key)
       objArr2.push(value)
-
+      
       
     }
     console.log(objArr)
-    console.log(objArr2)
+    console.log(objArr2[0])
 
     debugger;
   })
