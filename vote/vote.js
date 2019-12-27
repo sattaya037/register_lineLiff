@@ -157,26 +157,40 @@ function render(arrObj){
         obj[item] = 1;
     }
     });
+    var ctx = document.getElementById('myChart').getContext('2d');
 
-        var ctx = document.getElementById('myChart').getContext('2d');
-var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'line',
+    Object.keys(obj).map(function(item) {
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+            // The data for our dataset
+            data: {
+                labels:item,
+                datasets: [{
+                    label: 'My First dataset',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: obj[item]
+                }]
+            },
 
-    // The data for our dataset
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45]
-        }]
-    },
+            // Configuration options go here
+            options: {}
+        });
+        console.log(arrObj.length)
+        var content2 = '';
+         content2 +=item+'<div class="progress">';
+         content2 +='<div class="progress-bar" role="progressbar" style="width:'+obj[item]+'%;" aria-valuenow="'+obj[item]+'" aria-valuemin="" aria-valuemax="'+arrObj.length+'">'+obj[item]+'</div>';
+         content2 +='</div>';
+         content2 +='<br>';
 
-    // Configuration options go here
-    options: {}
-});
+        // console.log(item)
+        // console.log(obj[item])
+
+    return chart ;
+    });
+
+  
 
     
     document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
