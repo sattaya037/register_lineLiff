@@ -151,15 +151,20 @@ function render(arrObj){
     sortedArr = [],
     count = 1;
     sortedArr = arrObj.sort();
-    
+    var data1=[];
+    var data2=[];
+
     for (var i = 0; i < sortedArr.length; i = i + count) {
         count = 1;
         for (var j = i + 1; j < sortedArr.length; j++) {
         if (sortedArr[i] === sortedArr[j])
             count++;
         }
-        console.log(sortedArr[i] + " = " + count )
+            data1.push(sortedArr[i])
+            data2.push(count)
     }
+    console.log(data1 + " = " + data2 )
+
 
     var obj = {};
     arrObj.forEach(function(item) {
