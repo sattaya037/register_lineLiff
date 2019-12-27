@@ -22,6 +22,7 @@
   .then((resp) => resp.json())
   .then(function(data) {
     console.log(data)
+    debugger;
   })
   .catch(function(error) {
     console.log(JSON.stringify(error));
