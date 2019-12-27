@@ -161,7 +161,7 @@ function render(arrObj){
     document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
         var content2 = '';
          content2 +='<div class="progress">';
-         content2 +='<div class="progress-bar" role="progressbar" style="width:20%;" aria-valuenow="'+obj[item]+'" aria-valuemin="0" aria-valuemax="4">'+item+'</div>';
+         content2 +='<div class="progress-bar" role="progressbar" style="width:20%;" aria-valuenow="2" aria-valuemin="" aria-valuemax="4">'+item+"("+obj[item]+")"+'</div>';
          content2 +='</div>';
          content2 +='<br>';
 
