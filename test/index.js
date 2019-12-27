@@ -21,7 +21,7 @@
   fetch(url)
   .then((resp) => resp.json())
   .then(function(data) {
-  
+    
     var arr = [];
 
     for (var prop in data[0].data) {
