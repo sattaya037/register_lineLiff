@@ -119,7 +119,7 @@ function vote(value){
         var snapKey =snapshot.key;
         var content = '';
         var arrObj=[];
-        content += '<div class="card" style="width:350px">';
+        content += '<div class="card" style="width:auto">';
         content += '<img class="card-img-top" src="" alt="Card image" style="width:100%">';
         content += '<div class="card-body">';
         content += '<h4 class="card-title">'+snapshot.key+'</h4>';
