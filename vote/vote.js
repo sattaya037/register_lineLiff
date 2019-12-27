@@ -159,9 +159,10 @@ function render(arrObj){
     });
     
     document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
+        console.log(arrObj.length)
         var content2 = '';
          content2 +='<div class="progress">';
-         content2 +='<div class="progress-bar" role="progressbar" style="width:20%;" aria-valuenow="2" aria-valuemin="" aria-valuemax="4">'+item+"("+obj[item]+")"+'</div>';
+         content2 +='<div class="progress-bar" role="progressbar" style="width:'+obj[item]+'%;" aria-valuenow="'+obj[item]+'" aria-valuemin="" aria-valuemax="'+arrObj.length+'">'+item+" ("+obj[item]+")"+'</div>';
          content2 +='</div>';
          content2 +='<br>';
 
