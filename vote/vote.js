@@ -157,25 +157,27 @@ function render(arrObj){
         obj[item] = 1;
     }
     });
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-          labels: ["Green", "Blue", "Gray", "Purple", "Yellow", "Red", "Black"],
-          datasets: [{
-            backgroundColor: [
-              "#2ecc71",
-              "#3498db",
-              "#95a5a6",
-              "#9b59b6",
-              "#f1c40f",
-              "#e74c3c",
-              "#34495e"
-            ],
-            data: [12, 19, 3, 17, 28, 24, 7]
-          }]
-        }
-      });
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+
     
     document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
         console.log(arrObj.length)
