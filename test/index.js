@@ -28,20 +28,18 @@
       console.log(`${key}: ${value}`);
       objArr.push(key)
       objArr2.push(value)
-      
-      
     }
     console.log(objArr)
     console.log(objArr2)
-    for (var i = 0; i < objArr.length; i = i ++) {
-      for (var j = 0; j < objArr2.length; j++) {
-          if(i == j){
-            console.log("Key: "+objArr[i]+"  Value: "+ objArr2[j])
+    // for (var i = 0; i < objArr.length; i = i ++) {
+    //   for (var j = 0; j < objArr2.length; j++) {
+    //       if(i == j){
+    //         console.log("Key: "+objArr[i]+"  Value: "+ objArr2[j])
 
-          }
-      }
+    //       }
+    //   }
 
-    }
+    // }
 
 
 
