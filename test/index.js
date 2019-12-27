@@ -31,8 +31,12 @@
             arr.push(innerObj)
           }
         }
-
         console.log(arr);
+        arr.forEach(function(item) {
+          Object.keys(item).forEach(function(key) {
+            console.log("key:" + key + "value:" + item[key]);
+          });
+        });
     
         debugger;
     // var i=0
