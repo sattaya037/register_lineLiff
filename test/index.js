@@ -17,11 +17,16 @@
   const width = document.body.clientWidth;
   const SCROLL_SPEED = 0.3;
   const CANVAS_WIDTH = 2800;
-
+  const request = require('request');
+  var odata = request("GET", "https://ics-line-liff.herokuapp.com/api", {});
+  var sapRespond = JSON.parse(odata.getBody());
+    console.log(sapRespond)
   freshImage();
 
  
 function freshImage(){
+
+
   var Obj =[];
   var div = document.getElementById("main"); 
   while(div.firstChild) { 

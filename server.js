@@ -13,19 +13,11 @@ app.use(express.static('images'));
 app.use(express.static('test'));
 app.use(express.static('group'));
 const books = require('./db')
-const request = require('request');
 
 // app.use('/map', express.static('images/rich.js'));
 app.get('/api', (req, res) => {
     res.json(books)
   })
-
-app.get('/callapi', (req, res) => {
- 
-      const odata = request("GET", "https://ics-line-liff.herokuapp.com/api", {});
-      var sapRespond = JSON.parse(odata.getBody());
-        console.log(sapRespond)
-})
 
 app.get('/send-id', function(req, res) {
     res.json({id: myLiffId});
