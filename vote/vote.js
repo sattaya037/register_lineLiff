@@ -157,9 +157,9 @@ function render(arrObj){
         obj[item] = 1;
     }
     });
-    var ctx = document.getElementById('myChart').getContext('2d');
 
     Object.keys(obj).map(function(item) {
+        var ctx = document.getElementById('myChart').getContext('2d');
         var chart = new Chart(ctx, {
             // The type of chart we want to create
             type: 'line',
@@ -187,7 +187,7 @@ function render(arrObj){
         // console.log(item)
         // console.log(obj[item])
 
-    return chart ;
+    return ctx ;
     });
 
   
