@@ -119,7 +119,7 @@ function vote(value){
         var snapKey =snapshot.key;
         var content = '';
         content +='<button id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="w3-button w3-black" value="'+uid+'" >'+snapshot.key+'</button>';
-
+        content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" value="'+uid+'"  >'+snapshot.key+'</a>'
         var theDiv = document.getElementById("btn");
         theDiv.innerHTML += content; 
     })
