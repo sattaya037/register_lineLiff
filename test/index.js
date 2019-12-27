@@ -22,7 +22,7 @@
   .then((resp) => resp.json())
   .then(function(data) {
     console.log(data)
-    console.log(Object.keys(data));
+    console.log(Object.values(data));
 
     debugger;
   })
