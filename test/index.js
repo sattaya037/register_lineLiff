@@ -33,7 +33,11 @@
         }
 
         console.log(arr);
+        const iterator = arr.keys();
 
+        for (const key of iterator) {
+          console.log(key);
+        }
   
     // var i=0
     // for (let [key, value] of Object.entries(data[0].data)) {
