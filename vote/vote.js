@@ -175,7 +175,6 @@ function render(arrObj){
             datasets: [{
                 label: data1,
                 backgroundColor: ["#3498DB", "#1ABC9C", "#F1C40F", "#E74C3C", "#EB984E"],
-                borderColor: '#17202A',
                 data:data2
             }]
         },
