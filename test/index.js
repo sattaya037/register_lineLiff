@@ -34,7 +34,13 @@
     console.log(objArr)
     console.log(objArr2)
     for (var i = 0; i < objArr.length; i = i ++) {
-      console.log(objArr[i])
+      for (var j = 0; j < objArr2.length; j++) {
+          if(i == j){
+            console.log("Key: "+objArr[i]+"  Value: "+ objArr2[j])
+
+          }
+      }
+
     }
 
 
