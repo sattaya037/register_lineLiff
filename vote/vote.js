@@ -162,7 +162,7 @@ function render(arrObj){
     count = 1;
   
   sortedArr = arrObj.sort();
-  var ctx = document.getElementById("myChart").getContext('2d');
+  
   for (var i = 0; i < sortedArr.length; i = i + count) {
     count = 1;
     for (var j = i + 1; j < sortedArr.length; j++) {
@@ -170,13 +170,16 @@ function render(arrObj){
         count++;
     }
     // document.write(sortedArr[i] + " = " + count + "<br>");
+    
+  }
 
+    var ctx = document.getElementById("myChart").getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: sortedArr[i],
+            labels: ["Tokyo",	"Mumbai",	"Mexico City",	"Shanghai"],
             datasets: [{    
-                data: count, // Specify the data values array
+                data: [500,	50,	2424,	14040], // Specify the data values array
             
                 borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
                 backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
@@ -187,10 +190,6 @@ function render(arrObj){
         maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
         }
     });
-
-  }
-
- 
     
     // document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
     //     console.log(arrObj.length)
