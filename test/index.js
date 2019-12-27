@@ -21,9 +21,12 @@
   fetch(url)
   .then((resp) => resp.json())
   .then(function(data) {
+    var objArr=[];
     for (let [key, value] of Object.entries(data)) {
       console.log(`${key}: ${value}`);
+      objArr.push(value)
     }
+    console.log(objArr)
     debugger;
   })
   .catch(function(error) {
