@@ -162,7 +162,7 @@ function render(arrObj){
     count = 1;
   
   sortedArr = arrObj.sort();
-  
+  var ctx = document.getElementById("myChart").getContext('2d');
   for (var i = 0; i < sortedArr.length; i = i + count) {
     count = 1;
     for (var j = i + 1; j < sortedArr.length; j++) {
@@ -171,7 +171,6 @@ function render(arrObj){
     }
     // document.write(sortedArr[i] + " = " + count + "<br>");
 
-    var ctx = document.getElementById("myChart").getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'pie',
         data: {
