@@ -22,7 +22,7 @@
   .then((resp) => resp.json())
   .then(function(data) {
     var objArr=[];
-    for (let [key, value] of Object.entries(data)) {
+    for (let [key, value] of Object.entries(data[0].data)) {
       console.log(`${key}: ${value}`);
       objArr.push(value)
     }
