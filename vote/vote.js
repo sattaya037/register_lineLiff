@@ -164,6 +164,26 @@ function render(arrObj){
             data2.push(count)
     }
     console.log(data1 + " = " + data2 )
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+
+        // The data for our dataset
+        data: {
+            labels: data1,
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data:data2
+            }]
+        },
+
+        // Configuration options go here
+        options: {}
+    });
+
 
 
     var obj = {};
