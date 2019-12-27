@@ -26,7 +26,6 @@
     var i=0
     for (let [key, value] of Object.entries(data[0].data)) {
       var count = i++
-      console.log(count)
       console.log(`${key}: ${value[count]}`);
      
     }
