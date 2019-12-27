@@ -147,65 +147,44 @@ function view(){
 }
 
 function render(arrObj){
-    // console.log(arrObj)
-    // var obj = {};
-    // arrObj.forEach(function(item) {
-    // if (typeof obj[item] == 'number') {
-    //     obj[item]++;
-
-    // } else {
-    //     obj[item] = 1;
-    // }
-    // });
-
+    console.log(arrObj)
     sortedArr = [],
     count = 1;
-  
-  sortedArr = arrObj.sort();
-  
-  for (var i = 0; i < sortedArr.length; i = i + count) {
-    count = 1;
-    for (var j = i + 1; j < sortedArr.length; j++) {
-      if (sortedArr[i] === sortedArr[j])
-        count++;
-    }
-    // document.write(sortedArr[i] + " = " + count + "<br>");
+    sortedArr = arrObj.sort();
     
-    var ctx = document.getElementById("myChart").getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels:sortedArr[i],
-            datasets: [{    
-                data: count, // Specify the data values array
-            
-                // borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
-                // backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
-                borderWidth: 1 // Specify bar border width
-            }]},         
-        options: {
-        responsive: true, // Instruct chart js to respond nicely.
-        maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
+    for (var i = 0; i < sortedArr.length; i = i + count) {
+        count = 1;
+        for (var j = i + 1; j < sortedArr.length; j++) {
+        if (sortedArr[i] === sortedArr[j])
+            count++;
         }
+        console.log(sortedArr[i] + " = " + count )
+    }
+
+    var obj = {};
+    arrObj.forEach(function(item) {
+    if (typeof obj[item] == 'number') {
+        obj[item]++;
+
+    } else {
+        obj[item] = 1;
+    }
     });
-
-  }
-
-
     
-    // document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
-    //     console.log(arrObj.length)
-    //     var content2 = '';
-    //      content2 +=item+'<div class="progress">';
-    //      content2 +='<div class="progress-bar" role="progressbar" style="width:'+obj[item]+'%;" aria-valuenow="'+obj[item]+'" aria-valuemin="" aria-valuemax="'+arrObj.length+'">'+obj[item]+'</div>';
-    //      content2 +='</div>';
-    //      content2 +='<br>';
+    
+    document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
+        console.log(arrObj.length)
+        var content2 = '';
+         content2 +=item+'<div class="progress">';
+         content2 +='<div class="progress-bar" role="progressbar" style="width:'+obj[item]+'%;" aria-valuenow="'+obj[item]+'" aria-valuemin="" aria-valuemax="'+arrObj.length+'">'+obj[item]+'</div>';
+         content2 +='</div>';
+         content2 +='<br>';
 
-    //     // console.log(item)
-    //     // console.log(obj[item])
+        // console.log(item)
+        // console.log(obj[item])
 
-    // return content2 ;
-    // }).join('\n');
+    return content2 ;
+    }).join('\n');
 
         //  content2 +='<div class="progress">';
         //  content2 +='<div class="progress-bar" role="progressbar" style="width:'+count+'%;" aria-valuenow="'+count+'" aria-valuemin="0" aria-valuemax="'+arrObj.length+'">'+sortedArr[i]+'</div>';
