@@ -172,19 +172,19 @@ function render(arrObj){
     });
     
     
-    document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
-        console.log(arrObj.length)
-        var content2 = '';
-         content2 +=item+'<div class="progress">';
-         content2 +='<div class="progress-bar" role="progressbar" style="width:'+obj[item]+'%;" aria-valuenow="'+obj[item]+'" aria-valuemin="" aria-valuemax="'+arrObj.length+'">'+obj[item]+'</div>';
-         content2 +='</div>';
-         content2 +='<br>';
+    // document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
+    //     console.log(arrObj.length)
+    //     var content2 = '';
+    //      content2 +=item+'<div class="progress">';
+    //      content2 +='<div class="progress-bar" role="progressbar" style="width:'+obj[item]+'%;" aria-valuenow="'+obj[item]+'" aria-valuemin="" aria-valuemax="'+arrObj.length+'">'+obj[item]+'</div>';
+    //      content2 +='</div>';
+    //      content2 +='<br>';
 
-        // console.log(item)
-        // console.log(obj[item])
+    //     // console.log(item)
+    //     // console.log(obj[item])
 
-    return content2 ;
-    }).join('\n');
+    // return content2 ;
+    // }).join('\n');
 
         //  content2 +='<div class="progress">';
         //  content2 +='<div class="progress-bar" role="progressbar" style="width:'+count+'%;" aria-valuenow="'+count+'" aria-valuemin="0" aria-valuemax="'+arrObj.length+'">'+sortedArr[i]+'</div>';
