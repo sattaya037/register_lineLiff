@@ -24,7 +24,7 @@
     var obj=[];
     for (let [key, value] of Object.entries(data)) {
       console.log(`${key}: ${value}`);
-      obj.push(data)
+      obj.push(key)
     }
     console.log(obj)
     debugger;
