@@ -179,15 +179,15 @@ function render(arrObj){
 
 
 
-    var obj = {};
-    arrObj.forEach(function(item) {
-    if (typeof obj[item] == 'number') {
-        obj[item]++;
+    // var obj = {};
+    // arrObj.forEach(function(item) {
+    // if (typeof obj[item] == 'number') {
+    //     obj[item]++;
 
-    } else {
-        obj[item] = 1;
-    }
-    });
+    // } else {
+    //     obj[item] = 1;
+    // }
+    // });
     
     
     // document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
@@ -202,14 +202,7 @@ function render(arrObj){
     //     // console.log(obj[item])
 
     // return content2 ;
-    // }).join('\n');
-
-        //  content2 +='<div class="progress">';
-        //  content2 +='<div class="progress-bar" role="progressbar" style="width:'+count+'%;" aria-valuenow="'+count+'" aria-valuemin="0" aria-valuemax="'+arrObj.length+'">'+sortedArr[i]+'</div>';
-        //  content2 +='</div>';
-        //  content2 +='<br>';
-
-    
+    // }).join('\n'); 
     }
 
 function onSubmit(snapKey){

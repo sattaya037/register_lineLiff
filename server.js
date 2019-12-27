@@ -12,8 +12,12 @@ app.use(express.static('gift'));
 app.use(express.static('images'));
 app.use(express.static('test'));
 app.use(express.static('group'));
+const books = require('./db')
 
 // app.use('/map', express.static('images/rich.js'));
+app.get('/api', (req, res) => {
+    res.json(books)
+  })
 
 app.get('/send-id', function(req, res) {
     res.json({id: myLiffId});
