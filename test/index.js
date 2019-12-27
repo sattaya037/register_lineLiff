@@ -21,9 +21,10 @@
   fetch(url)
   .then((resp) => resp.json())
   .then(function(data) {
-    console.log(data)
-    console.log(Object.values(data));
-
+  
+    for (let [key, value] of Object.entries(data)) {
+      console.log(`${key}: ${value}`);
+    }
     debugger;
   })
   .catch(function(error) {
