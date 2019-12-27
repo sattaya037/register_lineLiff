@@ -171,8 +171,6 @@ function render(arrObj){
     }
     // document.write(sortedArr[i] + " = " + count + "<br>");
     
-  }
-
     var ctx = document.getElementById("myChart").getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'pie',
@@ -190,6 +188,10 @@ function render(arrObj){
         maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
         }
     });
+
+  }
+
+
     
     // document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
     //     console.log(arrObj.length)
