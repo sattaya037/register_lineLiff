@@ -177,7 +177,7 @@ function render(arrObj){
         data: {
             labels: ["Tokyo",	"Mumbai",	"Mexico City",	"Shanghai"],
             datasets: [{    
-                data: [500,	50,	2424,	14040], // Specify the data values array
+                data: count, // Specify the data values array
             
                 borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
                 backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
