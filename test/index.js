@@ -32,7 +32,12 @@
       
     }
     console.log(objArr)
-    console.log(objArr2[0])
+    console.log(objArr2)
+    for (var i = 0; i < objArr.length; i = i ++) {
+      console.log(objArr[i])
+    }
+
+
 
     debugger;
   })
