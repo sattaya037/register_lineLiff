@@ -158,25 +158,26 @@ function render(arrObj){
     }
     });
 
-    Object.keys(obj).map(function(item) {
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var chart = new Chart(ctx, {
-            // The type of chart we want to create
+    document.getElementById('myChart').getContext('2d')= Object.keys(obj).map(function(item) {
+
+        var chart = new Chart({
             type: 'line',
+
             // The data for our dataset
             data: {
-                labels:item,
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
                 datasets: [{
                     label: 'My First dataset',
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
-                    data: obj[item]
+                    data: [0, 10, 5, 2, 20, 30, 45]
                 }]
             },
-
+    
             // Configuration options go here
             options: {}
-        });
+        })
+
         console.log(arrObj.length)
         var content2 = '';
          content2 +=item+'<div class="progress">';
@@ -187,10 +188,10 @@ function render(arrObj){
         // console.log(item)
         // console.log(obj[item])
 
-    return ctx ;
-    });
+    return chart;
+    }).join('\n');
 
-  
+
 
     
     document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
