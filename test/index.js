@@ -22,12 +22,14 @@
   .then((resp) => resp.json())
   .then(function(data) {
   
-    console.log(data[0].data)
-
-    // for (let [key, value] of Object.entries(data[0].data)) {
-    //   console.log(`${key}: ${value}`);
+    // console.log(data[0].data)
+    var i=0
+    for (let [key, value] of Object.entries(data[0].data)) {
+      var count = i++
+      console.log(count)
+      console.log(`${key}: ${value}`);
      
-    // }
+    }
 
     // for (var i = 0; i < objArr.length; i = i ++) {
     //   for (var j = 0; j < objArr2.length; j++) {
