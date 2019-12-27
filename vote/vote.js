@@ -158,22 +158,24 @@ function render(arrObj){
     }
     });
     var ctx = document.getElementById('myChart').getContext('2d');
-    data = {
-        datasets: [{
-            data: [10, 20, 30]
-        }],    
-        labels: [
-            'Red',
-            'Yellow',
-            'Blue'
-        ]
-    };
-    var chart = new Chart(ctx, {
+    var myChart = new Chart(ctx, {
         type: 'pie',
-        data: data,
-        options: options
-    });
-
+        data: {
+          labels: ["Green", "Blue", "Gray", "Purple", "Yellow", "Red", "Black"],
+          datasets: [{
+            backgroundColor: [
+              "#2ecc71",
+              "#3498db",
+              "#95a5a6",
+              "#9b59b6",
+              "#f1c40f",
+              "#e74c3c",
+              "#34495e"
+            ],
+            data: [12, 19, 3, 17, 28, 24, 7]
+          }]
+        }
+      });
     
     document.getElementById('output').innerHTML = Object.keys(obj).map(function(item) {
         console.log(arrObj.length)
