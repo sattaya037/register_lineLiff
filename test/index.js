@@ -33,11 +33,12 @@
         }
 
         console.log(arr);
-        const iterator = arr.keys();
+        const iterator = arr.values();
 
-        for (const key of iterator) {
-          console.log(key);
+        for (const value of iterator) {
+          console.log(value);
         }
+        
   
     // var i=0
     // for (let [key, value] of Object.entries(data[0].data)) {
@@ -58,7 +59,6 @@
 
 
 
-    debugger;
   })
   .catch(function(error) {
     console.log(JSON.stringify(error));
