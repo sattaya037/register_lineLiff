@@ -22,15 +22,19 @@
   .then((resp) => resp.json())
   .then(function(data) {
   
-    // console.log(data[0].data)
-    for (var key in data[0].data) {
-      if (Object.prototype.hasOwnProperty.call(data[0].data, key)) {
-          console.log(key)
-          var val = data[0].data[key];
-          console.log(val)
-          // use val
-      }
-  }
+    var arr = [];
+
+    for (var prop in data[0].data) {
+          if (data[0].data.hasOwnProperty(prop)) {
+            var innerObj = {};
+            innerObj[prop] = data[0].data[prop];
+            arr.push(innerObj)
+          }
+        }
+
+        console.log(arr);
+
+  
     // var i=0
     // for (let [key, value] of Object.entries(data[0].data)) {
     //   var count = i++
