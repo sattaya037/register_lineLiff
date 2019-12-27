@@ -23,8 +23,7 @@
   .then(function(data) {
     var obj=[];
     for (let [key, value] of Object.entries(data)) {
-      console.log(`${key}: ${value}`);
-      obj.push(key)
+      console.log(`${key}: ${value[0]}`);
     }
     console.log(obj)
     debugger;
