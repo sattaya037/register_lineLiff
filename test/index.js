@@ -26,7 +26,7 @@
     for (var key in data[0].data) {
       if (Object.prototype.hasOwnProperty.call(data[0].data, key)) {
           var val = data[0].data[key];
-          console.log(val)
+          console.log(key+" "+val)
           // use val
       }
   }
