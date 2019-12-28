@@ -32,21 +32,17 @@
           }
         }
         console.log(arr);
-        const result = []
-        // for each key in obj
-        Object.keys(arr).forEach(key => {
-            // for each array element of the property obj[key]
-            arr[key].forEach((value, index) => {
-                // if an object doesn't exists at the current index in result
-                // create it
-                if (!result[index]) {
-                    result[index] = {}
-                }
-                // at the result index, set the key to the current value
-                result[index][key] = value
-            })
-        })
-        console.log(result)
+        
+        var keys = Object.keys(arr);
+        var values = Object.values(arr);
+        
+        var obj2 = [];
+        
+        for (i = 0; i < Math.max(...values.map(o => o.length)); i++) {
+          obj2.push(keys.reduce((c, v, k) => Object.assign(c, {[v]: values[k][i] || ""}), {}))
+        }
+        
+        console.log(obj2);
 
 
         // arr.forEach(function(item) {
