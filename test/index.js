@@ -17,13 +17,13 @@
   const width = document.body.clientWidth;
   const SCROLL_SPEED = 0.3;
   const CANVAS_WIDTH = 2800; 
-  const url = 'https://devs.protalista.com/get-yesterday-online-clients/15';
+  const url = 'https://ics-line-liff.herokuapp.com/api';
   fetch(url)
   .then((resp) => resp.json())
   .then(function(data) {
     
     var arr = [];
-    console.log(data)
+
     for (var prop in data[0].data) {
           if (data[0].data.hasOwnProperty(prop)) {
             var innerObj = {};
@@ -32,13 +32,30 @@
           }
         }
         console.log(arr);
-        arr.forEach(function(item) {
-          Object.keys(item).forEach(function(key) {
-            console.log("key:" + key + "value:" + item[key]);
-            debugger;
+        const result = []
+        // for each key in obj
+        Object.keys(arr).forEach(key => {
+            // for each array element of the property obj[key]
+            arr[key].forEach((value, index) => {
+                // if an object doesn't exists at the current index in result
+                // create it
+                if (!result[index]) {
+                    result[index] = {}
+                }
+                // at the result index, set the key to the current value
+                result[index][key] = value
+            })
+        })
+        console.log(result)
 
-          });
-        });
+
+        // arr.forEach(function(item) {
+        //   Object.keys(item).forEach(function(key) {
+        //     console.log("key:" + key + "value:" + item[key]);
+        //     debugger;
+
+        //   });
+        // });
     
     // var i=0
     // for (let [key, value] of Object.entries(data[0].data)) {
