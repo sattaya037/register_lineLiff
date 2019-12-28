@@ -17,7 +17,7 @@
   const width = document.body.clientWidth;
   const SCROLL_SPEED = 0.3;
   const CANVAS_WIDTH = 2800; 
-  const url = 'https://ics-line-liff.herokuapp.com/api';
+  const url = 'https://devs.protalista.com/get-yesterday-online-clients/15';
   fetch(url)
   .then((resp) => resp.json())
   .then(function(data) {
