@@ -23,7 +23,7 @@
   .then(function(data) {
     
     var arr = [];
-
+    console.log(data)
     for (var prop in data[0].data) {
           if (data[0].data.hasOwnProperty(prop)) {
             var innerObj = {};
