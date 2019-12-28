@@ -34,7 +34,12 @@
         console.log(arr);
         
         for (i in arr) {
-            console.log(arr[i])
+          arr[i].forEach(function(item) {
+            Object.keys(item).forEach(function(key) {
+              console.log(key);
+            });
+          });
+            // console.log(arr[i])
             debugger;
         }
 
