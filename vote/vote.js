@@ -122,7 +122,7 @@ function vote(value){
         // content +='<div class="button-container">';
         content +='<a class="list-group-item list-group-item-action flex-column align-items-start" id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >';
         content +='<div class="d-flex w-100 justify-content-between">';
-        content +='<img class="card-img-top" src="'+snapshot.val().image+'" alt="Card image cap">'
+        content +='<img class="rounded mx-auto d-block" src="'+snapshot.val().image+'" alt="Card image cap">'
         content +='</div>';
         content +='<h5 class="mb-1">'+snapshot.key+'</h5>';
         content +='</a>';
