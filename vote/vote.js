@@ -127,7 +127,7 @@ function vote(value){
         //  content += '</div>';
 
 
-        // content +='<button id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="w3-button w3-black" value="'+uid+'" >'+snapshot.key+'</button>';
+        content +='<button id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="w3-button w3-black" value="'+uid+'" >'+snapshot.key+'</button>';
         var theDiv = document.getElementById("btn");
         theDiv.innerHTML += content; 
 
