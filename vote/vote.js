@@ -120,7 +120,7 @@ function vote(value){
         var content = '';
         // content +='<div class="one_fourth">';
         // content +='<div class="button-container">';
-        content +='<a class="list-group-item list-group-item-action flex-column align-items-start" id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >'+snapshot.key+'</a>';
+        content +='<a class="list-group-item list-group-item-action flex-column align-items-start" id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >';
         // content +='<img src="'+snapshot.val().image+'">';
         content +='<div class="d-flex w-100 justify-content-between">';
         content +='</div>';
