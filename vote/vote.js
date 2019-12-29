@@ -120,16 +120,19 @@ function vote(value){
         var content = '';
         // content +='<div class="one_fourth">';
         // content +='<div class="button-container">';
-        content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >'+snapshot.key+'</a>';
+        content +='<a class="list-group-item list-group-item-action flex-column align-items-start" id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >'+snapshot.key+'</a>';
         // content +='<img src="'+snapshot.val().image+'">';
-        content +='<li class="list-group-item">';
-        content +='<button id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="btn btn-link" value="'+uid+'" >'+snapshot.key+'</button>';
-        content +='</li>';
+        content +='<div class="d-flex w-100 justify-content-between">';
+        content +='</div>';
+        content +='<h5 class="mb-1">'+snapshot.key+'</h5>';
+        content +='</a>';
+
+        // content +='<button id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="btn btn-link" value="'+uid+'" >'+snapshot.key+'</button>';
 
         var theDiv = document.getElementById("btn");
         theDiv.innerHTML += content; 
 
-               
+            
        
     })
 
