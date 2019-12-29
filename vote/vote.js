@@ -103,12 +103,15 @@ window.onload = function() {
     // });
   
     // check if the user is logged in/out, and disable inappropriate button
- 
+    if (liff.isLoggedIn()) {
+        document.getElementById('liffLoginButton').disabled = true;
+    } else {
+        document.getElementById('liffLogoutButton').disabled = true;
+    }
   }
 
   
 function vote(value){
-    document.getElementById('liffLoginButton').disabled = true;
     console.log(value.userId)
     var uid=value.userId;
     const dbRef = firebase.database().ref('HPY')
@@ -117,15 +120,10 @@ function vote(value){
         var content = '';
         // content +='<div class="one_fourth">';
         // content +='<div class="button-container">';
-        content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" value="'+uid+'"  >'+snapshot.key+'</a>';
+        // content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" value="'+uid+'"  >'+snapshot.key+'</a>';
         // content +='<img src="'+snapshot.val().image+'">';
         // content +='</div>';
         // content +='</div>   ';
-     
-
-        //  content += '<img src="'+snapshot.val().image+'" alt="..." class="img-thumbnail">';
-        //  content += '</div>';
-
 
         content +='<button id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="w3-button w3-black" value="'+uid+'" >'+snapshot.key+'</button>';
         var theDiv = document.getElementById("btn");
