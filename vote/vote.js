@@ -121,7 +121,12 @@ function vote(value){
         // content +='<img src="'+snapshot.val().image+'">';
         // content +='</div>';
         // content +='</div>   ';
-         content += '  <li class="list-group-item">'+snapshot.key+'</li>';
+         content += '<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" value="'+uid+'"   class="list-group-item list-group-item-action flex-column align-items-start">';
+         content +='<div class="d-flex w-100 justify-content-between">';
+         content +='<h5 class="mb-1">'+snapshot.key+'</h5>';
+         content +='</div>';
+         content +='<img class="card-img-top" src="'+snapshot.val().image+'" alt="Card image cap">';
+         content +='</a>';
 
         //  content += '<img src="'+snapshot.val().image+'" alt="..." class="img-thumbnail">';
         //  content += '</div>';
