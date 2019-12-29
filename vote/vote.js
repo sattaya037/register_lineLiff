@@ -123,10 +123,9 @@ function vote(value){
         // content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" value="'+uid+'"  >'+snapshot.key+'</a>';
         // content +='<img src="'+snapshot.val().image+'">';
         content +='<li class="list-group-item">';
-        content +='<div class="float-right">';
         content +='<button id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="btn btn-link" value="'+uid+'" >'+snapshot.key+'</button>';
-        content +='</div>';
         content +='</li>';
+
         var theDiv = document.getElementById("btn");
         theDiv.innerHTML += content; 
 
