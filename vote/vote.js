@@ -121,9 +121,10 @@ function vote(value){
         // content +='<img src="'+snapshot.val().image+'">';
         // content +='</div>';
         // content +='</div>   ';
-        var content = '<img src="'+snapshot.val().image+'" alt="..." class="img-thumbnail">';
+        var content = '<div class="col ">';
 
-        
+        var content = '<img src="'+snapshot.val().image+'" alt="..." class="img-thumbnail">';
+        var content = '</div>';
 
         // content +='<button id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="w3-button w3-black" value="'+uid+'" >'+snapshot.key+'</button>';
         var theDiv = document.getElementById("btn");
