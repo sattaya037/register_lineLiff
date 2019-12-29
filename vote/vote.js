@@ -121,10 +121,10 @@ function vote(value){
         // content +='<img src="'+snapshot.val().image+'">';
         // content +='</div>';
         // content +='</div>   ';
-         content += '<div class="col ">';
+         content += '  <li class="list-group-item">'+snapshot.key+'</li>';
 
-         content += '<img src="'+snapshot.val().image+'" alt="..." class="img-thumbnail">';
-         content += '</div>';
+        //  content += '<img src="'+snapshot.val().image+'" alt="..." class="img-thumbnail">';
+        //  content += '</div>';
 
 
         // content +='<button id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="w3-button w3-black" value="'+uid+'" >'+snapshot.key+'</button>';
