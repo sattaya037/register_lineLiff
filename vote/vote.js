@@ -75,11 +75,6 @@ window.onload = function() {
   */
   function initializeApp() {
     registerButtonHandlers();
-    if (liff.isLoggedIn()) {
-        document.getElementById('liffLoginButton').disabled = true;
-    } else {
-        document.getElementById('liffLogoutButton').disabled = true;
-    }
     var profileProm = new Promise(function(resolve, reject) {
             liff.getProfile().then(profile => { 
             resolve(profile)
@@ -113,6 +108,7 @@ window.onload = function() {
 
   
 function vote(value){
+    document.getElementById('liffLoginButton').disabled = true;
     console.log(value.userId)
     var uid=value.userId;
     const dbRef = firebase.database().ref('HPY')
