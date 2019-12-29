@@ -121,17 +121,27 @@ function vote(value){
         // content +='<div class="one_fourth">';
         // content +='<div class="button-container">';
         content +='<a class="list-group-item list-group-item-action flex-column align-items-start" id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >';
-        // content +='<img src="'+snapshot.val().image+'">';
-        content +='<div class="d-flex w-100 justify-content-between">';
+        // content +='<div class="d-flex w-100 justify-content-between">';
+        // content +='</div>';
+        // content +='<h5 class="mb-1">'+snapshot.key+'</h5>';
+        content +='<div class="card" style="width: 18rem;">';
+        content +='<img class="card-img-top" src="'+snapshot.val().image+'" alt="Card image cap">'
+        content +='<div class="card-body">';
+        content +=' <p class="card-text">'+snapshot.key+'</p>';
         content +='</div>';
-        content +='<h5 class="mb-1">'+snapshot.key+'</h5>';
+        content +='</div>';
         content +='</a>';
 
         // content +='<button id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="btn btn-link" value="'+uid+'" >'+snapshot.key+'</button>';
+        content +='<div class="card" style="width: 18rem;">';
+        content +='<img class="card-img-top" src="'+snapshot.val().image+'" alt="Card image cap">'
+        content +='<div class="card-body">';
+        content +=' <p class="card-text">'+snapshot.key+'</p>';
+        content +='</div>';
+        content +='</div>';
 
         var theDiv = document.getElementById("btn");
         theDiv.innerHTML += content; 
-
             
        
     })
