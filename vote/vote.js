@@ -216,10 +216,8 @@ function render(arrObj){
 
 function onSubmit(snapKey,uid){
     console.log(uid)
-    var lineID = document.getElementById(snapKey).value;
-    console.log(lineID)
     const voteRef = firebase.database().ref('HPY/voters')
-    voteRef.child(lineID).set({
+    voteRef.child(uid).set({
         vote:snapKey
       });
 }
