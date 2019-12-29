@@ -75,6 +75,11 @@ window.onload = function() {
   */
   function initializeApp() {
     registerButtonHandlers();
+    if (liff.isLoggedIn()) {
+        document.getElementById('liffLoginButton').disabled = true;
+    } else {
+        document.getElementById('liffLogoutButton').disabled = true;
+    }
     var profileProm = new Promise(function(resolve, reject) {
             liff.getProfile().then(profile => { 
             resolve(profile)
@@ -103,11 +108,7 @@ window.onload = function() {
     // });
   
     // check if the user is logged in/out, and disable inappropriate button
-    if (liff.isLoggedIn()) {
-        document.getElementById('liffLoginButton').disabled = true;
-    } else {
-        document.getElementById('liffLogoutButton').disabled = true;
-    }
+ 
   }
 
   
