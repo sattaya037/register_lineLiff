@@ -118,12 +118,15 @@ function vote(value){
     dbRef.child("choice").on("child_added", function(snapshot) {
         var snapKey =snapshot.key;
         var content = '';
-        content +='<div class="one_fourth">';
-        content +='<div class="button-container">';
-        content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" value="'+uid+'"  >'+snapshot.key+'</a>';
-        content +='<img src="'+snapshot.val().image+'">';
-        content +='</div>';
-        content +='</div>   ';
+        // content +='<div class="one_fourth">';
+        // content +='<div class="button-container">';
+        // content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" value="'+uid+'"  >'+snapshot.key+'</a>';
+        // content +='<img src="'+snapshot.val().image+'">';
+        // content +='</div>';
+        // content +='</div>   ';
+        var content = '<img src="'+snapshot.val().image+'" alt="..." class="img-thumbnail">';
+
+        
 
         // content +='<button id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="w3-button w3-black" value="'+uid+'" >'+snapshot.key+'</button>';
         var theDiv = document.getElementById("btn");
