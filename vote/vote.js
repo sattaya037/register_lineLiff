@@ -117,11 +117,11 @@ function vote(value){
     const dbRef = firebase.database().ref('HPY')
     dbRef.child("choice").on("child_added", function(snapshot) {
         var snapKey =snapshot.key;
-
+        var liClass ="li"+snapKey;
         var content = '';
         // content +='<div class="one_fourth">';
-        content +='<li class="list-group-item ">';
-        content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >';
+        content +='<li id="'+liClass+'" class="list-group-item ">';
+        content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' +liClass+ '\',\'' +uid +'\')" >';
         content +='<h5 class="mb-1">'+snapshot.key+'</h5>';
         content +='</a>';
         content +='</li>';
@@ -222,8 +222,8 @@ function render(arrObj){
     // }).join('\n'); 
     }
 
-function onSubmit(snapKey,uid){
-    console.log(uid)
+function onSubmit(snapKey,liClass,uid){
+    console.log(liClass)
 
 
     const voteRef = firebase.database().ref('HPY/voters')
