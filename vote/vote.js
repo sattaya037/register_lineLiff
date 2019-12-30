@@ -120,12 +120,12 @@ function vote(value){
 
         var content = '';
         // content +='<div class="one_fourth">';
-        // content +='<div class="button-container">';
-        content +='<a class="list-group-item list-group-item-action flex-column align-items-start" id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >';
-        content +='<div class="d-flex w-100 justify-content-between">';
-        content +='</div>';
+        content +='<li class="list-group-item ">';
+        content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >';
         content +='<h5 class="mb-1">'+snapshot.key+'</h5>';
         content +='</a>';
+        content +='</li>';
+
 
         // content +='<button id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="btn btn-link" value="'+uid+'" >'+snapshot.key+'</button>';
         // content +='<div class="card" style="width: 18rem;">';
