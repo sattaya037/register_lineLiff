@@ -31,15 +31,12 @@
             arr.push(innerObj)
           }
         }
-        console.log(arr);
         for (let key in arr){
           if(arr.hasOwnProperty(key)){
-              // console.log(key)
+              console.log(arr[key])
               Object.entries(arr[key]).forEach(([key, value]) => {
-                  console.log(key);
                   for (let count in value){
                       console.log(value[count]);
-
                   }
               });
           }
