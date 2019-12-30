@@ -118,13 +118,21 @@ function vote(value){
     dbRef.child("choice").on("child_added", function(snapshot) {
         var snapKey =snapshot.key;
         var content = '';
-        // content +='<div class="one_fourth">';
-        // content +='<div class="button-container">';
-        content +='<a class="list-group-item list-group-item-action flex-column align-items-start" id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >';
-        content +='<div class="d-flex w-100 justify-content-between">';
-        content +='</div>';
-        content +='<h5 class="mb-1">'+snapshot.key+'</h5>';
-        content +='</a>';
+    
+        // content +='<a class="list-group-item list-group-item-action flex-column align-items-start" id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >';
+        // content +='<div class="d-flex w-100 justify-content-between">';
+        // content +='</div>';
+        // content +='<h5 class="mb-1">'+snapshot.key+'</h5>';
+        // content +='</a>';
+
+        content +='<div class="one_fourth">';
+        content +='<div class="button-container">';
+        content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')"></a>';
+        content +='<img src="'+snapshot.val().image+'"/>';
+        content +='</div">';
+        content +='</div">';
+
+   
 
         // content +='<button id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="btn btn-link" value="'+uid+'" >'+snapshot.key+'</button>';
         // content +='<div class="card" style="width: 18rem;">';
