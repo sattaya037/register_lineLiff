@@ -226,7 +226,7 @@ function onSubmit(snapKey,liClass,uid){
     var element = document.getElementById(liClass);
     console.log(element.className)
     element.className = element.className+' active';
-    var elementClass = document.getElementsByClassName('list-group-item');
+    var elementClass = document.getElementsByClassName('list-group-item.active');
     console.log(elementClass)
 
     const voteRef = firebase.database().ref('HPY/voters')
