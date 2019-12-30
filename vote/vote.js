@@ -127,7 +127,7 @@ function vote(value){
 
         content +='<div class="one_fourth">';
         content +='<div class="button-container">';
-        content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')"></a>';
+        content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')">'+snapshot.key+'</a>';
         content +='<img src="'+snapshot.val().image+'"/>';
         content +='</div">';
         content +='</div">';
