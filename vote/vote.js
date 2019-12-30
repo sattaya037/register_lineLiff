@@ -224,7 +224,9 @@ function render(arrObj){
 
 function onSubmit(snapKey,liClass,uid){
     console.log(liClass)
+    var element = document.getElementById(liClass);
 
+    element.parent().addClass('active')
 
     const voteRef = firebase.database().ref('HPY/voters')
     voteRef.child(uid).set({
