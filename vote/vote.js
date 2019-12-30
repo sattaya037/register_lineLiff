@@ -117,12 +117,11 @@ function vote(value){
     const dbRef = firebase.database().ref('HPY')
     dbRef.child("choice").on("child_added", function(snapshot) {
         var snapKey =snapshot.key;
-        var aid =snapshot.key+"class";
 
         var content = '';
         // content +='<div class="one_fourth">';
         // content +='<div class="button-container">';
-        content +='<a id="'+aid+'" class="list-group-item list-group-item-action flex-column align-items-start" id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >';
+        content +='<a class="list-group-item list-group-item-action flex-column align-items-start" id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >';
         content +='<div class="d-flex w-100 justify-content-between">';
         content +='</div>';
         content +='<h5 class="mb-1">'+snapshot.key+'</h5>';
@@ -225,9 +224,7 @@ function render(arrObj){
 
 function onSubmit(snapKey,uid){
     console.log(uid)
-    var aid =snapKey+"class"
-    var element = document.getElementById(aid);
-    element.addClass("active");
+
 
     const voteRef = firebase.database().ref('HPY/voters')
     voteRef.child(uid).set({
