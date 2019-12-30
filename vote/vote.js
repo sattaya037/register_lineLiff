@@ -125,14 +125,25 @@ function vote(value){
         // content +='<h5 class="mb-1">'+snapshot.key+'</h5>';
         // content +='</a>';
 
-        content +='<div class="one_fourth">';
-        content +='<div class="button-container">';
-        content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')">'+snapshot.key+'</a>';
-        content +='<img src="'+snapshot.val().image+'"/>';
-        content +='</div">';
-        content +='</div">';
+        // content +='<div class="one_fourth">';
+        // content +='<div class="button-container">';
+        // content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')">'+snapshot.key+'</a>';
+        // content +='<img src="'+snapshot.val().image+'"/>';
+        // content +='</div">';
+        // content +='</div">';
 
+        content +='<a class="list-group-item list-group-item-action flex-column align-items-start" id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >';
+        content +='<div class="tile" style="background-image: url('+snapshot.val().image+');">';
+        content +='<div class="image-title"><h1>'+snapshot.key+'</h1>';
+        content +='</div>';
+        content +='</div>';
+        content +='</a>';
    
+    //     <div class="tile" style="background-image: url('https://farm8.staticflickr.com/7564/16097104758_e60521f7fa_b.jpg');">
+    //     <div class="image-title"><h1>Image Title</h1>
+    //       Content text goes here. Placeholder.
+    //     </div>
+    //    </div>
 
         // content +='<button id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="btn btn-link" value="'+uid+'" >'+snapshot.key+'</button>';
         // content +='<div class="card" style="width: 18rem;">';
