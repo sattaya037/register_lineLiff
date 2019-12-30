@@ -225,7 +225,7 @@ function render(arrObj){
 function onSubmit(snapKey,liClass,uid){
     var element = document.getElementById(liClass);
     var elementClass = document.getElementsByClassName('list-group-item active');
-    elementClass.classList.remove("active");
+    elementClass.className ="list-group-item";
     element.className = element.className+' active';
 
     const voteRef = firebase.database().ref('HPY/voters')
