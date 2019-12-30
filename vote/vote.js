@@ -224,7 +224,7 @@ function render(arrObj){
 
 function onSubmit(snapKey,liClass,uid){
     var element = document.getElementById(liClass);
-    document.getElementsByClassName("list-group-item").className = "ist-group-item";
+    document.getElementsByClassName("list-group-item").className = "list-group-item";
 
     element.className = element.className+' active';
         
