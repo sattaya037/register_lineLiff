@@ -118,31 +118,13 @@ function vote(value){
     dbRef.child("choice").on("child_added", function(snapshot) {
         var snapKey =snapshot.key;
         var content = '';
-    
-        // content +='<a class="list-group-item list-group-item-action flex-column align-items-start" id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >';
-        // content +='<div class="d-flex w-100 justify-content-between">';
-        // content +='</div>';
-        // content +='<h5 class="mb-1">'+snapshot.key+'</h5>';
-        // content +='</a>';
-        content +='<div class="col-lg-5ths col-md-5ths col-sm-5ths col-xs-4"><img src="'+snapshot.val().image+'" alt="" class="img-responsive">';
-        content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >';
-        content +='<p>';
-        content +=snapshot.key;
-        content +='</p>';
-        content +='</a>';
+        // content +='<div class="one_fourth">';
+        // content +='<div class="button-container">';
+        content +='<a class="list-group-item list-group-item-action flex-column align-items-start" id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >';
+        content +='<div class="d-flex w-100 justify-content-between">';
         content +='</div>';
-
-           
-      
-   
-        // content +='<a class="list-group-item list-group-item-action flex-column align-items-start" id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >';
-        // content +='<div class="tile" style="background-image: url('+snapshot.val().image+');">';
-        // content +='<div class="image-title"><h1>'+snapshot.key+'</h1>';
-        // content +='</div>';
-        // content +='</div>';
-        // content +='</a>';
-   
-
+        content +='<h5 class="mb-1">'+snapshot.key+'</h5>';
+        content +='</a>';
 
         // content +='<button id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey + '\')" class="btn btn-link" value="'+uid+'" >'+snapshot.key+'</button>';
         // content +='<div class="card" style="width: 18rem;">';
