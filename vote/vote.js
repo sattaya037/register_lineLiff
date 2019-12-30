@@ -120,7 +120,7 @@ function vote(value){
         var liClass ="li"+snapKey;
         var content = '';
         // content +='<div class="one_fourth">';
-        content +='<li id="'+liClass+'" class="list-group-item ">';
+        content +='<li id="'+liClass+'" class="list-group-item">';
         content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' +liClass+ '\',\'' +uid +'\')" >';
         content +='<h5 class="mb-1">'+snapshot.key+'</h5>';
         content +='</a>';
@@ -228,7 +228,7 @@ function onSubmit(snapKey,liClass,uid){
     var element = document.getElementById(liClass);
     // console.log(element)
     element.classList.add("newClass");
-    // $(this).closest('.list-group-item').addClass('active')
+    $(this).closest('.list-group-item').addClass('active')
     const voteRef = firebase.database().ref('HPY/voters')
     voteRef.child(uid).set({
         vote:snapKey
