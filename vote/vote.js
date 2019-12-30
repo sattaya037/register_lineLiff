@@ -224,8 +224,8 @@ function render(arrObj){
 
 function onSubmit(snapKey,liClass,uid){
     var element = document.getElementById(liClass);
-    document.getElementsByClassName("list-group-item").className = "list-group-item";
-
+    var elems = document.querySelectorAll("list-group-item active");
+    console.log(elems)
     element.className = element.className+' active';
         
     const voteRef = firebase.database().ref('HPY/voters')
