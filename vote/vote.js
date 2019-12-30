@@ -124,12 +124,16 @@ function vote(value){
         // content +='</div>';
         // content +='<h5 class="mb-1">'+snapshot.key+'</h5>';
         // content +='</a>';
+        content +='<div class="col-lg-5ths col-md-5ths col-sm-5ths col-xs-4"><img src="'+snapshot.val().image+'" alt="" class="img-responsive">';
+        content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >';
+        content +='<p>';
+        content +=snapshot.key;
+        content +='</p>';
+        content +='</a>';
+        content +='</div>';
 
-        content +='<li class="block">';
-        content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')"><img src="'+snapshot.val().image+'"/>';
-        content +='<span>'+snapshot.key+'</span></a>';
-        content +='</li>';
-
+           
+      
    
         // content +='<a class="list-group-item list-group-item-action flex-column align-items-start" id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')" >';
         // content +='<div class="tile" style="background-image: url('+snapshot.val().image+');">';
