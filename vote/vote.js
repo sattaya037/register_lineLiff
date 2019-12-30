@@ -125,7 +125,7 @@ function vote(value){
         // content +='<h5 class="mb-1">'+snapshot.key+'</h5>';
         // content +='</a>';
 
-        content +='<div class="one_fourth">';
+        content +='<div class="three_fifth">';
         content +='<div class="button-container">';
         content +='<a id="'+snapshot.key+'" onclick="onSubmit(\'' + snapKey+ '\',\'' + uid +'\')">'+snapshot.key+'</a>';
         content +='<img src="'+snapshot.val().image+'"/>';
