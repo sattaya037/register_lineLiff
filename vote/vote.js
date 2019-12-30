@@ -147,10 +147,10 @@ function vote(value){
 function view(){
     const voteRef = firebase.database().ref('HPY/voters')
     voteRef.orderByChild('vote').on("value", function(snapshot) {
-        console.log(snapshot.val())
+        // console.log(snapshot.val())
         var arrObj =[];
         snapshot.forEach(function(childsnapshot){
-            console.log(childsnapshot.val().vote)
+            // console.log(childsnapshot.val().vote)
             arrObj.push(childsnapshot.val().vote)
         })
         render(arrObj);
@@ -158,7 +158,7 @@ function view(){
 }
 
 function render(arrObj){
-    console.log(arrObj)
+    // console.log(arrObj)
     sortedArr = [],
     count = 1;
     sortedArr = arrObj.sort();
@@ -174,7 +174,7 @@ function render(arrObj){
             data1.push(sortedArr[i])
             data2.push(count)
     }
-    console.log(data1 + " = " + data2 )
+    // console.log(data1 + " = " + data2 )
     var ctx = document.getElementById('myChart').getContext('2d');
     var chart = new Chart(ctx, {
         // The type of chart we want to create
@@ -225,9 +225,10 @@ function render(arrObj){
 function onSubmit(snapKey,liClass,uid){
     var element = document.getElementById(liClass);
     var elementClass = document.getElementsByClassName('list-group-item active');
+    console.log(elementClass);
     elementClass.className ="list-group-item";
     element.className = element.className+' active';
-
+        
     const voteRef = firebase.database().ref('HPY/voters')
     voteRef.child(uid).set({
         vote:snapKey
