@@ -32,18 +32,29 @@
           }
         }
         console.log(arr);
+        for (let key in arr){
+          if(arr.hasOwnProperty(key)){
+              // console.log(key)
+              Object.entries(arr[key]).forEach(([key, value]) => {
+                  console.log(key);
+                  for (let count in value){
+                      console.log(value[count]);
+
+                  }
+              });
+          }
+      }
         
-        for (i in arr) {
-            console.log(arr[i])
-            debugger;
-        }
-
-
-        arr.forEach(function(item) {
-          Object.keys(item).forEach(function(key) {
-            console.log("key:" + key + "value:" + item[key]);
-          });
-        });
+        // for (i in arr) {
+        //     console.log(arr[i])
+        //     debugger;
+        // }
+      
+        // arr.forEach(function(item) {
+        //   Object.keys(item).forEach(function(key) {
+        //     console.log("key:" + key + "value:" + item[key]);
+        //   });
+        // });
     
     // var i=0
     // for (let [key, value] of Object.entries(data[0].data)) {
