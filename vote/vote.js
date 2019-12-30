@@ -223,11 +223,12 @@ function render(arrObj){
     }
 
 function onSubmit(snapKey,liClass,uid){
+    console.log(this)
     console.log(liClass)
     var element = document.getElementById(liClass);
-    console.log(element)
-    element.addClass('active').siblings('li').removeClass('active')
-
+    // console.log(element)
+    element.classList.add("newClass");
+    // $(this).closest('.list-group-item').addClass('active')
     const voteRef = firebase.database().ref('HPY/voters')
     voteRef.child(uid).set({
         vote:snapKey
