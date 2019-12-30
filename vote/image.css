@@ -1,94 +1,69 @@
+/* apply a natural box layout model to all elements */
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-body { /* For full width image-container */
+.my_container ul {
+  list-style: none;
   margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  clear: both;
 }
-
-.tile {
+.my_container ul .block {
   width: 20%;
   height: auto;
-  display: inline-block;
-  background-size: cover;
-  cursor: pointer;
   position: relative;
   float: left;
-  padding: 0 0 19% 0;
-  background-position: center;
-}
-
-.image-title {
-  width: 100%;
-  height: 25%;
-  color: white;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 0 1rem 1rem;
-  font-size: .9em;
-  font-family:"Helvetica";
-  text-align: center;
-  line-height: 1em;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.tile .image-title {
+  margin: 0 0 0 0;
+  padding: 0 0 20% 0;
   transition: 0.8s ease;
 }
-
-
-/* Hover effect on image tiles */
-
-.tile:hover .image-title {
-  background-color: rgba(0, 0, 0, 0.8);
-  height: 40%;
+.my_container ul .block:hover span {
+  height: 50%;
 }
-
-
-/* Pop up CSS light box */
-
-
-
-/* Responsive tiles starts here. Breaking points: 1280, 1024, 600, 360 */
-
 @media screen and (max-width: 1280px) {
-  .image-container .tile {
+  .my_container ul .block {
     width: 25%;
     padding-bottom: 25%;
   }
 }
-
 @media screen and (max-width: 1024px) {
-  .image-container .tile {
+  .my_container ul .block {
     width: 33.33%;
     padding-bottom: 33.33%;
   }
 }
-
-@media screen and (max-width: 740px) {
-  .image-container .tile {
-    font-size: 0.8em;
-  }
-}
-
 @media screen and (max-width: 600px) {
-  .image-container .tile {
+  .my_container ul .block {
     width: 50%;
     padding-bottom: 50%;
-    font-size: 0.8em;
   }
 }
-
 @media screen and (max-width: 360px) {
-  .image-container .tile {
+  .my_container ul .block {
     width: 100%;
     padding-bottom: 100%;
   }
 }
-
-.invisible  {
-  visibility: hidden;
+.my_container ul .block img {
+  max-width: none;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.my_container ul .block span {
+  width: 100%;
+  height: 3rem;
+  line-height: 3rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0 1rem;
+  font-size: 1.3rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  transition: 0.8s ease;
 }
